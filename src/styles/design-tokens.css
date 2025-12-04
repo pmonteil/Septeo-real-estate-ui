@@ -118,6 +118,7 @@
   --brand-scale-1: 1px;
   --brand-scale-2: 2px;
   --brand-scale-4: 4px;
+  --brand-scale-6: 6px;
   --brand-scale-8: 8px;
   --brand-scale-12: 12px;
   --brand-scale-16: 16px;
@@ -239,7 +240,7 @@
 
   /* Border Radius */
   --alias-border-radius-none: var(--brand-scale-0);
-  --alias-border-radius-sm: var(--brand-scale-1);
+  --alias-border-radius-sm: var(--brand-scale-6);
   --alias-border-radius-md: var(--brand-scale-4);
   --alias-border-radius-lg: var(--brand-scale-8);
 
@@ -366,7 +367,7 @@
   /* Button XS (SM) */
   --button-xs-padding-y: var(--brand-scale-4);
   --button-xs-padding-x: 6px;
-  --button-xs-border-radius: var(--alias-border-radius-md);
+  --button-xs-border-radius: var(--alias-border-radius-sm);
   --button-xs-icon-size: 14px;
 
   /* Button - Gap */
