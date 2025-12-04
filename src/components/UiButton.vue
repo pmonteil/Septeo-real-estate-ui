@@ -12,12 +12,11 @@
   >
     <span class="ui-button__content">
       <slot name="icon">
-        <component
+        <IconRenderer
           v-if="props.icon"
-          :is="props.icon"
-          class="ui-button__icon"
+          :icon="props.icon"
           :size="iconSize"
-          :stroke="1.5"
+          class="ui-button__icon"
         />
       </slot>
       <span v-if="props.label" class="ui-button__label">{{ props.label }}</span>
@@ -26,11 +25,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed, type Component, type FunctionalComponent } from "vue";
+import {
+  computed,
+  h,
+  defineComponent,
+  type Component,
+  type FunctionalComponent,
+} from "vue";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
 type IconComponent = Component | FunctionalComponent;
+
+// Composant interne pour rendre l'icône via h()
+const IconRenderer = defineComponent({
+  props: {
+    icon: {
+      type: [Object, Function] as unknown as () => IconComponent,
+      required: true,
+    },
+    size: {
+      type: Number,
+      default: 20,
+    },
+  },
+  setup(props) {
+    return () =>
+      h(props.icon as Component, {
+        size: props.size,
+        stroke: 1.5,
+      });
+  },
+});
 
 const props = withDefaults(
   defineProps<{
@@ -86,11 +112,8 @@ function handleClick(event: Event) {
 .ui-button__icon {
   flex-shrink: 0;
   display: inline-flex;
-}
-
-.ui-button__icon :deep(svg) {
-  width: 100%;
-  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .ui-button__label {
