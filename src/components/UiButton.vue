@@ -17,7 +17,7 @@
           :is="iconComponent"
           class="ui-button__icon"
           :size="iconSize"
-          :stroke="1.5"
+          :stroke="2"
         />
       </slot>
       <span v-if="props.label" class="ui-button__label">{{ props.label }}</span>
