@@ -2,8 +2,6 @@
   <q-btn
     class="ui-button"
     :class="buttonClasses"
-    :label="props.label"
-    :icon="props.icon"
     :loading="props.loading"
     :disable="props.disabled"
     :flat="isFlat"
@@ -11,19 +9,32 @@
     :unelevated="true"
     no-caps
     @click="handleClick"
-  />
+  >
+    <span class="ui-button__content">
+      <slot name="icon">
+        <component
+          v-if="props.icon"
+          :is="props.icon"
+          class="ui-button__icon"
+          :size="iconSize"
+          stroke-width="1.5"
+        />
+      </slot>
+      <span v-if="props.label" class="ui-button__label">{{ props.label }}</span>
+    </span>
+  </q-btn>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, type Component } from "vue";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
 
 const props = withDefaults(
   defineProps<{
-    label: string;
-    icon?: string;
+    label?: string;
+    icon?: Component;
     loading?: boolean;
     disabled?: boolean;
     variant?: Variant;
@@ -46,6 +57,8 @@ const buttonClasses = computed(() => [
   `ui-button--${props.size}`,
 ]);
 
+const iconSize = computed(() => (props.size === "sm" ? 14 : 20));
+
 function handleClick(event: Event) {
   emit("click", event);
 }
@@ -61,7 +74,20 @@ function handleClick(event: Event) {
   letter-spacing: 0;
   border-radius: var(--alias-border-radius-lg);
   transition: all 0.2s ease;
+}
+
+.ui-button__content {
+  display: flex;
+  align-items: center;
   gap: var(--gap-icon-text);
+}
+
+.ui-button__icon {
+  flex-shrink: 0;
+}
+
+.ui-button__label {
+  white-space: nowrap;
 }
 
 /* ======================== */
@@ -75,8 +101,9 @@ function handleClick(event: Event) {
   min-height: 28px;
 }
 
-.ui-button--sm :deep(.q-icon) {
-  font-size: var(--button-xs-icon-size);
+.ui-button--sm .ui-button__icon {
+  width: var(--button-xs-icon-size);
+  height: var(--button-xs-icon-size);
 }
 
 /* MD (Default dans Figma) */
@@ -86,8 +113,9 @@ function handleClick(event: Event) {
   min-height: 36px;
 }
 
-.ui-button--md :deep(.q-icon) {
-  font-size: var(--button-default-icon-size);
+.ui-button--md .ui-button__icon {
+  width: var(--button-default-icon-size);
+  height: var(--button-default-icon-size);
 }
 
 /* ======================== */
@@ -190,15 +218,6 @@ function handleClick(event: Event) {
 /* ======================== */
 /* QUASAR OVERRIDES         */
 /* ======================== */
-
-.ui-button :deep(.q-btn__content) {
-  gap: var(--gap-icon-text);
-}
-
-/* Remove Quasar's default icon margins */
-.ui-button :deep(.q-icon) {
-  margin: 0 !important;
-}
 
 /* Remove Quasar's default focus ring */
 .ui-button:deep(.q-focus-helper) {
