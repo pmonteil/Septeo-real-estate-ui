@@ -357,17 +357,25 @@
    * COMPONENT TOKENS - Button
    * ======================================== */
 
-  /* Button - Padding */
+  /* Button Default (MD) */
   --button-default-padding-y: var(--brand-scale-8);
   --button-default-padding-x: var(--brand-scale-8);
+  --button-default-border-radius: var(--alias-border-radius-lg);
+  --button-default-icon-size: 20px;
+
+  /* Button XS (SM) */
   --button-xs-padding-y: var(--brand-scale-4);
   --button-xs-padding-x: var(--brand-scale-4);
+  --button-xs-border-radius: var(--alias-border-radius-md);
+  --button-xs-icon-size: 14px;
+
+  /* Button LG */
+  --button-lg-padding-y: 10px;
+  --button-lg-padding-x: 12px;
+  --button-lg-border-radius: var(--alias-border-radius-lg);
+  --button-lg-icon-size: 24px;
 
   /* Button - Gap */
   --gap-icon-text: var(--brand-scale-4);
-
-  /* Button - Icon Size */
-  --button-icon-size-default: 20px;
-  --button-icon-size-xs: 14px;
 }
 

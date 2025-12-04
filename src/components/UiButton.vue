@@ -71,35 +71,35 @@ function handleClick(event: Event) {
 /* SM (XS dans Figma) */
 .ui-button--sm {
   padding: var(--button-xs-padding-y) var(--button-xs-padding-x);
-  border-radius: var(--alias-border-radius-md);
+  border-radius: var(--button-xs-border-radius);
   min-height: 28px;
 }
 
 .ui-button--sm :deep(.q-icon) {
-  font-size: var(--button-icon-size-xs);
+  font-size: var(--button-xs-icon-size);
 }
 
 /* MD (Default dans Figma) */
 .ui-button--md {
   padding: var(--button-default-padding-y) var(--button-default-padding-x);
-  border-radius: var(--alias-border-radius-lg);
+  border-radius: var(--button-default-border-radius);
   min-height: 36px;
 }
 
 .ui-button--md :deep(.q-icon) {
-  font-size: var(--button-icon-size-default);
+  font-size: var(--button-default-icon-size);
 }
 
 /* LG */
 .ui-button--lg {
-  padding: 10px 12px;
-  border-radius: var(--alias-border-radius-lg);
+  padding: var(--button-lg-padding-y) var(--button-lg-padding-x);
+  border-radius: var(--button-lg-border-radius);
   min-height: 44px;
   font-size: var(--h3-font-size);
 }
 
 .ui-button--lg :deep(.q-icon) {
-  font-size: 24px;
+  font-size: var(--button-lg-icon-size);
 }
 
 /* ======================== */
@@ -205,6 +205,11 @@ function handleClick(event: Event) {
 
 .ui-button :deep(.q-btn__content) {
   gap: var(--gap-icon-text);
+}
+
+/* Remove Quasar's default icon margins */
+.ui-button :deep(.q-icon) {
+  margin: 0 !important;
 }
 
 /* Remove Quasar's default focus ring */
