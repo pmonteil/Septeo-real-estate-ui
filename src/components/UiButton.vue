@@ -80,7 +80,9 @@ const iconComponent = computed(() => {
   const iconName = toIconName(props.icon);
   return defineAsyncComponent(() =>
     import("@tabler/icons-vue").then((module) => {
-      const icon = (module as Record<string, Component>)[iconName];
+      // Double cast pour satisfaire TypeScript
+      const icons = module as unknown as Record<string, Component>;
+      const icon = icons[iconName];
       if (!icon) {
         console.warn(
           `[UiButton] Icon "${iconName}" not found in @tabler/icons-vue`
