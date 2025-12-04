@@ -1546,9 +1546,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:935",
             "exportKey": "variables"
           }
@@ -1560,9 +1558,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:979",
             "exportKey": "variables"
           }
@@ -1574,9 +1570,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:982",
             "exportKey": "variables"
           }
@@ -1588,9 +1582,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:939",
             "exportKey": "variables"
           }
@@ -1602,9 +1594,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:943",
             "exportKey": "variables"
           }
@@ -1616,9 +1606,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:947",
             "exportKey": "variables"
           }
@@ -1630,9 +1618,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:951",
             "exportKey": "variables"
           }
@@ -1644,9 +1630,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:955",
             "exportKey": "variables"
           }
@@ -1658,9 +1642,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:959",
             "exportKey": "variables"
           }
@@ -1672,9 +1654,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:963",
             "exportKey": "variables"
           }
@@ -1686,9 +1666,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:5:967",
             "exportKey": "variables"
           }
@@ -1702,9 +1680,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:450",
             "exportKey": "variables"
           }
@@ -1716,9 +1692,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:451",
             "exportKey": "variables"
           }
@@ -1732,9 +1706,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:452",
             "exportKey": "variables"
           }
@@ -1746,9 +1718,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:453",
             "exportKey": "variables"
           }
@@ -1760,9 +1730,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:457",
             "exportKey": "variables"
           }
@@ -1774,9 +1742,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Brand",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:460",
             "exportKey": "variables"
           }
@@ -2938,9 +2904,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "STROKE_FLOAT"
-            ],
+            "scopes": ["STROKE_FLOAT"],
             "variableId": "VariableID:9:555",
             "exportKey": "variables"
           }
@@ -2953,9 +2917,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "STROKE_FLOAT"
-            ],
+            "scopes": ["STROKE_FLOAT"],
             "variableId": "VariableID:11:435",
             "exportKey": "variables"
           }
@@ -2968,9 +2930,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "STROKE_FLOAT"
-            ],
+            "scopes": ["STROKE_FLOAT"],
             "variableId": "VariableID:11:439",
             "exportKey": "variables"
           }
@@ -2983,9 +2943,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "STROKE_FLOAT"
-            ],
+            "scopes": ["STROKE_FLOAT"],
             "variableId": "VariableID:11:443",
             "exportKey": "variables"
           }
@@ -3000,9 +2958,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "CORNER_RADIUS"
-            ],
+            "scopes": ["CORNER_RADIUS"],
             "variableId": "VariableID:11:444",
             "exportKey": "variables"
           }
@@ -3015,9 +2971,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "CORNER_RADIUS"
-            ],
+            "scopes": ["CORNER_RADIUS"],
             "variableId": "VariableID:11:445",
             "exportKey": "variables"
           }
@@ -3030,9 +2984,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "CORNER_RADIUS"
-            ],
+            "scopes": ["CORNER_RADIUS"],
             "variableId": "VariableID:11:446",
             "exportKey": "variables"
           }
@@ -3045,9 +2997,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Alias",
-            "scopes": [
-              "CORNER_RADIUS"
-            ],
+            "scopes": ["CORNER_RADIUS"],
             "variableId": "VariableID:11:447",
             "exportKey": "variables"
           }
@@ -3222,9 +3172,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:462",
             "exportKey": "variables"
           }
@@ -3237,9 +3185,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:466",
             "exportKey": "variables"
           }
@@ -3252,9 +3198,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:470",
             "exportKey": "variables"
           }
@@ -3267,9 +3211,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:474",
             "exportKey": "variables"
           }
@@ -3282,9 +3224,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:478",
             "exportKey": "variables"
           }
@@ -3297,9 +3237,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:482",
             "exportKey": "variables"
           }
@@ -3312,9 +3250,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:486",
             "exportKey": "variables"
           }
@@ -3327,9 +3263,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:490",
             "exportKey": "variables"
           }
@@ -3342,9 +3276,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:494",
             "exportKey": "variables"
           }
@@ -3357,9 +3289,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:498",
             "exportKey": "variables"
           }
@@ -3372,9 +3302,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3512",
             "exportKey": "variables"
           }
@@ -3387,9 +3315,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3662",
             "exportKey": "variables"
           }
@@ -3402,9 +3328,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3684",
             "exportKey": "variables"
           }
@@ -3417,9 +3341,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:36:1026",
             "exportKey": "variables"
           }
@@ -3432,9 +3354,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:101:958",
             "exportKey": "variables"
           }
@@ -3449,9 +3369,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:499",
             "exportKey": "variables"
           }
@@ -3464,9 +3382,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:501",
             "exportKey": "variables"
           }
@@ -3479,9 +3395,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:502",
             "exportKey": "variables"
           }
@@ -3494,9 +3408,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:503",
             "exportKey": "variables"
           }
@@ -3509,9 +3421,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:504",
             "exportKey": "variables"
           }
@@ -3524,9 +3434,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:505",
             "exportKey": "variables"
           }
@@ -3539,9 +3447,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:506",
             "exportKey": "variables"
           }
@@ -3554,9 +3460,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:507",
             "exportKey": "variables"
           }
@@ -3569,9 +3473,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:508",
             "exportKey": "variables"
           }
@@ -3584,9 +3486,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3661",
             "exportKey": "variables"
           }
@@ -3599,9 +3499,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3688",
             "exportKey": "variables"
           }
@@ -3614,9 +3512,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1107",
             "exportKey": "variables"
           }
@@ -3629,9 +3525,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1108",
             "exportKey": "variables"
           }
@@ -3644,9 +3538,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:58:835",
             "exportKey": "variables"
           }
@@ -3661,9 +3553,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:509",
             "exportKey": "variables"
           }
@@ -3676,9 +3566,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:513",
             "exportKey": "variables"
           }
@@ -3691,9 +3579,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:519",
             "exportKey": "variables"
           }
@@ -3706,9 +3592,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:523",
             "exportKey": "variables"
           }
@@ -3721,9 +3605,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:527",
             "exportKey": "variables"
           }
@@ -3736,9 +3618,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:531",
             "exportKey": "variables"
           }
@@ -3751,9 +3631,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:12:535",
             "exportKey": "variables"
           }
@@ -3766,9 +3644,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:448",
             "exportKey": "variables"
           }
@@ -3781,9 +3657,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3118",
             "exportKey": "variables"
           }
@@ -3796,9 +3670,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3370",
             "exportKey": "variables"
           }
@@ -3811,9 +3683,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3659",
             "exportKey": "variables"
           }
@@ -3826,9 +3696,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3660",
             "exportKey": "variables"
           }
@@ -3841,9 +3709,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3681",
             "exportKey": "variables"
           }
@@ -3856,9 +3722,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:36:723",
             "exportKey": "variables"
           }
@@ -3871,9 +3735,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:36:1025",
             "exportKey": "variables"
           }
@@ -3886,9 +3748,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1105",
             "exportKey": "variables"
           }
@@ -3901,9 +3761,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1106",
             "exportKey": "variables"
           }
@@ -3916,9 +3774,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1940",
             "exportKey": "variables"
           }
@@ -3931,9 +3787,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1993",
             "exportKey": "variables"
           }
@@ -3946,9 +3800,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:90:771",
             "exportKey": "variables"
           }
@@ -3961,9 +3813,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:121:1326",
             "exportKey": "variables"
           }
@@ -3976,9 +3826,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:129:13770",
             "exportKey": "variables"
           }
@@ -3993,9 +3841,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:432",
             "exportKey": "variables"
           }
@@ -4008,9 +3854,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:436",
             "exportKey": "variables"
           }
@@ -4023,9 +3867,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:440",
             "exportKey": "variables"
           }
@@ -4038,9 +3880,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:444",
             "exportKey": "variables"
           }
@@ -4053,9 +3893,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:459",
             "exportKey": "variables"
           }
@@ -4068,9 +3906,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:460",
             "exportKey": "variables"
           }
@@ -4083,9 +3919,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:461",
             "exportKey": "variables"
           }
@@ -4098,9 +3932,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:465",
             "exportKey": "variables"
           }
@@ -4113,9 +3945,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:469",
             "exportKey": "variables"
           }
@@ -4128,9 +3958,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3121",
             "exportKey": "variables"
           }
@@ -4143,9 +3971,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3682",
             "exportKey": "variables"
           }
@@ -4158,9 +3984,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3683",
             "exportKey": "variables"
           }
@@ -4173,9 +3997,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:36:724",
             "exportKey": "variables"
           }
@@ -4188,9 +4010,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:36:1028",
             "exportKey": "variables"
           }
@@ -4203,9 +4023,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1086",
             "exportKey": "variables"
           }
@@ -4218,9 +4036,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:38:1087",
             "exportKey": "variables"
           }
@@ -4233,9 +4049,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:54:1904",
             "exportKey": "variables"
           }
@@ -4248,9 +4062,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:79:459",
             "exportKey": "variables"
           }
@@ -4263,9 +4075,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:108:1403",
             "exportKey": "variables"
           }
@@ -4278,9 +4088,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:121:1357",
             "exportKey": "variables"
           }
@@ -4295,9 +4103,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:52:438",
             "exportKey": "variables"
           }
@@ -4310,9 +4116,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:52:443",
             "exportKey": "variables"
           }
@@ -4325,9 +4129,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:54:2341",
             "exportKey": "variables"
           }
@@ -4340,9 +4142,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:54:2342",
             "exportKey": "variables"
           }
@@ -4355,9 +4155,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:54:2343",
             "exportKey": "variables"
           }
@@ -4370,9 +4168,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:54:2344",
             "exportKey": "variables"
           }
@@ -4388,9 +4184,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1223",
               "exportKey": "variables"
             }
@@ -4403,9 +4197,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1224",
               "exportKey": "variables"
             }
@@ -4418,9 +4210,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1225",
               "exportKey": "variables"
             }
@@ -4433,9 +4223,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22320",
               "exportKey": "variables"
             }
@@ -4448,9 +4236,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22780",
               "exportKey": "variables"
             }
@@ -4465,9 +4251,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1226",
               "exportKey": "variables"
             }
@@ -4480,9 +4264,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1227",
               "exportKey": "variables"
             }
@@ -4495,9 +4277,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1228",
               "exportKey": "variables"
             }
@@ -4510,9 +4290,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22333",
               "exportKey": "variables"
             }
@@ -4525,9 +4303,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22781",
               "exportKey": "variables"
             }
@@ -4542,9 +4318,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1242",
               "exportKey": "variables"
             }
@@ -4557,9 +4331,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1243",
               "exportKey": "variables"
             }
@@ -4572,9 +4344,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1244",
               "exportKey": "variables"
             }
@@ -4587,9 +4357,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22334",
               "exportKey": "variables"
             }
@@ -4602,9 +4370,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22782",
               "exportKey": "variables"
             }
@@ -4619,9 +4385,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1245",
               "exportKey": "variables"
             }
@@ -4634,9 +4398,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1246",
               "exportKey": "variables"
             }
@@ -4649,9 +4411,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1247",
               "exportKey": "variables"
             }
@@ -4664,9 +4424,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22335",
               "exportKey": "variables"
             }
@@ -4679,9 +4437,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22783",
               "exportKey": "variables"
             }
@@ -4696,9 +4452,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1248",
               "exportKey": "variables"
             }
@@ -4711,9 +4465,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1249",
               "exportKey": "variables"
             }
@@ -4726,9 +4478,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:108:1250",
               "exportKey": "variables"
             }
@@ -4741,9 +4491,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22336",
               "exportKey": "variables"
             }
@@ -4756,9 +4504,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:123:22784",
               "exportKey": "variables"
             }
@@ -4773,9 +4519,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:129:15040",
               "exportKey": "variables"
             }
@@ -4788,9 +4532,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Mapped",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:129:15041",
               "exportKey": "variables"
             }
@@ -4807,9 +4549,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:471",
             "exportKey": "variables"
           }
@@ -4821,9 +4561,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:472",
             "exportKey": "variables"
           }
@@ -4835,9 +4573,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:474",
             "exportKey": "variables"
           }
@@ -4850,9 +4586,7 @@
       "extensions": {
         "org.lukasoppermann.figmaDesignTokens": {
           "collection": "Responsive",
-          "scopes": [
-            "ALL_SCOPES"
-          ],
+          "scopes": ["ALL_SCOPES"],
           "variableId": "VariableID:13:475",
           "exportKey": "variables"
         }
@@ -4865,9 +4599,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:476",
             "exportKey": "variables"
           }
@@ -4879,9 +4611,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:477",
             "exportKey": "variables"
           }
@@ -4893,9 +4623,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:478",
             "exportKey": "variables"
           }
@@ -4909,9 +4637,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:479",
             "exportKey": "variables"
           }
@@ -4923,9 +4649,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:480",
             "exportKey": "variables"
           }
@@ -4937,9 +4661,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:481",
             "exportKey": "variables"
           }
@@ -4953,9 +4675,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:482",
             "exportKey": "variables"
           }
@@ -4967,9 +4687,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:483",
             "exportKey": "variables"
           }
@@ -4981,9 +4699,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:484",
             "exportKey": "variables"
           }
@@ -4997,9 +4713,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:485",
             "exportKey": "variables"
           }
@@ -5011,9 +4725,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:486",
             "exportKey": "variables"
           }
@@ -5025,9 +4737,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:13:487",
             "exportKey": "variables"
           }
@@ -5042,9 +4752,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Responsive",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:33:3236",
               "exportKey": "variables"
             }
@@ -5056,9 +4764,7 @@
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Responsive",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:33:3240",
               "exportKey": "variables"
             }
@@ -5068,13 +4774,11 @@
       "xs": {
         "padding top & bottom": {
           "type": "dimension",
-          "value": 0,
+          "value": 4,
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Responsive",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:33:3241",
               "exportKey": "variables"
             }
@@ -5082,13 +4786,11 @@
         },
         "padding left & right": {
           "type": "dimension",
-          "value": 0,
+          "value": 6,
           "extensions": {
             "org.lukasoppermann.figmaDesignTokens": {
               "collection": "Responsive",
-              "scopes": [
-                "ALL_SCOPES"
-              ],
+              "scopes": ["ALL_SCOPES"],
               "variableId": "VariableID:33:3242",
               "exportKey": "variables"
             }
@@ -5103,9 +4805,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3269",
             "exportKey": "variables"
           }
@@ -5117,9 +4817,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:33:3550",
             "exportKey": "variables"
           }
@@ -5133,9 +4831,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:58:3393",
             "exportKey": "variables"
           }
@@ -5147,9 +4843,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:58:3394",
             "exportKey": "variables"
           }
@@ -5161,9 +4855,7 @@
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Responsive",
-            "scopes": [
-              "ALL_SCOPES"
-            ],
+            "scopes": ["ALL_SCOPES"],
             "variableId": "VariableID:58:3395",
             "exportKey": "variables"
           }

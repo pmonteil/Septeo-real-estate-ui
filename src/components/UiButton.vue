@@ -18,7 +18,7 @@
 import { computed } from "vue";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
-type Size = "sm" | "md" | "lg";
+type Size = "sm" | "md";
 
 const props = withDefaults(
   defineProps<{
@@ -88,18 +88,6 @@ function handleClick(event: Event) {
 
 .ui-button--md :deep(.q-icon) {
   font-size: var(--button-default-icon-size);
-}
-
-/* LG */
-.ui-button--lg {
-  padding: var(--button-lg-padding-y) var(--button-lg-padding-x);
-  border-radius: var(--button-lg-border-radius);
-  min-height: 44px;
-  font-size: var(--h3-font-size);
-}
-
-.ui-button--lg :deep(.q-icon) {
-  font-size: var(--button-lg-icon-size);
 }
 
 /* ======================== */
