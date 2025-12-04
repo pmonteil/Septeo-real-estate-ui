@@ -12,11 +12,12 @@
   >
     <span class="ui-button__content">
       <slot name="icon">
-        <IconRenderer
-          v-if="props.icon"
-          :icon="props.icon"
-          :size="iconSize"
+        <component
+          v-if="iconComponent"
+          :is="iconComponent"
           class="ui-button__icon"
+          :size="iconSize"
+          :stroke="1.5"
         />
       </slot>
       <span v-if="props.label" class="ui-button__label">{{ props.label }}</span>
@@ -27,41 +28,19 @@
 <script setup lang="ts">
 import {
   computed,
-  h,
-  defineComponent,
+  defineAsyncComponent,
   type Component,
   type FunctionalComponent,
 } from "vue";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
-type IconComponent = Component | FunctionalComponent;
-
-// Composant interne pour rendre l'icône via h()
-const IconRenderer = defineComponent({
-  props: {
-    icon: {
-      type: [Object, Function] as unknown as () => IconComponent,
-      required: true,
-    },
-    size: {
-      type: Number,
-      default: 20,
-    },
-  },
-  setup(props) {
-    return () =>
-      h(props.icon as Component, {
-        size: props.size,
-        stroke: 1.5,
-      });
-  },
-});
+type IconProp = string | Component | FunctionalComponent;
 
 const props = withDefaults(
   defineProps<{
     label?: string;
-    icon?: IconComponent;
+    icon?: IconProp;
     loading?: boolean;
     disabled?: boolean;
     variant?: Variant;
@@ -76,6 +55,42 @@ const props = withDefaults(
 const emit = defineEmits<{
   (e: "click", evt: Event): void;
 }>();
+
+// Convertit "mail" en "IconMail", "arrow-left" en "IconArrowLeft"
+function toIconName(name: string): string {
+  return (
+    "Icon" +
+    name
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join("")
+  );
+}
+
+// Résout l'icône : soit un composant passé directement, soit un string à charger
+const iconComponent = computed(() => {
+  if (!props.icon) return null;
+
+  // Si c'est déjà un composant, le retourner directement
+  if (typeof props.icon !== "string") {
+    return props.icon;
+  }
+
+  // Sinon, charger dynamiquement depuis @tabler/icons-vue
+  const iconName = toIconName(props.icon);
+  return defineAsyncComponent(() =>
+    import("@tabler/icons-vue").then((module) => {
+      const icon = (module as Record<string, Component>)[iconName];
+      if (!icon) {
+        console.warn(
+          `[UiButton] Icon "${iconName}" not found in @tabler/icons-vue`
+        );
+        return { render: () => null };
+      }
+      return icon;
+    })
+  );
+});
 
 const isFlat = computed(() => props.variant === "ghost");
 

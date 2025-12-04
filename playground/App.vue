@@ -3,20 +3,20 @@
     <h1>UiButton Test</h1>
 
     <section>
-      <h2>Variants</h2>
+      <h2>Variants (avec strings)</h2>
       <div class="row">
-        <UiButton label="Primary" :icon="IconSend" />
-        <UiButton label="Secondary" :icon="IconSettings" variant="secondary" />
-        <UiButton label="Ghost" :icon="IconEdit" variant="ghost" />
-        <UiButton label="Danger" :icon="IconTrash" variant="danger" />
+        <UiButton label="Primary" icon="send" />
+        <UiButton label="Secondary" icon="settings" variant="secondary" />
+        <UiButton label="Ghost" icon="edit" variant="ghost" />
+        <UiButton label="Danger" icon="trash" variant="danger" />
       </div>
     </section>
 
     <section>
       <h2>Sizes</h2>
       <div class="row">
-        <UiButton label="Size SM" :icon="IconPlus" size="sm" />
-        <UiButton label="Size MD" :icon="IconPlus" size="md" />
+        <UiButton label="Size SM" icon="plus" size="sm" />
+        <UiButton label="Size MD" icon="plus" size="md" />
       </div>
     </section>
 
@@ -32,18 +32,29 @@
     <section>
       <h2>Icône seule</h2>
       <div class="row">
-        <UiButton :icon="IconPlus" />
-        <UiButton :icon="IconPlus" variant="secondary" />
-        <UiButton :icon="IconPlus" variant="ghost" />
+        <UiButton icon="plus" />
+        <UiButton icon="plus" variant="secondary" />
+        <UiButton icon="plus" variant="ghost" />
       </div>
     </section>
 
     <section>
       <h2>États</h2>
       <div class="row">
-        <UiButton label="Normal" :icon="IconCheck" />
-        <UiButton label="Disabled" :icon="IconCheck" disabled />
-        <UiButton label="Loading" :icon="IconCheck" loading />
+        <UiButton label="Normal" icon="check" />
+        <UiButton label="Disabled" icon="check" disabled />
+        <UiButton label="Loading" icon="check" loading />
+      </div>
+    </section>
+
+    <section>
+      <h2>Autres icônes (strings)</h2>
+      <div class="row">
+        <UiButton label="Mail" icon="mail" />
+        <UiButton label="Search" icon="search" />
+        <UiButton label="Download" icon="download" />
+        <UiButton label="Arrow Left" icon="arrow-left" />
+        <UiButton label="Star" icon="star" />
       </div>
     </section>
   </div>
@@ -51,14 +62,6 @@
 
 <script setup lang="ts">
 import UiButton from "../src/components/UiButton.vue";
-import {
-  IconSend,
-  IconSettings,
-  IconEdit,
-  IconTrash,
-  IconPlus,
-  IconCheck,
-} from "@tabler/icons-vue";
 </script>
 
 <style>
