@@ -3,12 +3,14 @@
     <h1>UiButton Test</h1>
 
     <section>
-      <h2>Variants (avec strings)</h2>
+      <h2>Variants</h2>
       <div class="row">
         <UiButton label="Primary" icon="send" />
         <UiButton label="Secondary" icon="settings" variant="secondary" />
         <UiButton label="Ghost" icon="edit" variant="ghost" />
-        <UiButton label="Danger" icon="trash" variant="danger" />
+        <UiButton label="Error" icon="trash" variant="error" />
+        <UiButton label="Accent" icon="star" variant="accent" />
+        <UiButton label="AI" icon="sparkles" variant="ai" />
       </div>
     </section>
 

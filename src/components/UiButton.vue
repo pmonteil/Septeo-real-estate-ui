@@ -33,7 +33,7 @@ import {
   type FunctionalComponent,
 } from "vue";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger";
+type Variant = "primary" | "secondary" | "ghost" | "error" | "accent" | "ai";
 type Size = "sm" | "md";
 type IconProp = string | Component | FunctionalComponent;
 
@@ -118,12 +118,69 @@ function handleClick(event: Event) {
   letter-spacing: 0;
   border-radius: var(--alias-border-radius-lg);
   transition: all 0.2s ease;
+  overflow: hidden;
 }
 
 .ui-button__content {
   display: flex;
   align-items: center;
   gap: var(--gap-icon-text);
+}
+
+/* Glow & bounce animation on hover (not for disabled/loading) */
+.ui-button {
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.ui-button__content {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading) {
+  transition: all 0.2s ease, box-shadow 0.25s ease-out, filter 0.2s ease;
+}
+
+.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: 0 0 16px 4px rgba(61, 100, 237, 0.2);
+  filter: brightness(1.06);
+}
+
+/* Ghost : pas de halo */
+.ui-button--ghost:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: none;
+}
+
+/* Error : halo rouge + bordure */
+.ui-button--error:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: 0 0 16px 4px rgba(255, 72, 94, 0.25);
+  border: var(--alias-border-width-sm) solid var(--border-error);
+}
+
+/* AI : halo violet */
+.ui-button--ai:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: 0 0 16px 4px rgba(128, 44, 237, 0.3);
+}
+
+/* Accent : halo orange */
+.ui-button--accent:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: 0 0 16px 4px rgba(255, 97, 54, 0.25);
+}
+
+.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading):hover
+  .ui-button__content {
+  animation: soft-bounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes soft-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .ui-button__icon {
@@ -221,7 +278,7 @@ function handleClick(event: Event) {
 .ui-button--ghost {
   background-color: transparent !important;
   color: var(--text-action) !important;
-  border: none;
+  border: var(--alias-border-width-sm) solid transparent;
 }
 
 .ui-button--ghost:hover:not(:disabled):not(.disabled) {
@@ -240,25 +297,79 @@ function handleClick(event: Event) {
   color: var(--text-disable) !important;
 }
 
-/* DANGER (Error dans Figma) */
-.ui-button--danger {
+/* ERROR */
+.ui-button--error {
   background-color: var(--surface-error) !important;
   color: var(--text-error) !important;
-  border: none;
+  border: var(--alias-border-width-sm) solid var(--surface-error);
 }
 
-.ui-button--danger:hover:not(:disabled):not(.disabled) {
+.ui-button--error:hover:not(:disabled):not(.disabled) {
   background-color: var(--surface-error-hover) !important;
 }
 
-.ui-button--danger:focus-visible {
+.ui-button--error:focus-visible {
   outline: var(--alias-border-width-md) solid var(--border-error);
   outline-offset: -2px;
 }
 
-.ui-button--danger:disabled,
-.ui-button--danger.disabled {
+.ui-button--error:disabled,
+.ui-button--error.disabled {
   background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+}
+
+/* ACCENT (orange) */
+.ui-button--accent {
+  background-color: var(--surface-accent) !important;
+  color: var(--text-on-action) !important;
+  border: var(--alias-border-width-sm) solid var(--border-action-accent);
+}
+
+.ui-button--accent:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-accent-hover) !important;
+  border-color: var(--border-action-accent-hover);
+}
+
+.ui-button--accent:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-action-accent);
+  outline-offset: 1px;
+}
+
+.ui-button--accent:disabled,
+.ui-button--accent.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+  border-color: var(--border-disabled);
+}
+
+/* AI (gradient violet) */
+.ui-button--ai {
+  background: linear-gradient(
+    90deg,
+    var(--surface-ai-gradient-1),
+    var(--surface-ai-gradient-2)
+  ) !important;
+  color: var(--text-on-action) !important;
+  border: none;
+}
+
+.ui-button--ai:hover:not(:disabled):not(.disabled) {
+  background: linear-gradient(
+    90deg,
+    var(--surface-ai-gradient-2),
+    var(--surface-ai-gradient-2)
+  ) !important;
+}
+
+.ui-button--ai:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-action-ai);
+  outline-offset: 1px;
+}
+
+.ui-button--ai:disabled,
+.ui-button--ai.disabled {
+  background: var(--surface-disable) !important;
   color: var(--text-disable) !important;
 }
 
