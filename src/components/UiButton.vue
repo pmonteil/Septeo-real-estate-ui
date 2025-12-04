@@ -150,8 +150,9 @@ function handleClick(event: Event) {
   box-shadow: none;
 }
 
-/* Error : halo rouge + bordure */
+/* Error : halo rouge + bordure + background hover */
 .ui-button--error:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  background-color: var(--surface-error-hover) !important;
   box-shadow: 0 0 16px 4px rgba(255, 72, 94, 0.25);
   border: var(--alias-border-width-sm) solid var(--border-error);
 }
@@ -302,10 +303,6 @@ function handleClick(event: Event) {
   background-color: var(--surface-error) !important;
   color: var(--text-error) !important;
   border: var(--alias-border-width-sm) solid var(--surface-error);
-}
-
-.ui-button--error:hover:not(:disabled):not(.disabled) {
-  background-color: var(--surface-error-hover) !important;
 }
 
 .ui-button--error:focus-visible {
