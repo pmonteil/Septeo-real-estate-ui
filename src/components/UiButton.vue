@@ -17,7 +17,7 @@
           :is="props.icon"
           class="ui-button__icon"
           :size="iconSize"
-          stroke-width="1.5"
+          :stroke="1.5"
         />
       </slot>
       <span v-if="props.label" class="ui-button__label">{{ props.label }}</span>
@@ -26,15 +26,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, type Component } from "vue";
+import { computed, type Component, type FunctionalComponent } from "vue";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
+type IconComponent = Component | FunctionalComponent;
 
 const props = withDefaults(
   defineProps<{
     label?: string;
-    icon?: Component;
+    icon?: IconComponent;
     loading?: boolean;
     disabled?: boolean;
     variant?: Variant;
@@ -84,6 +85,12 @@ function handleClick(event: Event) {
 
 .ui-button__icon {
   flex-shrink: 0;
+  display: inline-flex;
+}
+
+.ui-button__icon :deep(svg) {
+  width: 100%;
+  height: 100%;
 }
 
 .ui-button__label {
