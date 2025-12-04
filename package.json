@@ -7,5 +7,10 @@
   "peerDependencies": {
     "vue": "^3.4.0",
     "quasar": "^2.15.0"
+  },
+  "devDependencies": {
+    "vue": "^3.4.0",
+    "quasar": "^2.15.0",
+    "typescript": "^5.3.0"
   }
 }

@@ -1,20 +1,22 @@
 <template>
   <q-btn
     class="ui-button"
-    :class="[`ui-button--${props.variant}`, `ui-button--${props.size}`]"
+    :class="buttonClasses"
     :label="props.label"
     :icon="props.icon"
     :loading="props.loading"
     :disable="props.disabled"
-    :outline="props.variant === 'secondary'"
-    :flat="props.variant === 'ghost'"
-    color="primary"
-    unelevated
+    :flat="isFlat"
+    :outline="false"
+    :unelevated="true"
+    no-caps
     @click="handleClick"
   />
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
 
@@ -37,40 +39,181 @@ const emit = defineEmits<{
   (e: "click", evt: Event): void;
 }>();
 
+const isFlat = computed(() => props.variant === "ghost");
+
+const buttonClasses = computed(() => [
+  `ui-button--${props.variant}`,
+  `ui-button--${props.size}`,
+]);
+
 function handleClick(event: Event) {
   emit("click", event);
 }
 </script>
 
 <style scoped>
+/* Base styles - utilise les design tokens */
 .ui-button {
-  border-radius: 999px;
-  font-weight: 500;
+  font-family: var(--font-family-body);
+  font-size: var(--body-font-size);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--body-line-height);
+  letter-spacing: 0;
+  border-radius: var(--alias-border-radius-lg);
+  transition: all 0.2s ease;
+  gap: var(--gap-icon-text);
 }
 
-/* tailles */
+/* ======================== */
+/* SIZES                    */
+/* ======================== */
+
+/* SM (XS dans Figma) */
 .ui-button--sm {
-  font-size: 12px;
-  padding: 4px 10px;
+  padding: var(--button-xs-padding-y) var(--button-xs-padding-x);
+  border-radius: var(--alias-border-radius-md);
+  min-height: 28px;
 }
 
+.ui-button--sm :deep(.q-icon) {
+  font-size: var(--button-icon-size-xs);
+}
+
+/* MD (Default dans Figma) */
 .ui-button--md {
-  font-size: 14px;
-  padding: 6px 14px;
+  padding: var(--button-default-padding-y) var(--button-default-padding-x);
+  border-radius: var(--alias-border-radius-lg);
+  min-height: 36px;
 }
 
+.ui-button--md :deep(.q-icon) {
+  font-size: var(--button-icon-size-default);
+}
+
+/* LG */
 .ui-button--lg {
-  font-size: 16px;
-  padding: 8px 18px;
+  padding: 10px 12px;
+  border-radius: var(--alias-border-radius-lg);
+  min-height: 44px;
+  font-size: var(--h3-font-size);
 }
 
-/* variants */
+.ui-button--lg :deep(.q-icon) {
+  font-size: 24px;
+}
+
+/* ======================== */
+/* VARIANTS                 */
+/* ======================== */
+
+/* PRIMARY (default dans Figma) */
 .ui-button--primary {
+  background-color: var(--surface-action) !important;
+  color: var(--text-on-action) !important;
+  border: var(--alias-border-width-sm) solid var(--border-action);
 }
+
+.ui-button--primary:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-action-hover) !important;
+  border-color: var(--border-action-hover);
+}
+
+.ui-button--primary:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.ui-button--primary:disabled,
+.ui-button--primary.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+  border-color: var(--border-disabled);
+}
+
+/* SECONDARY (outline dans Figma) */
 .ui-button--secondary {
+  background-color: var(--surface-default) !important;
+  color: var(--text-body) !important;
+  border: var(--alias-border-width-sm) solid var(--border-action-neutral);
 }
+
+.ui-button--secondary:hover:not(:disabled):not(.disabled) {
+  border-color: var(--border-action-hover);
+}
+
+.ui-button--secondary:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-focus);
+  outline-offset: 1px;
+  border-color: var(--border-action);
+}
+
+.ui-button--secondary:disabled,
+.ui-button--secondary.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+  border-color: var(--border-disabled);
+}
+
+/* GHOST (transparent dans Figma) */
 .ui-button--ghost {
+  background-color: transparent !important;
+  color: var(--text-action) !important;
+  border: none;
 }
+
+.ui-button--ghost:hover:not(:disabled):not(.disabled) {
+  color: var(--text-action-hover) !important;
+  background-color: var(--surface-light-action) !important;
+}
+
+.ui-button--ghost:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-focus);
+  outline-offset: -2px;
+}
+
+.ui-button--ghost:disabled,
+.ui-button--ghost.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+}
+
+/* DANGER (Error dans Figma) */
 .ui-button--danger {
+  background-color: var(--surface-error) !important;
+  color: var(--text-error) !important;
+  border: none;
+}
+
+.ui-button--danger:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-error-hover) !important;
+}
+
+.ui-button--danger:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-error);
+  outline-offset: -2px;
+}
+
+.ui-button--danger:disabled,
+.ui-button--danger.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+}
+
+/* ======================== */
+/* QUASAR OVERRIDES         */
+/* ======================== */
+
+.ui-button :deep(.q-btn__content) {
+  gap: var(--gap-icon-text);
+}
+
+/* Remove Quasar's default focus ring */
+.ui-button:deep(.q-focus-helper) {
+  display: none;
+}
+
+/* Loading state */
+.ui-button :deep(.q-spinner) {
+  color: currentColor;
 }
 </style>
