@@ -382,6 +382,11 @@ function handleClick(event: Event) {
   display: none;
 }
 
+/* Secondary ripple - very light */
+.ui-button--secondary:deep(.q-ripple) {
+  background: rgba(61, 100, 237, 0.04) !important;
+}
+
 /* Loading state */
 .ui-button :deep(.q-spinner) {
   color: currentColor;
