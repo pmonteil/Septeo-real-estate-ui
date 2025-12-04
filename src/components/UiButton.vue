@@ -1,16 +1,16 @@
 <template>
   <q-btn
     class="ui-button"
-    :class="[`ui-button--${variant}`, `ui-button--${size}`]"
-    :label="label"
-    :icon="icon"
-    :loading="loading"
-    :disable="disabled"
-    :outline="variant === 'secondary'"
-    :flat="variant === 'ghost'"
+    :class="[`ui-button--${props.variant}`, `ui-button--${props.size}`]"
+    :label="props.label"
+    :icon="props.icon"
+    :loading="props.loading"
+    :disable="props.disabled"
+    :outline="props.variant === 'secondary'"
+    :flat="props.variant === 'ghost'"
     color="primary"
     unelevated
-    @click="$emit('click', $event)"
+    @click="handleClick"
   />
 </template>
 
@@ -18,23 +18,28 @@
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
 
-const props = defineProps<{
-  label: string;
-  icon?: string;
-  loading?: boolean;
-  disabled?: boolean;
-  variant?: Variant;
-  size?: Size;
+const props = withDefaults(
+  defineProps<{
+    label: string;
+    icon?: string;
+    loading?: boolean;
+    disabled?: boolean;
+    variant?: Variant;
+    size?: Size;
+  }>(),
+  {
+    variant: "primary",
+    size: "md",
+  }
+);
+
+const emit = defineEmits<{
+  (e: "click", evt: Event): void;
 }>();
 
-withDefaults(props, {
-  variant: "primary",
-  size: "md",
-});
-
-defineEmits<{
-  (e: "click", evt: MouseEvent): void;
-}>();
+function handleClick(event: Event) {
+  emit("click", event);
+}
 </script>
 
 <style scoped>
