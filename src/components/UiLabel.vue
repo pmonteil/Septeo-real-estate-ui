@@ -5,13 +5,23 @@
       <span v-if="props.required" class="ui-label__required">*</span>
     </span>
     <slot name="icon">
-      <component
-        v-if="iconComponent"
-        :is="iconComponent"
-        class="ui-label__icon"
-        :size="18"
-        :stroke="2"
-      />
+      <div v-if="iconComponent" class="ui-label__icon-wrapper">
+        <component
+          :is="iconComponent"
+          class="ui-label__icon"
+          :size="18"
+          :stroke="2"
+        />
+        <q-tooltip
+          v-if="props.tooltip"
+          class="ui-label__tooltip"
+          anchor="top middle"
+          self="bottom middle"
+          :offset="[0, 8]"
+        >
+          {{ props.tooltip }}
+        </q-tooltip>
+      </div>
     </slot>
   </div>
 </template>
@@ -31,6 +41,7 @@ const props = withDefaults(
     label: string;
     icon?: IconProp;
     required?: boolean;
+    tooltip?: string;
   }>(),
   {
     required: false,
@@ -49,16 +60,28 @@ function toIconName(name: string): string {
 }
 
 // Résout l'icône : soit un composant passé directement, soit un string à charger
+// Si un tooltip est fourni mais pas d'icône, afficher help-circle par défaut
 const iconComponent = computed(() => {
-  if (!props.icon) return null;
+  // Si icon est explicitement false, ne pas afficher d'icône
+  if (props.icon === false) return null;
+  
+  // Déterminer l'icône à utiliser
+  let iconToUse: IconProp | undefined = props.icon;
+  
+  // Si pas d'icône mais un tooltip, utiliser help-circle par défaut
+  if (!iconToUse && props.tooltip) {
+    iconToUse = "help-circle";
+  }
+  
+  if (!iconToUse) return null;
 
   // Si c'est déjà un composant, le retourner directement
-  if (typeof props.icon !== "string") {
-    return props.icon;
+  if (typeof iconToUse !== "string") {
+    return iconToUse;
   }
 
   // Sinon, charger dynamiquement depuis @tabler/icons-vue
-  const iconName = toIconName(props.icon);
+  const iconName = toIconName(iconToUse);
   return defineAsyncComponent(() =>
     import("@tabler/icons-vue").then((module) => {
       const icons = module as unknown as Record<string, Component>;
@@ -98,6 +121,12 @@ const iconComponent = computed(() => {
   font-weight: 700;
 }
 
+.ui-label__icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .ui-label__icon {
   flex-shrink: 0;
   color: var(--icon-action);
@@ -108,7 +137,7 @@ const iconComponent = computed(() => {
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.ui-label__icon:hover {
+.ui-label__icon-wrapper:hover .ui-label__icon {
   animation: soft-bounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -122,5 +151,15 @@ const iconComponent = computed(() => {
   100% {
     transform: translateY(0) scale(1);
   }
+}
+
+/* Tooltip styling - fond noir */
+.ui-label__tooltip {
+  font-family: var(--font-family-body);
+  font-size: var(--body-small-font-size);
+  background-color: var(--alias-neutral-900);
+  color: var(--alias-neutral-white);
+  padding: 6px 10px;
+  border-radius: var(--alias-border-radius-sm);
 }
 </style>

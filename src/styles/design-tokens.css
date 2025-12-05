@@ -301,6 +301,9 @@
   --surface-ai-gradient-2: var(--alias-ai-500);
   --surface-ai-light: var(--alias-ai-50);
 
+  /* Gradients */
+  --gradient-menu-active: linear-gradient(90deg, #FF9271 0%, #FF6136 100%);
+
   /* Border */
   --border-default: var(--alias-neutral-100);
   --border-default-light: var(--alias-neutral-75);
@@ -375,5 +378,15 @@
 
   /* Button - Gap */
   --gap-icon-text: var(--brand-scale-4);
+
+  /* ========================================
+   * COMPONENT TOKENS - Input/Field
+   * ======================================== */
+
+  --gap-field-label: var(--brand-scale-8);
+  --field-padding-x: var(--brand-scale-12);
+  --field-padding-y: var(--brand-scale-8);
+  --field-border-radius: var(--alias-border-radius-lg);
+  --field-icon-size: 18px;
 }
 
