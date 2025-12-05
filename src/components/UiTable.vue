@@ -5,15 +5,14 @@
       <h3 v-if="title" class="ui-table__title">{{ title }}</h3>
       <div class="ui-table__toolbar">
         <slot name="toolbar">
-          <button
+          <UiButton
             v-for="(action, index) in toolbarActions"
             :key="index"
-            class="ui-table__toolbar-btn"
-            :class="{ 'ui-table__toolbar-btn--primary': action.primary }"
+            :icon="action.icon"
+            :variant="action.primary ? 'primary' : 'ghost'"
+            size="xs"
             @click="$emit('toolbar-action', action.name)"
-          >
-            <component :is="resolveIcon(action.icon)" :size="14" :stroke="2" />
-          </button>
+          />
         </slot>
       </div>
     </div>
@@ -27,30 +26,37 @@
               v-for="(column, colIndex) in columns"
               :key="colIndex"
               class="ui-table__th"
-              :class="{ 
-                'ui-table__th--sortable': column.sortable !== false && column.type !== 'action',
+              :class="{
+                'ui-table__th--sortable':
+                  column.sortable !== false && column.type !== 'action',
                 'ui-table__th--sorted': sortKey === column.key,
-                'ui-table__th--action': column.type === 'action'
+                'ui-table__th--action': column.type === 'action',
               }"
               :style="{ width: column.width }"
-              @click="column.sortable !== false && column.type !== 'action' && handleSort(column.key)"
+              @click="
+                column.sortable !== false &&
+                  column.type !== 'action' &&
+                  handleSort(column.key)
+              "
             >
               <div class="ui-table__th-content">
-                <component 
+                <component
                   v-if="column.icon"
-                  :is="resolveIcon(column.icon)" 
+                  :is="resolveIcon(column.icon)"
                   class="ui-table__th-icon"
-                  :size="14" 
-                  :stroke="2" 
+                  :size="14"
+                  :stroke="2"
                 />
                 <span class="ui-table__th-text">{{ column.label }}</span>
-                <component 
+                <component
                   v-if="column.sortable !== false && column.type !== 'action'"
-                  :is="resolveIcon('chevron-down')" 
+                  :is="resolveIcon('chevron-down')"
                   class="ui-table__th-sort-icon"
-                  :class="{ 'ui-table__th-sort-icon--active': sortKey === column.key }"
-                  :size="14" 
-                  :stroke="2" 
+                  :class="{
+                    'ui-table__th-sort-icon--active': sortKey === column.key,
+                  }"
+                  :size="14"
+                  :stroke="2"
                 />
               </div>
             </th>
@@ -80,10 +86,28 @@
                 :href="column.href ? row[column.href] : undefined"
                 :to="column.to ? row[column.to] : undefined"
                 :actions="column.actions"
-                :pill-label="column.type === 'pill' ? getCellValue(row, column) : undefined"
-                :pill-icon="column.pillIcon ? row[column.pillIcon] : column.pillIconDefault"
-                :pill-color="column.pillColor ? row[column.pillColor] : column.pillColorDefault"
-                @action="(name) => $emit('cell-action', { action: name, row, rowIndex, column })"
+                :pill-label="
+                  column.type === 'pill' ? getCellValue(row, column) : undefined
+                "
+                :pill-icon="
+                  column.pillIcon
+                    ? row[column.pillIcon]
+                    : column.pillIconDefault
+                "
+                :pill-color="
+                  column.pillColor
+                    ? row[column.pillColor]
+                    : column.pillColorDefault
+                "
+                @action="
+                  (name) =>
+                    $emit('cell-action', {
+                      action: name,
+                      row,
+                      rowIndex,
+                      column,
+                    })
+                "
               />
             </td>
           </tr>
@@ -96,6 +120,7 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent, type Component } from "vue";
 import UiTableCell from "./UiTableCell.vue";
+import UiButton from "./UiButton.vue";
 
 type CellType = "text" | "link" | "action" | "pill";
 type PillColor = "blue" | "red" | "orange" | "green" | "purple" | "grey";
@@ -163,7 +188,15 @@ const props = withDefaults(
 const emit = defineEmits<{
   (e: "toolbar-action", name: string): void;
   (e: "row-click", row: TableRow, index: number): void;
-  (e: "cell-action", payload: { action: string; row: TableRow; rowIndex: number; column: TableColumn }): void;
+  (
+    e: "cell-action",
+    payload: {
+      action: string;
+      row: TableRow;
+      rowIndex: number;
+      column: TableColumn;
+    }
+  ): void;
   (e: "sort", key: string, direction: SortDirection): void;
 }>();
 
@@ -187,7 +220,9 @@ function resolveIcon(icon: string) {
       const icons = module as unknown as Record<string, Component>;
       const iconComp = icons[iconName];
       if (!iconComp) {
-        console.warn(`[UiTable] Icon "${iconName}" not found in @tabler/icons-vue`);
+        console.warn(
+          `[UiTable] Icon "${iconName}" not found in @tabler/icons-vue`
+        );
         return { render: () => null };
       }
       return iconComp;
@@ -205,7 +240,7 @@ function getRowKey(row: TableRow, index: number): string {
   if (row.id !== undefined) return String(row.id);
   if (row.reference !== undefined) return String(row.reference);
   // Fallback: create a key from all values
-  return Object.values(row).join('-') || String(index);
+  return Object.values(row).join("-") || String(index);
 }
 
 function handleSort(key: string) {
@@ -223,16 +258,16 @@ function handleSort(key: string) {
 
 const sortedRows = computed(() => {
   if (!sortKey.value) return props.rows;
-  
+
   return [...props.rows].sort((a, b) => {
     const aVal = a[sortKey.value!];
     const bVal = b[sortKey.value!];
-    
+
     // Handle null/undefined
     if (aVal == null && bVal == null) return 0;
     if (aVal == null) return sortDirection.value === "asc" ? -1 : 1;
     if (bVal == null) return sortDirection.value === "asc" ? 1 : -1;
-    
+
     // Compare values
     let comparison = 0;
     if (typeof aVal === "number" && typeof bVal === "number") {
@@ -240,7 +275,7 @@ const sortedRows = computed(() => {
     } else {
       comparison = String(aVal).localeCompare(String(bVal));
     }
-    
+
     return sortDirection.value === "asc" ? comparison : -comparison;
   });
 });
@@ -273,37 +308,6 @@ const sortedRows = computed(() => {
   display: flex;
   align-items: center;
   gap: var(--gap-icon-text, 4px);
-}
-
-/* Toolbar buttons - square shape */
-.ui-table__toolbar-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  border: var(--alias-border-width-sm, 1px) solid var(--border-default-light);
-  border-radius: var(--border-radius-sm, 6px);
-  background-color: var(--surface-default);
-  color: var(--icon-action);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.ui-table__toolbar-btn:hover {
-  background-color: var(--surface-hover);
-  border-color: var(--border-action);
-}
-
-.ui-table__toolbar-btn--primary {
-  background-color: var(--surface-action);
-  border-color: var(--border-action);
-  color: var(--alias-neutral-white);
-}
-
-.ui-table__toolbar-btn--primary:hover {
-  background-color: var(--alias-action-700);
 }
 
 /* Table container with 8px radius */
@@ -413,7 +417,8 @@ const sortedRows = computed(() => {
 /* Header cells (th) */
 .ui-table__th {
   padding: var(--scale-8, 8px) var(--scale-12, 12px);
-  border-bottom: var(--alias-border-width-sm, 1px) solid var(--border-default-light);
+  border-bottom: var(--alias-border-width-sm, 1px) solid
+    var(--border-default-light);
   text-align: left;
   vertical-align: middle;
   background-color: var(--surface-default);
@@ -492,7 +497,8 @@ const sortedRows = computed(() => {
 /* Body cells (td) */
 .ui-table__td {
   padding: var(--scale-8, 8px) var(--scale-12, 12px);
-  border-bottom: var(--alias-border-width-sm, 1px) solid var(--border-default-light);
+  border-bottom: var(--alias-border-width-sm, 1px) solid
+    var(--border-default-light);
   vertical-align: middle;
 }
 
@@ -509,6 +515,7 @@ const sortedRows = computed(() => {
 /* Column borders */
 .ui-table__table th:not(:last-child),
 .ui-table__table td:not(:last-child) {
-  border-right: var(--alias-border-width-sm, 1px) solid var(--border-default-light);
+  border-right: var(--alias-border-width-sm, 1px) solid
+    var(--border-default-light);
 }
 </style>

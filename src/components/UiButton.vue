@@ -96,9 +96,12 @@ const iconComponent = computed(() => {
 
 const isFlat = computed(() => props.variant === "ghost");
 
+const isIconOnly = computed(() => props.icon && !props.label);
+
 const buttonClasses = computed(() => [
   `ui-button--${props.variant}`,
   `ui-button--${props.size}`,
+  { 'ui-button--icon-only': isIconOnly.value },
 ]);
 
 const iconSize = computed(() => (props.size === "sm" ? 14 : 20));
@@ -193,6 +196,23 @@ function handleClick(event: Event) {
 
 .ui-button__label {
   white-space: nowrap;
+}
+
+/* Icon-only buttons should be square */
+.ui-button--icon-only {
+  aspect-ratio: 1;
+  padding: 0 !important;
+  justify-content: center;
+}
+
+.ui-button--icon-only.ui-button--sm {
+  width: 28px;
+  min-width: 28px;
+}
+
+.ui-button--icon-only.ui-button--md {
+  width: 36px;
+  min-width: 36px;
 }
 
 /* ======================== */
