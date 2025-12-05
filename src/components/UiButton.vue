@@ -275,7 +275,7 @@ function handleClick(event: Event) {
 .ui-button--secondary {
   background-color: var(--surface-default) !important;
   color: var(--text-body) !important;
-  border: var(--alias-border-width-sm) solid var(--border-action-neutral);
+  border: var(--alias-border-width-sm) solid var(--border-default-light);
 }
 
 .ui-button--secondary:hover:not(:disabled):not(.disabled) {
