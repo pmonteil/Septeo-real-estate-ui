@@ -76,6 +76,23 @@
     </section>
 
     <!-- ===================== -->
+    <!-- UITAB DARK            -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiTabDark</h2>
+      <div class="dark-background" style="background-color: #2E3862; padding: 24px; border-radius: 12px;">
+        <div class="column">
+          <h3 style="color: white; margin-bottom: 16px;">Tabs sur fond sombre</h3>
+          <UiTabDark v-model="selectedTabDark" :tabs="simpleTabs" />
+        </div>
+        <div class="column" style="margin-top: 24px;">
+          <h3 style="color: white; margin-bottom: 16px;">Tabs avec icônes</h3>
+          <UiTabDark v-model="selectedTabDarkWithIcon" :tabs="tabsWithIcons" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
     <!-- UILABEL               -->
     <!-- ===================== -->
     <section>
@@ -903,6 +920,7 @@ import UiSnackbar from "../src/components/UiSnackbar.vue";
 import UiPill from "../src/components/UiPill.vue";
 import UiTable from "../src/components/UiTable.vue";
 import UiTab from "../src/components/UiTab.vue";
+import UiTabDark from "../src/components/UiTabDark.vue";
 
 // Textarea demos
 const textareaEmpty = ref("");
@@ -1064,6 +1082,8 @@ const tabsWithIcons = [
 ];
 
 const selectedTabDisabled = ref("active");
+const selectedTabDark = ref("all");
+const selectedTabDarkWithIcon = ref("dashboard");
 const tabsWithDisabled = [
   { label: "Actifs", value: "active" },
   { label: "Archivés", value: "archived" },

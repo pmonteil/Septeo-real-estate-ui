@@ -20,6 +20,7 @@ export { default as UiPill } from "./components/UiPill.vue";
 export { default as UiTable } from "./components/UiTable.vue";
 export { default as UiTableCell } from "./components/UiTableCell.vue";
 export { default as UiTab } from "./components/UiTab.vue";
+export { default as UiTabDark } from "./components/UiTabDark.vue";
 
 // Re-export Vue utilities for icons
 export { markRaw } from "vue";

@@ -1,13 +1,13 @@
 <template>
-  <div class="ui-tabs">
-    <div class="ui-tabs__container">
+  <div class="ui-tabs-dark">
+    <div class="ui-tabs-dark__container">
       <button
         v-for="(tab, index) in tabs"
         :key="index"
-        class="ui-tabs__tab"
+        class="ui-tabs-dark__tab"
         :class="{ 
-          'ui-tabs__tab--active': modelValue === tab.value,
-          'ui-tabs__tab--disabled': tab.disabled
+          'ui-tabs-dark__tab--active': modelValue === tab.value,
+          'ui-tabs-dark__tab--disabled': tab.disabled
         }"
         :disabled="tab.disabled"
         @click="!tab.disabled && $emit('update:modelValue', tab.value)"
@@ -15,11 +15,11 @@
         <component 
           v-if="tab.icon"
           :is="resolveIcon(tab.icon)" 
-          class="ui-tabs__icon"
+          class="ui-tabs-dark__icon"
           :size="16" 
           :stroke="2" 
         />
-        <span class="ui-tabs__label">{{ tab.label }}</span>
+        <span class="ui-tabs-dark__label">{{ tab.label }}</span>
       </button>
     </div>
   </div>
@@ -61,7 +61,7 @@ function resolveIcon(icon: string) {
       const icons = module as unknown as Record<string, Component>;
       const iconComp = icons[iconName];
       if (!iconComp) {
-        console.warn(`[UiTab] Icon "${iconName}" not found in @tabler/icons-vue`);
+        console.warn(`[UiTabDark] Icon "${iconName}" not found in @tabler/icons-vue`);
         return { render: () => null };
       }
       return iconComp;
@@ -71,20 +71,20 @@ function resolveIcon(icon: string) {
 </script>
 
 <style scoped>
-.ui-tabs {
+.ui-tabs-dark {
   display: inline-flex;
 }
 
-.ui-tabs__container {
+.ui-tabs-dark__container {
   display: flex;
   align-items: center;
   gap: var(--scale-4, 4px);
   padding: var(--scale-4, 4px);
-  background-color: var(--alias-neutral-50);
+  background-color: rgba(36, 43, 74, 0.6);
   border-radius: 100px;
 }
 
-.ui-tabs__tab {
+.ui-tabs-dark__tab {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,48 +99,49 @@ function resolveIcon(icon: string) {
   font-size: var(--body-font-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-line-height);
-  color: var(--text-body);
+  color: rgba(255, 255, 255, 0.85);
   white-space: nowrap;
 }
 
-.ui-tabs__tab:hover:not(.ui-tabs__tab--active):not(.ui-tabs__tab--disabled) {
-  background-color: var(--alias-neutral-100);
+.ui-tabs-dark__tab:hover:not(.ui-tabs-dark__tab--active):not(.ui-tabs-dark__tab--disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.ui-tabs__tab--active {
+.ui-tabs-dark__tab--active {
   background: var(--gradient-menu-active);
   color: var(--alias-neutral-white);
   box-shadow: 0 2px 8px rgba(255, 97, 54, 0.25);
   font-weight: var(--font-weight-medium);
 }
 
-.ui-tabs__tab--active:hover {
+.ui-tabs-dark__tab--active:hover {
   box-shadow: 0 4px 12px rgba(255, 97, 54, 0.35);
 }
 
-.ui-tabs__tab--active .ui-tabs__icon {
+.ui-tabs-dark__tab--active .ui-tabs-dark__icon {
   color: var(--alias-neutral-white);
 }
 
-.ui-tabs__tab--disabled {
-  opacity: 0.5;
+.ui-tabs-dark__tab--disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-.ui-tabs__icon {
+.ui-tabs-dark__icon {
   flex-shrink: 0;
 }
 
-.ui-tabs__label {
+.ui-tabs-dark__label {
   /* No transition for color - instant change when active */
 }
 
 /* Animation on tab change */
-.ui-tabs__tab--active {
-  animation: tab-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+.ui-tabs-dark__tab--active {
+  animation: tab-pop-dark 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes tab-pop {
+@keyframes tab-pop-dark {
   0% {
     transform: scale(0.95);
   }
