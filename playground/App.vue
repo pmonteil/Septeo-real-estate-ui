@@ -93,6 +93,76 @@
     </section>
 
     <!-- ===================== -->
+    <!-- UIMENUOFFICE          -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiMenuOffice</h2>
+      <div class="row" style="gap: 24px; align-items: stretch;">
+        <!-- Menu déplié -->
+        <div class="menu-demo-container">
+          <h4 style="margin-bottom: 12px; color: #666;">Menu déplié</h4>
+          <div class="menu-demo-wrapper">
+            <UiMenuOffice
+              v-model="selectedMenuItem"
+              :items="menuItems"
+              :user="currentUser"
+              :collapsed="false"
+              :show-toggle="false"
+              @user-action="handleUserAction"
+            />
+          </div>
+        </div>
+
+        <!-- Menu plié -->
+        <div class="menu-demo-container">
+          <h4 style="margin-bottom: 12px; color: #666;">Menu plié</h4>
+          <div class="menu-demo-wrapper">
+            <UiMenuOffice
+              v-model="selectedMenuItem"
+              :items="menuItems"
+              :user="currentUser"
+              :collapsed="true"
+              :show-toggle="false"
+              @user-action="handleUserAction"
+            />
+          </div>
+        </div>
+
+        <!-- Menu interactif -->
+        <div class="menu-demo-container" style="flex: 1;">
+          <h4 style="margin-bottom: 12px; color: #666;">Menu interactif (cliquez pour plier/déplier)</h4>
+          <div class="menu-demo-wrapper" style="min-width: 250px;">
+            <UiMenuOffice
+              v-model="selectedMenuItem"
+              :items="menuItems"
+              :user="currentUser"
+              :collapsed="menuCollapsed"
+              @toggle="menuCollapsed = !menuCollapsed"
+              @user-action="handleUserAction"
+            />
+          </div>
+          <p class="hint" style="margin-top: 12px;">Élément sélectionné : {{ selectedMenuItem }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UITOPBAROFFICE        -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiTopbarOffice</h2>
+      <div class="topbar-demo-container">
+        <UiTopbarOffice
+          :breadcrumb="demoBreadcrumb"
+          :notification-count="5"
+          @navigate="handleBreadcrumbNavigate"
+          @notification-click="handleNotificationClick"
+        />
+      </div>
+      <p class="hint" style="margin-top: 12px;">Cliquez sur les éléments du fil d'Ariane ou sur l'icône notification</p>
+    </section>
+
+    <!-- ===================== -->
     <!-- UILABEL               -->
     <!-- ===================== -->
     <section>
@@ -921,6 +991,8 @@ import UiPill from "../src/components/UiPill.vue";
 import UiTable from "../src/components/UiTable.vue";
 import UiTab from "../src/components/UiTab.vue";
 import UiTabDark from "../src/components/UiTabDark.vue";
+import UiMenuOffice from "../src/components/UiMenuOffice.vue";
+import UiTopbarOffice from "../src/components/UiTopbarOffice.vue";
 
 // Textarea demos
 const textareaEmpty = ref("");
@@ -1089,6 +1161,68 @@ const tabsWithDisabled = [
   { label: "Archivés", value: "archived" },
   { label: "Brouillons", value: "drafts", disabled: true },
 ];
+
+// Menu Office demos
+const selectedMenuItem = ref("properties");
+const menuCollapsed = ref(false);
+const menuItems = [
+  { label: "Dashboard", value: "dashboard", icon: "tabler:layout-dashboard" },
+  { 
+    label: "Biens", 
+    value: "properties", 
+    icon: "tabler:building",
+    children: [
+      { label: "Tous les biens", value: "properties-all", icon: "tabler:list" },
+      { label: "Appartements", value: "properties-apartments", icon: "tabler:building-skyscraper" },
+      { label: "Maisons", value: "properties-houses", icon: "tabler:home" },
+      { label: "Terrains", value: "properties-lands", icon: "tabler:map" },
+    ]
+  },
+  { label: "Contacts", value: "contacts", icon: "tabler:users", badge: 12 },
+  { 
+    label: "Rapports", 
+    value: "reports", 
+    icon: "tabler:chart-bar",
+    children: [
+      { label: "Ventes", value: "reports-sales", icon: "tabler:trending-up", badge: 3 },
+      { label: "Locations", value: "reports-rentals", icon: "tabler:key" },
+      { label: "Statistiques", value: "reports-stats", icon: "tabler:chart-pie" },
+    ]
+  },
+  { label: "Documents", value: "documents", icon: "tabler:files" },
+  { label: "Paramètres", value: "settings", icon: "tabler:settings" },
+];
+
+const currentUser = {
+  name: "Pierre Martin",
+  role: "Administrateur",
+};
+
+function handleUserAction(action: 'profile' | 'logout') {
+  console.log('User action:', action);
+  if (action === 'logout') {
+    alert('Déconnexion...');
+  } else if (action === 'profile') {
+    alert('Ouvrir la page de profil...');
+  }
+}
+
+// TopbarOffice data
+const demoBreadcrumb = [
+  { label: 'Modelo Infinite', value: 'home' },
+  { label: 'Rapports', value: 'reports' },
+  { label: 'Ventes', value: 'sales' },
+];
+
+function handleBreadcrumbNavigate(item: { label: string; value?: string }, index: number) {
+  console.log('Navigate to:', item, 'at index:', index);
+  alert(`Navigation vers : ${item.label}`);
+}
+
+function handleNotificationClick() {
+  console.log('Notification clicked');
+  alert('Ouverture des notifications...');
+}
 </script>
 
 <style>
@@ -1171,6 +1305,29 @@ section {
 .section--wide {
   max-width: none;
   overflow-x: auto;
+}
+
+.menu-demo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-demo-wrapper {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: visible;
+  height: 400px;
+}
+
+.topbar-demo-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hint {
+  font-size: 12px;
+  color: #96a4c1;
 }
 </style>
 

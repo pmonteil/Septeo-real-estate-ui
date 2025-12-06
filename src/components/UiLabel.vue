@@ -6,12 +6,12 @@
     </span>
     <slot name="icon">
       <div v-if="iconComponent" class="ui-label__icon-wrapper">
-        <component
-          :is="iconComponent"
-          class="ui-label__icon"
-          :size="18"
-          :stroke="2"
-        />
+      <component
+        :is="iconComponent"
+        class="ui-label__icon"
+        :size="18"
+        :stroke="2"
+      />
         <q-tooltip
           v-if="props.tooltip"
           class="ui-label__tooltip"
