@@ -56,6 +56,36 @@
     </section>
 
     <!-- ===================== -->
+    <!-- UITOGGLE              -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiToggle</h2>
+      <div class="column">
+        <h3>Toggle avec label et icônes</h3>
+        <UiToggle 
+          v-model="selectedToggle" 
+          :options="toggleOptions" 
+          label="Notification"
+          label-tooltip="Choisissez votre mode de notification préféré"
+        />
+        <p class="hint">Option sélectionnée : {{ selectedToggle }}</p>
+      </div>
+      <div class="column" style="margin-top: 24px;">
+        <h3>Toggle sans label</h3>
+        <UiToggle v-model="selectedToggleText" :options="toggleOptionsText" />
+      </div>
+      <div class="column" style="margin-top: 24px;">
+        <h3>Toggle avec label requis</h3>
+        <UiToggle 
+          v-model="selectedToggleDisabled" 
+          :options="toggleOptionsDisabled"
+          label="Statut"
+          :required="true"
+        />
+      </div>
+    </section>
+
+    <!-- ===================== -->
     <!-- UITAB                 -->
     <!-- ===================== -->
     <section>
@@ -552,7 +582,7 @@
         <!-- Disabled -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé</span>
-          <div class="column">
+      <div class="column">
             <UiRadio model-value="disabled1" name="group4" value="disabled1" label="Option verrouillée" :disabled="true" />
             <UiRadio model-value="disabled1" name="group4" value="disabled2" label="Non disponible" :disabled="true" />
           </div>
@@ -993,6 +1023,7 @@ import UiTab from "../src/components/UiTab.vue";
 import UiTabDark from "../src/components/UiTabDark.vue";
 import UiMenuOffice from "../src/components/UiMenuOffice.vue";
 import UiTopbarOffice from "../src/components/UiTopbarOffice.vue";
+import UiToggle from "../src/components/UiToggle.vue";
 
 // Textarea demos
 const textareaEmpty = ref("");
@@ -1135,6 +1166,27 @@ function handleToolbarAction(action: string) {
 function handleCellAction(payload: { action: string; row: Record<string, unknown>; rowIndex: number }) {
   console.log("Cell action:", payload);
 }
+
+// Toggle demos
+const selectedToggle = ref("email");
+const toggleOptions = [
+  { label: "Email", value: "email", icon: "mail" },
+  { label: "SMS", value: "sms", icon: "message" },
+];
+
+const selectedToggleText = ref("jour");
+const toggleOptionsText = [
+  { label: "Jour", value: "jour" },
+  { label: "Semaine", value: "semaine" },
+  { label: "Mois", value: "mois" },
+];
+
+const selectedToggleDisabled = ref("actif");
+const toggleOptionsDisabled = [
+  { label: "Actif", value: "actif", icon: "check" },
+  { label: "Inactif", value: "inactif", icon: "x" },
+  { label: "Archivé", value: "archive", icon: "archive", disabled: true },
+];
 
 // Tab demos
 const selectedTab = ref("all");

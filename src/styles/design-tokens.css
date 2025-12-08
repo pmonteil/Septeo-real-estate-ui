@@ -264,6 +264,7 @@
   --text-warning: var(--alias-warning-default);
   --text-information: var(--alias-primary-600);
   --text-placeholder: var(--alias-neutral-600);
+  --text-accent: var(--alias-accent-default);
 
   /* Icon */
   --icon-default: var(--alias-neutral-900);
