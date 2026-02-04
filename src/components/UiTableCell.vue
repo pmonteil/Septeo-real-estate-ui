@@ -77,7 +77,8 @@ type ButtonVariant =
   | "ghost"
   | "error"
   | "accent"
-  | "ai";
+  | "ai"
+  | "light";
 type ButtonSize = "sm" | "md";
 
 interface ActionItem {

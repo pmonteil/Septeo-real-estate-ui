@@ -33,7 +33,14 @@ import {
   type FunctionalComponent,
 } from "vue";
 
-type Variant = "primary" | "secondary" | "ghost" | "error" | "accent" | "ai";
+type Variant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "error"
+  | "accent"
+  | "ai"
+  | "light";
 type Size = "sm" | "md";
 type IconProp = string | Component | FunctionalComponent;
 
@@ -101,7 +108,7 @@ const isIconOnly = computed(() => props.icon && !props.label);
 const buttonClasses = computed(() => [
   `ui-button--${props.variant}`,
   `ui-button--${props.size}`,
-  { 'ui-button--icon-only': isIconOnly.value },
+  { "ui-button--icon-only": isIconOnly.value },
 ]);
 
 const iconSize = computed(() => (props.size === "sm" ? 14 : 20));
@@ -316,6 +323,30 @@ function handleClick(event: Event) {
 .ui-button--ghost.disabled {
   background-color: var(--surface-disable) !important;
   color: var(--text-disable) !important;
+}
+
+/* LIGHT (fond bleu clair) */
+.ui-button--light {
+  background-color: var(--surface-light-action) !important;
+  color: var(--text-action) !important;
+  border: var(--alias-border-width-sm) solid var(--surface-light-action);
+}
+
+.ui-button--light:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-light-action-hover) !important;
+  border-color: var(--surface-light-action-hover);
+}
+
+.ui-button--light:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.ui-button--light:disabled,
+.ui-button--light.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+  border-color: var(--surface-disable);
 }
 
 /* ERROR */

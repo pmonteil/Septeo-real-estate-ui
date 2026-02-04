@@ -9,8 +9,8 @@
             v-for="(action, index) in toolbarActions"
             :key="index"
             :icon="action.icon"
-            :variant="action.primary ? 'primary' : 'ghost'"
-            size="xs"
+            :variant="action.primary ? 'light' : 'secondary'"
+            size="sm"
             @click="$emit('toolbar-action', action.name)"
           />
         </slot>
