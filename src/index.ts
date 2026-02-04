@@ -6,6 +6,10 @@ export { default as UiButton } from "./components/UiButton.vue";
 export { default as UiLabel } from "./components/UiLabel.vue";
 export { default as UiInput } from "./components/UiInput.vue";
 export { default as UiInputSuffix } from "./components/UiInputSuffix.vue";
+export {
+  default as UiSelect,
+  type SelectOption,
+} from "./components/UiSelect.vue";
 export { default as UiCheckbox } from "./components/UiCheckbox.vue";
 export { default as UiRadio } from "./components/UiRadio.vue";
 export { default as UiTextarea } from "./components/UiTextarea.vue";

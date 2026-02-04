@@ -8,10 +8,29 @@
     <section>
       <h2>UiSnackbar</h2>
       <div class="row">
-        <UiButton label="Info" icon="info-circle" @click="showSnackbar('default')" />
-        <UiButton label="Succès" icon="check" variant="secondary" @click="showSnackbar('success')" />
-        <UiButton label="Erreur" icon="x" variant="error" @click="showSnackbar('error')" />
-        <UiButton label="Attention" icon="alert-triangle" variant="accent" @click="showSnackbar('warning')" />
+        <UiButton
+          label="Info"
+          icon="info-circle"
+          @click="showSnackbar('default')"
+        />
+        <UiButton
+          label="Succès"
+          icon="check"
+          variant="secondary"
+          @click="showSnackbar('success')"
+        />
+        <UiButton
+          label="Erreur"
+          icon="x"
+          variant="error"
+          @click="showSnackbar('error')"
+        />
+        <UiButton
+          label="Attention"
+          icon="alert-triangle"
+          variant="accent"
+          @click="showSnackbar('warning')"
+        />
       </div>
       <div class="snackbar-container">
         <UiSnackbar
@@ -62,22 +81,22 @@
       <h2>UiToggle</h2>
       <div class="column">
         <h3>Toggle avec label et icônes</h3>
-        <UiToggle 
-          v-model="selectedToggle" 
-          :options="toggleOptions" 
+        <UiToggle
+          v-model="selectedToggle"
+          :options="toggleOptions"
           label="Notification"
           label-tooltip="Choisissez votre mode de notification préféré"
         />
         <p class="hint">Option sélectionnée : {{ selectedToggle }}</p>
       </div>
-      <div class="column" style="margin-top: 24px;">
+      <div class="column" style="margin-top: 24px">
         <h3>Toggle sans label</h3>
         <UiToggle v-model="selectedToggleText" :options="toggleOptionsText" />
       </div>
-      <div class="column" style="margin-top: 24px;">
+      <div class="column" style="margin-top: 24px">
         <h3>Toggle avec label requis</h3>
-        <UiToggle 
-          v-model="selectedToggleDisabled" 
+        <UiToggle
+          v-model="selectedToggleDisabled"
           :options="toggleOptionsDisabled"
           label="Statut"
           :required="true"
@@ -95,11 +114,11 @@
         <UiTab v-model="selectedTab" :tabs="simpleTabs" />
         <p class="hint">Onglet sélectionné : {{ selectedTab }}</p>
       </div>
-      <div class="column" style="margin-top: 24px;">
+      <div class="column" style="margin-top: 24px">
         <h3>Tabs avec icônes</h3>
         <UiTab v-model="selectedTabWithIcon" :tabs="tabsWithIcons" />
       </div>
-      <div class="column" style="margin-top: 24px;">
+      <div class="column" style="margin-top: 24px">
         <h3>Tabs avec état désactivé</h3>
         <UiTab v-model="selectedTabDisabled" :tabs="tabsWithDisabled" />
       </div>
@@ -110,13 +129,18 @@
     <!-- ===================== -->
     <section>
       <h2>UiTabDark</h2>
-      <div class="dark-background" style="background-color: #2E3862; padding: 24px; border-radius: 12px;">
+      <div
+        class="dark-background"
+        style="background-color: #2e3862; padding: 24px; border-radius: 12px"
+      >
         <div class="column">
-          <h3 style="color: white; margin-bottom: 16px;">Tabs sur fond sombre</h3>
+          <h3 style="color: white; margin-bottom: 16px">
+            Tabs sur fond sombre
+          </h3>
           <UiTabDark v-model="selectedTabDark" :tabs="simpleTabs" />
         </div>
-        <div class="column" style="margin-top: 24px;">
-          <h3 style="color: white; margin-bottom: 16px;">Tabs avec icônes</h3>
+        <div class="column" style="margin-top: 24px">
+          <h3 style="color: white; margin-bottom: 16px">Tabs avec icônes</h3>
           <UiTabDark v-model="selectedTabDarkWithIcon" :tabs="tabsWithIcons" />
         </div>
       </div>
@@ -127,10 +151,10 @@
     <!-- ===================== -->
     <section>
       <h2>UiMenuOffice</h2>
-      <div class="row" style="gap: 24px; align-items: stretch;">
+      <div class="row" style="gap: 24px; align-items: stretch">
         <!-- Menu déplié -->
         <div class="menu-demo-container">
-          <h4 style="margin-bottom: 12px; color: #666;">Menu déplié</h4>
+          <h4 style="margin-bottom: 12px; color: #666">Menu déplié</h4>
           <div class="menu-demo-wrapper">
             <UiMenuOffice
               v-model="selectedMenuItem"
@@ -145,7 +169,7 @@
 
         <!-- Menu plié -->
         <div class="menu-demo-container">
-          <h4 style="margin-bottom: 12px; color: #666;">Menu plié</h4>
+          <h4 style="margin-bottom: 12px; color: #666">Menu plié</h4>
           <div class="menu-demo-wrapper">
             <UiMenuOffice
               v-model="selectedMenuItem"
@@ -159,9 +183,11 @@
         </div>
 
         <!-- Menu interactif -->
-        <div class="menu-demo-container" style="flex: 1;">
-          <h4 style="margin-bottom: 12px; color: #666;">Menu interactif (cliquez pour plier/déplier)</h4>
-          <div class="menu-demo-wrapper" style="min-width: 250px;">
+        <div class="menu-demo-container" style="flex: 1">
+          <h4 style="margin-bottom: 12px; color: #666">
+            Menu interactif (cliquez pour plier/déplier)
+          </h4>
+          <div class="menu-demo-wrapper" style="min-width: 250px">
             <UiMenuOffice
               v-model="selectedMenuItem"
               :items="menuItems"
@@ -171,7 +197,9 @@
               @user-action="handleUserAction"
             />
           </div>
-          <p class="hint" style="margin-top: 12px;">Élément sélectionné : {{ selectedMenuItem }}</p>
+          <p class="hint" style="margin-top: 12px">
+            Élément sélectionné : {{ selectedMenuItem }}
+          </p>
         </div>
       </div>
     </section>
@@ -189,7 +217,152 @@
           @notification-click="handleNotificationClick"
         />
       </div>
-      <p class="hint" style="margin-top: 12px;">Cliquez sur les éléments du fil d'Ariane ou sur l'icône notification</p>
+      <p class="hint" style="margin-top: 12px">
+        Cliquez sur les éléments du fil d'Ariane ou sur l'icône notification
+      </p>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISELECT              -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiSelect - États</h2>
+      <div class="grid-inputs">
+        <!-- Default - Not filled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Default (vide)</span>
+          <UiSelect
+            v-model="selectEmpty"
+            label="Type de bien"
+            label-icon="help-circle"
+            label-tooltip="Sélectionnez le type de bien immobilier"
+            placeholder="Choisir un type"
+            icon-left="building"
+            :options="propertyTypes"
+          />
+        </div>
+
+        <!-- Default - Filled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Default (rempli)</span>
+          <UiSelect
+            v-model="selectFilled"
+            label="Type de bien"
+            label-icon="help-circle"
+            label-tooltip="Sélectionnez le type de bien immobilier"
+            placeholder="Choisir un type"
+            icon-left="building"
+            :options="propertyTypes"
+          />
+        </div>
+
+        <!-- Error - Not filled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Erreur (vide)</span>
+          <UiSelect
+            v-model="selectError"
+            label="Ville"
+            label-icon="help-circle"
+            label-tooltip="Sélectionnez la ville"
+            placeholder="Choisir une ville"
+            icon-left="map-pin"
+            :options="cities"
+            :error="true"
+            error-message="Ce champ est requis"
+          />
+        </div>
+
+        <!-- Error - Filled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Erreur (rempli)</span>
+          <UiSelect
+            v-model="selectErrorFilled"
+            label="Ville"
+            label-icon="help-circle"
+            placeholder="Choisir une ville"
+            icon-left="map-pin"
+            :options="cities"
+            :error="true"
+            error-message="Cette ville n'est pas disponible"
+          />
+        </div>
+
+        <!-- Disabled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Désactivé</span>
+          <UiSelect
+            model-value="apartment"
+            label="Type de bien"
+            placeholder="Non disponible"
+            icon-left="building"
+            :options="propertyTypes"
+            :disabled="true"
+          />
+        </div>
+
+        <!-- With hint text -->
+        <div class="input-demo">
+          <span class="input-demo__label">Avec hint text</span>
+          <UiSelect
+            v-model="selectHint"
+            label="Nombre de pièces"
+            label-required
+            placeholder="Sélectionner"
+            icon-left="door"
+            :options="roomOptions"
+            hint-text="Chambres, salon, cuisine comptent comme pièces"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>UiSelect - Variantes</h2>
+      <div class="grid-inputs">
+        <!-- Sans label -->
+        <div class="input-demo">
+          <span class="input-demo__label">Sans label</span>
+          <UiSelect
+            placeholder="Filtrer par statut..."
+            icon-left="filter"
+            :options="statusOptions"
+          />
+        </div>
+
+        <!-- Sans icône -->
+        <div class="input-demo">
+          <span class="input-demo__label">Sans icône</span>
+          <UiSelect
+            label="Catégorie"
+            placeholder="Choisir une catégorie"
+            :options="['Vente', 'Location', 'Neuf', 'Ancien']"
+          />
+        </div>
+
+        <!-- Options simples (strings) -->
+        <div class="input-demo">
+          <span class="input-demo__label">Options simples (strings)</span>
+          <UiSelect
+            v-model="selectSimple"
+            label="Pays"
+            placeholder="Sélectionner un pays"
+            icon-left="world"
+            :options="['France', 'Belgique', 'Suisse', 'Luxembourg']"
+          />
+        </div>
+
+        <!-- Options avec disabled -->
+        <div class="input-demo">
+          <span class="input-demo__label">Options avec disabled</span>
+          <UiSelect
+            v-model="selectWithDisabled"
+            label="Formule"
+            placeholder="Choisir une formule"
+            icon-left="star"
+            :options="planOptions"
+          />
+        </div>
+      </div>
     </section>
 
     <!-- ===================== -->
@@ -202,7 +375,10 @@
         <UiLabel label="Label requis" required />
         <UiLabel label="Sans icône" :icon="false" />
         <UiLabel label="Icône custom" icon="help" />
-        <UiLabel label="Avec tooltip" tooltip="Ceci est une explication utile pour l'utilisateur" />
+        <UiLabel
+          label="Avec tooltip"
+          tooltip="Ceci est une explication utile pour l'utilisateur"
+        />
       </div>
     </section>
 
@@ -257,10 +433,10 @@
       <div class="row">
         <!-- Unselected -->
         <UiTag label="Tag" :selected="false" />
-        
+
         <!-- Selected -->
         <UiTag label="Tag" :selected="true" />
-        
+
         <!-- Disabled -->
         <UiTag label="Disabled" :disabled="true" />
       </div>
@@ -269,12 +445,12 @@
     <section>
       <h2>UiTag - Interactif</h2>
       <div class="row">
-        <UiTag 
-          v-for="tag in tags" 
-          :key="tag.id" 
-          :label="tag.label" 
+        <UiTag
+          v-for="tag in tags"
+          :key="tag.id"
+          :label="tag.label"
           :selected="tag.selected"
-          @toggle="(selected) => tag.selected = selected"
+          @toggle="(selected) => (tag.selected = selected)"
         />
       </div>
     </section>
@@ -303,9 +479,21 @@
     <section>
       <h2>UiAvatar - Type Photo</h2>
       <div class="row">
-        <UiAvatar type="photo" src="https://i.pravatar.cc/150?img=12" size="xs" />
-        <UiAvatar type="photo" src="https://i.pravatar.cc/150?img=12" size="default" />
-        <UiAvatar type="photo" src="https://i.pravatar.cc/150?img=12" size="xl" />
+        <UiAvatar
+          type="photo"
+          src="https://i.pravatar.cc/150?img=12"
+          size="xs"
+        />
+        <UiAvatar
+          type="photo"
+          src="https://i.pravatar.cc/150?img=12"
+          size="default"
+        />
+        <UiAvatar
+          type="photo"
+          src="https://i.pravatar.cc/150?img=12"
+          size="xl"
+        />
       </div>
     </section>
 
@@ -349,7 +537,9 @@
 
         <!-- Breadcrumb avec icônes -->
         <div class="input-demo">
-          <span class="input-demo__label">Avec icône sur le premier élément</span>
+          <span class="input-demo__label"
+            >Avec icône sur le premier élément</span
+          >
           <UiBreadcrumb :items="breadcrumbWithIcon" />
         </div>
       </div>
@@ -393,43 +583,20 @@
       <h2>UiLink - Variantes</h2>
       <div class="row">
         <!-- Sans icône -->
-        <UiLink
-          label="Sans icône"
-          href="#"
-        />
+        <UiLink label="Sans icône" href="#" />
 
         <!-- Icône gauche uniquement -->
-        <UiLink
-          label="Icône gauche"
-          icon-left="arrow-left"
-          href="#"
-        />
+        <UiLink label="Icône gauche" icon-left="arrow-left" href="#" />
 
         <!-- Icône droite uniquement -->
-        <UiLink
-          label="Icône droite"
-          icon-right="arrow-right"
-          href="#"
-        />
+        <UiLink label="Icône droite" icon-right="arrow-right" href="#" />
 
         <!-- Autres icônes -->
-        <UiLink
-          label="Télécharger"
-          icon-left="download"
-          href="#"
-        />
+        <UiLink label="Télécharger" icon-left="download" href="#" />
 
-        <UiLink
-          label="Voir plus"
-          icon-right="chevron-right"
-          href="#"
-        />
+        <UiLink label="Voir plus" icon-right="chevron-right" href="#" />
 
-        <UiLink
-          label="Retour"
-          icon-left="arrow-back"
-          href="#"
-        />
+        <UiLink label="Retour" icon-left="arrow-back" href="#" />
       </div>
     </section>
 
@@ -466,13 +633,21 @@
         <!-- Disabled - Off -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé (off)</span>
-          <UiSwitch :model-value="false" label="Option indisponible" :disabled="true" />
+          <UiSwitch
+            :model-value="false"
+            label="Option indisponible"
+            :disabled="true"
+          />
         </div>
 
         <!-- Disabled - On -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé (on)</span>
-          <UiSwitch :model-value="true" label="Option verrouillée" :disabled="true" />
+          <UiSwitch
+            :model-value="true"
+            label="Option verrouillée"
+            :disabled="true"
+          />
         </div>
       </div>
     </section>
@@ -510,25 +685,41 @@
         <!-- Error - Unchecked -->
         <div class="input-demo">
           <span class="input-demo__label">Erreur (non coché)</span>
-          <UiCheckbox v-model="checkbox3" label="Ce champ est requis" :error="true" />
+          <UiCheckbox
+            v-model="checkbox3"
+            label="Ce champ est requis"
+            :error="true"
+          />
         </div>
 
         <!-- Error - Checked -->
         <div class="input-demo">
           <span class="input-demo__label">Erreur (coché)</span>
-          <UiCheckbox v-model="checkbox4" label="Valeur en erreur" :error="true" />
+          <UiCheckbox
+            v-model="checkbox4"
+            label="Valeur en erreur"
+            :error="true"
+          />
         </div>
 
         <!-- Disabled - Unchecked -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé (non coché)</span>
-          <UiCheckbox :model-value="false" label="Option indisponible" :disabled="true" />
+          <UiCheckbox
+            :model-value="false"
+            label="Option indisponible"
+            :disabled="true"
+          />
         </div>
 
         <!-- Disabled - Checked -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé (coché)</span>
-          <UiCheckbox :model-value="true" label="Option verrouillée" :disabled="true" />
+          <UiCheckbox
+            :model-value="true"
+            label="Option verrouillée"
+            :disabled="true"
+          />
         </div>
       </div>
     </section>
@@ -555,9 +746,24 @@
         <div class="input-demo">
           <span class="input-demo__label">Default (groupe)</span>
           <div class="column">
-            <UiRadio v-model="radioValue1" name="group1" value="option1" label="Option 1" />
-            <UiRadio v-model="radioValue1" name="group1" value="option2" label="Option 2" />
-            <UiRadio v-model="radioValue1" name="group1" value="option3" label="Option 3" />
+            <UiRadio
+              v-model="radioValue1"
+              name="group1"
+              value="option1"
+              label="Option 1"
+            />
+            <UiRadio
+              v-model="radioValue1"
+              name="group1"
+              value="option2"
+              label="Option 2"
+            />
+            <UiRadio
+              v-model="radioValue1"
+              name="group1"
+              value="option3"
+              label="Option 3"
+            />
           </div>
         </div>
 
@@ -565,8 +771,18 @@
         <div class="input-demo">
           <span class="input-demo__label">Autre groupe</span>
           <div class="column">
-            <UiRadio v-model="radioValue2" name="group2" value="optionA" label="Choix A" />
-            <UiRadio v-model="radioValue2" name="group2" value="optionB" label="Choix B" />
+            <UiRadio
+              v-model="radioValue2"
+              name="group2"
+              value="optionA"
+              label="Choix A"
+            />
+            <UiRadio
+              v-model="radioValue2"
+              name="group2"
+              value="optionB"
+              label="Choix B"
+            />
           </div>
         </div>
 
@@ -574,17 +790,41 @@
         <div class="input-demo">
           <span class="input-demo__label">Erreur</span>
           <div class="column">
-            <UiRadio v-model="radioValueError" name="group3" value="error1" label="Option en erreur" :error="true" />
-            <UiRadio v-model="radioValueError" name="group3" value="error2" label="Autre option" :error="true" />
+            <UiRadio
+              v-model="radioValueError"
+              name="group3"
+              value="error1"
+              label="Option en erreur"
+              :error="true"
+            />
+            <UiRadio
+              v-model="radioValueError"
+              name="group3"
+              value="error2"
+              label="Autre option"
+              :error="true"
+            />
           </div>
         </div>
 
         <!-- Disabled -->
         <div class="input-demo">
           <span class="input-demo__label">Désactivé</span>
-      <div class="column">
-            <UiRadio model-value="disabled1" name="group4" value="disabled1" label="Option verrouillée" :disabled="true" />
-            <UiRadio model-value="disabled1" name="group4" value="disabled2" label="Non disponible" :disabled="true" />
+          <div class="column">
+            <UiRadio
+              model-value="disabled1"
+              name="group4"
+              value="disabled1"
+              label="Option verrouillée"
+              :disabled="true"
+            />
+            <UiRadio
+              model-value="disabled1"
+              name="group4"
+              value="disabled2"
+              label="Non disponible"
+              :disabled="true"
+            />
           </div>
         </div>
       </div>
@@ -597,8 +837,18 @@
         <UiRadio model-value="a" name="nolabel" value="b" />
         <UiRadio model-value="c" name="nolabel-error" value="c" :error="true" />
         <UiRadio model-value="c" name="nolabel-error" value="d" :error="true" />
-        <UiRadio model-value="e" name="nolabel-disabled" value="e" :disabled="true" />
-        <UiRadio model-value="e" name="nolabel-disabled" value="f" :disabled="true" />
+        <UiRadio
+          model-value="e"
+          name="nolabel-disabled"
+          value="e"
+          :disabled="true"
+        />
+        <UiRadio
+          model-value="e"
+          name="nolabel-disabled"
+          value="f"
+          :disabled="true"
+        />
       </div>
     </section>
 
@@ -776,19 +1026,13 @@
         <!-- Sans label -->
         <div class="input-demo">
           <span class="input-demo__label">Sans label</span>
-          <UiInput
-            placeholder="Rechercher..."
-            icon-left="search"
-          />
+          <UiInput placeholder="Rechercher..." icon-left="search" />
         </div>
 
         <!-- Sans icône -->
         <div class="input-demo">
           <span class="input-demo__label">Sans icône</span>
-          <UiInput
-            label="Commentaire"
-            placeholder="Votre commentaire..."
-          />
+          <UiInput label="Commentaire" placeholder="Votre commentaire..." />
         </div>
 
         <!-- Avec hint text -->
@@ -1024,10 +1268,60 @@ import UiTabDark from "../src/components/UiTabDark.vue";
 import UiMenuOffice from "../src/components/UiMenuOffice.vue";
 import UiTopbarOffice from "../src/components/UiTopbarOffice.vue";
 import UiToggle from "../src/components/UiToggle.vue";
+import UiSelect from "../src/components/UiSelect.vue";
+
+// Select demos
+const selectEmpty = ref<string | null>(null);
+const selectFilled = ref<string | null>("apartment");
+const selectError = ref<string | null>(null);
+const selectErrorFilled = ref<string | null>("paris");
+const selectHint = ref<string | null>(null);
+const selectSimple = ref<string | null>(null);
+const selectWithDisabled = ref<string | null>(null);
+
+const propertyTypes = [
+  { label: "Appartement", value: "apartment" },
+  { label: "Maison", value: "house" },
+  { label: "Studio", value: "studio" },
+  { label: "Loft", value: "loft" },
+  { label: "Villa", value: "villa" },
+];
+
+const cities = [
+  { label: "Paris", value: "paris" },
+  { label: "Lyon", value: "lyon" },
+  { label: "Marseille", value: "marseille" },
+  { label: "Bordeaux", value: "bordeaux" },
+  { label: "Nice", value: "nice" },
+];
+
+const roomOptions = [
+  { label: "1 pièce", value: 1 },
+  { label: "2 pièces", value: 2 },
+  { label: "3 pièces", value: 3 },
+  { label: "4 pièces", value: 4 },
+  { label: "5+ pièces", value: 5 },
+];
+
+const statusOptions = [
+  { label: "Tous", value: "all" },
+  { label: "En cours", value: "pending" },
+  { label: "Validé", value: "validated" },
+  { label: "Archivé", value: "archived" },
+];
+
+const planOptions = [
+  { label: "Gratuit", value: "free" },
+  { label: "Standard", value: "standard" },
+  { label: "Premium", value: "premium" },
+  { label: "Enterprise", value: "enterprise", disabled: true },
+];
 
 // Textarea demos
 const textareaEmpty = ref("");
-const textareaFilled = ref("Ceci est un exemple de texte rempli dans le textarea. Il peut contenir plusieurs lignes de contenu.");
+const textareaFilled = ref(
+  "Ceci est un exemple de texte rempli dans le textarea. Il peut contenir plusieurs lignes de contenu."
+);
 const textareaError = ref("");
 
 // Radio demos
@@ -1092,7 +1386,9 @@ const suffixDuration = ref(45);
 
 // Snackbar interactive demo
 const demoSnackbar = ref(false);
-const demoSnackbarStatus = ref<"default" | "success" | "error" | "warning">("default");
+const demoSnackbarStatus = ref<"default" | "success" | "error" | "warning">(
+  "default"
+);
 const demoSnackbarTitle = ref("Notification");
 const demoSnackbarMessage = ref("Ceci est un message de notification.");
 
@@ -1109,7 +1405,7 @@ function showSnackbar(status: "default" | "success" | "error" | "warning") {
     error: "Une erreur est survenue. Veuillez réessayer.",
     warning: "Cette action nécessite votre attention.",
   };
-  
+
   demoSnackbarStatus.value = status;
   demoSnackbarTitle.value = titles[status];
   demoSnackbarMessage.value = messages[status];
@@ -1123,33 +1419,87 @@ const tableColumns = [
   { key: "city", label: "Ville", icon: "map-pin" },
   { key: "price", label: "Prix", icon: "currency-euro" },
   { key: "surface", label: "Surface", icon: "ruler" },
-  { 
-    key: "status", 
-    label: "Statut", 
+  {
+    key: "status",
+    label: "Statut",
     type: "pill" as const,
     pillIcon: "statusIcon",
-    pillColor: "statusColor"
+    pillColor: "statusColor",
   },
-  { 
-    key: "actions", 
-    label: "Actions", 
+  {
+    key: "actions",
+    label: "Actions",
     type: "action" as const,
     sortable: false,
     actions: [
       { name: "view", icon: "eye" },
       { name: "edit", icon: "pencil" },
       { name: "menu", icon: "dots-vertical", secondary: true },
-    ]
+    ],
   },
 ];
 
 const tableRows = [
-  { reference: "BN-001", type: "Appartement T3", city: "Paris", price: "450 000 €", surface: "75 m²", status: "En cours", statusIcon: "refresh", statusColor: "blue" },
-  { reference: "BN-002", type: "Maison", city: "Lyon", price: "680 000 €", surface: "120 m²", status: "Validé", statusIcon: "circle-check", statusColor: "green" },
-  { reference: "BN-003", type: "Studio", city: "Marseille", price: "180 000 €", surface: "25 m²", status: "En attente", statusIcon: "alert-circle", statusColor: "orange" },
-  { reference: "BN-004", type: "Appartement T2", city: "Bordeaux", price: "320 000 €", surface: "55 m²", status: "Annulé", statusIcon: "x", statusColor: "red" },
-  { reference: "BN-005", type: "Villa", city: "Nice", price: "950 000 €", surface: "180 m²", status: "Exporté", statusIcon: "arrow-up-right", statusColor: "purple" },
-  { reference: "BN-006", type: "Loft", city: "Lille", price: "420 000 €", surface: "90 m²", status: "Archivé", statusIcon: "archive", statusColor: "grey" },
+  {
+    reference: "BN-001",
+    type: "Appartement T3",
+    city: "Paris",
+    price: "450 000 €",
+    surface: "75 m²",
+    status: "En cours",
+    statusIcon: "refresh",
+    statusColor: "blue",
+  },
+  {
+    reference: "BN-002",
+    type: "Maison",
+    city: "Lyon",
+    price: "680 000 €",
+    surface: "120 m²",
+    status: "Validé",
+    statusIcon: "circle-check",
+    statusColor: "green",
+  },
+  {
+    reference: "BN-003",
+    type: "Studio",
+    city: "Marseille",
+    price: "180 000 €",
+    surface: "25 m²",
+    status: "En attente",
+    statusIcon: "alert-circle",
+    statusColor: "orange",
+  },
+  {
+    reference: "BN-004",
+    type: "Appartement T2",
+    city: "Bordeaux",
+    price: "320 000 €",
+    surface: "55 m²",
+    status: "Annulé",
+    statusIcon: "x",
+    statusColor: "red",
+  },
+  {
+    reference: "BN-005",
+    type: "Villa",
+    city: "Nice",
+    price: "950 000 €",
+    surface: "180 m²",
+    status: "Exporté",
+    statusIcon: "arrow-up-right",
+    statusColor: "purple",
+  },
+  {
+    reference: "BN-006",
+    type: "Loft",
+    city: "Lille",
+    price: "420 000 €",
+    surface: "90 m²",
+    status: "Archivé",
+    statusIcon: "archive",
+    statusColor: "grey",
+  },
 ];
 
 const tableToolbarActions = [
@@ -1163,7 +1513,11 @@ function handleToolbarAction(action: string) {
   console.log("Toolbar action:", action);
 }
 
-function handleCellAction(payload: { action: string; row: Record<string, unknown>; rowIndex: number }) {
+function handleCellAction(payload: {
+  action: string;
+  row: Record<string, unknown>;
+  rowIndex: number;
+}) {
   console.log("Cell action:", payload);
 }
 
@@ -1219,27 +1573,40 @@ const selectedMenuItem = ref("properties");
 const menuCollapsed = ref(false);
 const menuItems = [
   { label: "Dashboard", value: "dashboard", icon: "tabler:layout-dashboard" },
-  { 
-    label: "Biens", 
-    value: "properties", 
+  {
+    label: "Biens",
+    value: "properties",
     icon: "tabler:building",
     children: [
       { label: "Tous les biens", value: "properties-all", icon: "tabler:list" },
-      { label: "Appartements", value: "properties-apartments", icon: "tabler:building-skyscraper" },
+      {
+        label: "Appartements",
+        value: "properties-apartments",
+        icon: "tabler:building-skyscraper",
+      },
       { label: "Maisons", value: "properties-houses", icon: "tabler:home" },
       { label: "Terrains", value: "properties-lands", icon: "tabler:map" },
-    ]
+    ],
   },
   { label: "Contacts", value: "contacts", icon: "tabler:users", badge: 12 },
-  { 
-    label: "Rapports", 
-    value: "reports", 
+  {
+    label: "Rapports",
+    value: "reports",
     icon: "tabler:chart-bar",
     children: [
-      { label: "Ventes", value: "reports-sales", icon: "tabler:trending-up", badge: 3 },
+      {
+        label: "Ventes",
+        value: "reports-sales",
+        icon: "tabler:trending-up",
+        badge: 3,
+      },
       { label: "Locations", value: "reports-rentals", icon: "tabler:key" },
-      { label: "Statistiques", value: "reports-stats", icon: "tabler:chart-pie" },
-    ]
+      {
+        label: "Statistiques",
+        value: "reports-stats",
+        icon: "tabler:chart-pie",
+      },
+    ],
   },
   { label: "Documents", value: "documents", icon: "tabler:files" },
   { label: "Paramètres", value: "settings", icon: "tabler:settings" },
@@ -1250,30 +1617,33 @@ const currentUser = {
   role: "Administrateur",
 };
 
-function handleUserAction(action: 'profile' | 'logout') {
-  console.log('User action:', action);
-  if (action === 'logout') {
-    alert('Déconnexion...');
-  } else if (action === 'profile') {
-    alert('Ouvrir la page de profil...');
+function handleUserAction(action: "profile" | "logout") {
+  console.log("User action:", action);
+  if (action === "logout") {
+    alert("Déconnexion...");
+  } else if (action === "profile") {
+    alert("Ouvrir la page de profil...");
   }
 }
 
 // TopbarOffice data
 const demoBreadcrumb = [
-  { label: 'Modelo Infinite', value: 'home' },
-  { label: 'Rapports', value: 'reports' },
-  { label: 'Ventes', value: 'sales' },
+  { label: "Modelo Infinite", value: "home" },
+  { label: "Rapports", value: "reports" },
+  { label: "Ventes", value: "sales" },
 ];
 
-function handleBreadcrumbNavigate(item: { label: string; value?: string }, index: number) {
-  console.log('Navigate to:', item, 'at index:', index);
+function handleBreadcrumbNavigate(
+  item: { label: string; value?: string },
+  index: number
+) {
+  console.log("Navigate to:", item, "at index:", index);
   alert(`Navigation vers : ${item.label}`);
 }
 
 function handleNotificationClick() {
-  console.log('Notification clicked');
-  alert('Ouverture des notifications...');
+  console.log("Notification clicked");
+  alert("Ouverture des notifications...");
 }
 </script>
 
@@ -1387,7 +1757,7 @@ section {
 <style>
 /* Tooltip global styling - fond noir */
 .q-tooltip {
-  font-family: var(--font-family-body, 'Inter', system-ui, sans-serif);
+  font-family: var(--font-family-body, "Inter", system-ui, sans-serif);
   font-size: 12px;
   background-color: var(--alias-neutral-900, #1f2937) !important;
   color: var(--alias-neutral-white, #ffffff) !important;
@@ -1395,4 +1765,3 @@ section {
   border-radius: var(--alias-border-radius-sm, 4px);
 }
 </style>
-
