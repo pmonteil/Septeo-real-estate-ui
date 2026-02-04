@@ -3,6 +3,109 @@
     <h1>Design System Components</h1>
 
     <!-- ===================== -->
+    <!-- UIPOPUP               -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiPopup</h2>
+      <div class="row">
+        <UiButton
+          label="Popup positive"
+          icon="info-circle"
+          @click="showPopupPositive = true"
+        />
+        <UiButton
+          label="Popup négative"
+          icon="trash"
+          variant="error"
+          @click="showPopupNegative = true"
+        />
+        <UiButton
+          label="Popup warning"
+          icon="alert-triangle"
+          variant="accent"
+          @click="showPopupWarning = true"
+        />
+        <UiButton
+          label="Popup neutre"
+          icon="alien"
+          variant="ghost"
+          @click="showPopupNeutral = true"
+        />
+      </div>
+
+      <!-- Popup instances -->
+      <UiPopup
+        v-model="showPopupPositive"
+        variant="positive"
+        title="Confirmer l'action"
+        description="Êtes-vous sûr de vouloir confirmer cette action ? Cette opération peut prendre quelques instants."
+        confirm-label="Je confirme"
+        confirm-icon="check"
+        cancel-label="Retour"
+        @confirm="handlePopupConfirm"
+        @cancel="handlePopupCancel"
+      />
+
+      <UiPopup
+        v-model="showPopupNegative"
+        variant="negative"
+        title="Supprimer cet élément ?"
+        description="Cette action est irréversible. Toutes les données associées seront définitivement supprimées."
+        confirm-label="Supprimer"
+        confirm-icon="trash"
+        cancel-label="Retour"
+        @confirm="handlePopupDelete"
+      />
+
+      <UiPopup
+        v-model="showPopupWarning"
+        variant="positive"
+        icon-variant="warning"
+        title="Attention requise"
+        description="Cette action nécessite votre attention. Veuillez vérifier les informations avant de continuer."
+        confirm-label="Continuer"
+        confirm-icon="arrow-right"
+        cancel-label="Annuler"
+      />
+
+      <UiPopup
+        v-model="showPopupNeutral"
+        variant="positive"
+        icon-variant="neutral"
+        title="Information"
+        description="Ceci est une popup d'information générale avec une icône neutre."
+        confirm-label="Compris"
+        confirm-icon="check"
+        :cancel-label="''"
+      />
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIPOPUPICON           -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiPopupIcon - Variantes</h2>
+      <div class="row">
+        <div class="input-demo">
+          <span class="input-demo__label">Information</span>
+          <UiPopupIcon variant="information" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Error</span>
+          <UiPopupIcon variant="error" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Warning</span>
+          <UiPopupIcon variant="warning" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Neutral</span>
+          <UiPopupIcon variant="neutral" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
     <!-- UISNACKBAR            -->
     <!-- ===================== -->
     <section>
@@ -1269,6 +1372,26 @@ import UiMenuOffice from "../src/components/UiMenuOffice.vue";
 import UiTopbarOffice from "../src/components/UiTopbarOffice.vue";
 import UiToggle from "../src/components/UiToggle.vue";
 import UiSelect from "../src/components/UiSelect.vue";
+import UiPopup from "../src/components/UiPopup.vue";
+import UiPopupIcon from "../src/components/UiPopupIcon.vue";
+
+// Popup demos
+const showPopupPositive = ref(false);
+const showPopupNegative = ref(false);
+const showPopupWarning = ref(false);
+const showPopupNeutral = ref(false);
+
+function handlePopupConfirm() {
+  console.log("Popup confirmed");
+}
+
+function handlePopupCancel() {
+  console.log("Popup cancelled");
+}
+
+function handlePopupDelete() {
+  console.log("Delete confirmed");
+}
 
 // Select demos
 const selectEmpty = ref<string | null>(null);

@@ -28,6 +28,8 @@ export { default as UiTabDark } from "./components/UiTabDark.vue";
 export { default as UiMenuOffice } from "./components/UiMenuOffice.vue";
 export { default as UiTopbarOffice } from "./components/UiTopbarOffice.vue";
 export { default as UiToggle } from "./components/UiToggle.vue";
+export { default as UiPopup } from "./components/UiPopup.vue";
+export { default as UiPopupIcon } from "./components/UiPopupIcon.vue";
 
 // Re-export Vue utilities for icons
 export { markRaw } from "vue";
