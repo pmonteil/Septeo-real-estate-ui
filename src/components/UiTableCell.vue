@@ -32,15 +32,18 @@
   </div>
 
   <!-- Type: action -->
-  <div v-else-if="type === 'action'" class="ui-table-cell ui-table-cell--action">
+  <div
+    v-else-if="type === 'action'"
+    class="ui-table-cell ui-table-cell--action"
+  >
     <div class="ui-table-cell__actions">
       <UiButton
         v-for="(action, index) in actions"
         :key="index"
         :icon="action.icon"
-        variant="ghost"
-        size="xs"
-        :class="{ 'ui-table-cell__action-btn--secondary': action.secondary }"
+        :variant="getActionVariant(action)"
+        size="sm"
+        :class="getActionClasses(action)"
         @click.stop="$emit('action', action.name)"
       />
     </div>
@@ -53,7 +56,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent, type Component, type FunctionalComponent } from "vue";
+import {
+  computed,
+  defineAsyncComponent,
+  type Component,
+  type FunctionalComponent,
+} from "vue";
 import UiLink from "./UiLink.vue";
 import UiButton from "./UiButton.vue";
 import UiPill from "./UiPill.vue";
@@ -62,10 +70,21 @@ type IconProp = string | Component | FunctionalComponent;
 type CellType = "text" | "link" | "action" | "pill";
 type PillColor = "blue" | "red" | "orange" | "green" | "purple" | "grey";
 
+type ActionVariant = "ghost" | "error" | "transparent";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "error"
+  | "accent"
+  | "ai";
+type ButtonSize = "sm" | "md";
+
 interface ActionItem {
   name: string;
   icon: string;
   secondary?: boolean;
+  variant?: ActionVariant;
 }
 
 const props = withDefaults(
@@ -132,7 +151,9 @@ function resolveIcon(icon: IconProp | undefined) {
       const icons = module as unknown as Record<string, Component>;
       const iconComp = icons[iconName];
       if (!iconComp) {
-        console.warn(`[UiTableCell] Icon "${iconName}" not found in @tabler/icons-vue`);
+        console.warn(
+          `[UiTableCell] Icon "${iconName}" not found in @tabler/icons-vue`
+        );
         return { render: () => null };
       }
       return iconComp;
@@ -142,6 +163,21 @@ function resolveIcon(icon: IconProp | undefined) {
 
 const iconLeftComponent = computed(() => resolveIcon(props.iconLeft));
 const iconRightComponent = computed(() => resolveIcon(props.iconRight));
+
+// Get button variant for action
+function getActionVariant(action: ActionItem): ButtonVariant {
+  if (action.variant === "error") return "error";
+  return "ghost";
+}
+
+// Get action button classes
+function getActionClasses(action: ActionItem): Record<string, boolean> {
+  return {
+    "ui-table-cell__action-btn--secondary": !!action.secondary,
+    "ui-table-cell__action-btn--transparent": action.variant === "transparent",
+    "ui-table-cell__action-btn--error": action.variant === "error",
+  };
+}
 </script>
 
 <style scoped>
@@ -215,6 +251,21 @@ const iconRightComponent = computed(() => resolveIcon(props.iconRight));
 
 .ui-table-cell__action-btn--secondary:hover :deep(.ui-button__icon) {
   color: var(--icon-action);
+}
+
+/* Transparent variant - no background, no hover effect */
+.ui-table-cell__action-btn--transparent :deep(.ui-button) {
+  background-color: transparent !important;
+}
+
+.ui-table-cell__action-btn--transparent :deep(.ui-button:hover) {
+  background-color: transparent !important;
+}
+
+/* Error variant styling - already handled by UiButton error variant */
+.ui-table-cell__action-btn--error :deep(.ui-button) {
+  min-width: 28px;
+  min-height: 28px;
 }
 
 /* Pill type */

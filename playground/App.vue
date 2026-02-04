@@ -1435,6 +1435,7 @@ const tableColumns = [
       { name: "view", icon: "eye" },
       { name: "edit", icon: "pencil" },
       { name: "menu", icon: "dots-vertical", secondary: true },
+      { name: "delete", icon: "trash", variant: "error" },
     ],
   },
 ];
