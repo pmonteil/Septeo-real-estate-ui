@@ -1293,6 +1293,7 @@
       <div class="row">
         <UiButton label="Primary" icon="send" />
         <UiButton label="Secondary" icon="settings" variant="secondary" />
+        <UiButton label="Third" icon="plus" variant="third" />
         <UiButton label="Ghost" icon="edit" variant="ghost" />
         <UiButton label="Error" icon="trash" variant="error" />
         <UiButton label="Accent" icon="star" variant="accent" />

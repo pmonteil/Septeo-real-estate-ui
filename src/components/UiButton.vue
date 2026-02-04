@@ -40,7 +40,7 @@ type Variant =
   | "error"
   | "accent"
   | "ai"
-  | "light";
+  | "third";
 type Size = "sm" | "md";
 type IconProp = string | Component | FunctionalComponent;
 
@@ -325,28 +325,29 @@ function handleClick(event: Event) {
   color: var(--text-disable) !important;
 }
 
-/* LIGHT (fond bleu clair) */
-.ui-button--light {
+/* THIRD (fond bleu clair, pas de bordure par défaut) */
+.ui-button--third {
   background-color: var(--surface-light-action) !important;
   color: var(--text-action) !important;
-  border: var(--alias-border-width-sm) solid var(--surface-light-action);
+  border: none;
 }
 
-.ui-button--light:hover:not(:disabled):not(.disabled) {
-  background-color: var(--surface-light-action-hover) !important;
-  border-color: var(--surface-light-action-hover);
+.ui-button--third:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-light-action) !important;
+  border: var(--alias-border-width-sm) solid var(--border-action-hover);
+  box-shadow: 0 0 16px 0 var(--alias-primary-200);
 }
 
-.ui-button--light:focus-visible {
+.ui-button--third:focus-visible {
   outline: var(--alias-border-width-md) solid var(--border-focus);
   outline-offset: 1px;
 }
 
-.ui-button--light:disabled,
-.ui-button--light.disabled {
+.ui-button--third:disabled,
+.ui-button--third.disabled {
   background-color: var(--surface-disable) !important;
   color: var(--text-disable) !important;
-  border-color: var(--surface-disable);
+  border: var(--alias-border-width-sm) solid var(--border-disabled);
 }
 
 /* ERROR */
