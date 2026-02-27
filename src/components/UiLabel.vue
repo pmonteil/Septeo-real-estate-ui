@@ -6,12 +6,12 @@
     </span>
     <slot name="icon">
       <div v-if="iconComponent" class="ui-label__icon-wrapper">
-      <component
-        :is="iconComponent"
-        class="ui-label__icon"
-        :size="18"
-        :stroke="2"
-      />
+        <component
+          :is="iconComponent"
+          class="ui-label__icon"
+          :size="16"
+          :stroke="2"
+        />
         <q-tooltip
           v-if="props.tooltip"
           class="ui-label__tooltip"
@@ -64,15 +64,15 @@ function toIconName(name: string): string {
 const iconComponent = computed(() => {
   // Si icon est explicitement false, ne pas afficher d'icône
   if (props.icon === false) return null;
-  
+
   // Déterminer l'icône à utiliser
   let iconToUse: IconProp | undefined = props.icon;
-  
+
   // Si pas d'icône mais un tooltip, utiliser help-circle par défaut
   if (!iconToUse && props.tooltip) {
     iconToUse = "help-circle";
   }
-  
+
   if (!iconToUse) return null;
 
   // Si c'est déjà un composant, le retourner directement
@@ -103,13 +103,14 @@ const iconComponent = computed(() => {
   display: flex;
   align-items: center;
   gap: var(--gap-icon-text);
+  padding: 0 2px;
 }
 
 .ui-label__text {
   font-family: var(--font-family-body);
-  font-size: var(--body-font-size);
+  font-size: var(--body-small-font-size);
   font-weight: var(--font-weight-regular);
-  line-height: var(--body-line-height);
+  line-height: var(--body-small-line-height);
   color: var(--text-body);
   white-space: nowrap;
 }
