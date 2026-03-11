@@ -3,6 +3,62 @@
     <h1>Design System Components</h1>
 
     <!-- ===================== -->
+    <!-- UIDYNAMICINPUT        -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiDynamicInput</h2>
+      <div class="grid-inputs">
+        <div class="input-demo">
+          <span class="input-demo__label">Default - Empty</span>
+          <UiDynamicInput
+            v-model="dynamicEmpty"
+            label="label"
+            label-icon="info-circle"
+            label-tooltip="Insérez des variables dynamiques"
+          />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Default - Filled</span>
+          <UiDynamicInput
+            v-model="dynamicFilled"
+            label="label"
+            label-icon="info-circle"
+            label-tooltip="Insérez des variables dynamiques"
+          />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Error - Empty</span>
+          <UiDynamicInput
+            v-model="dynamicError"
+            label="label"
+            label-icon="info-circle"
+            :error="true"
+            hint-text="Hint text"
+          />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Error - Filled</span>
+          <UiDynamicInput
+            v-model="dynamicErrorFilled"
+            label="label"
+            label-icon="info-circle"
+            :error="true"
+            hint-text="Hint text"
+          />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiDynamicInput
+            v-model="dynamicDisabled"
+            label="label"
+            label-icon="info-circle"
+            :disabled="true"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
     <!-- UIPOPUP               -->
     <!-- ===================== -->
     <section>
@@ -1375,6 +1431,14 @@ import UiToggle from "../src/components/UiToggle.vue";
 import UiSelect from "../src/components/UiSelect.vue";
 import UiPopup from "../src/components/UiPopup.vue";
 import UiPopupIcon from "../src/components/UiPopupIcon.vue";
+import UiDynamicInput from "../src/components/UiDynamicInput.vue";
+
+// Dynamic Input demos
+const dynamicEmpty = ref<string[]>([]);
+const dynamicFilled = ref<string[]>(["Lorem ipsum", "Lorem ipsum", "Lorem ipsum"]);
+const dynamicError = ref<string[]>([]);
+const dynamicErrorFilled = ref<string[]>(["Lorem ipsum", "Lorem ipsum", "Lorem ipsum"]);
+const dynamicDisabled = ref<string[]>(["Lorem ipsum", "Lorem ipsum", "Lorem ipsum"]);
 
 // Popup demos
 const showPopupPositive = ref(false);

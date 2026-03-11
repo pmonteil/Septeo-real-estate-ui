@@ -142,7 +142,9 @@ const fieldClasses = computed(() => ({
 
 // Suffix classes
 const suffixClasses = computed(() => ({
+  "ui-input-suffix__suffix--focused": isFocused.value && !props.error,
   "ui-input-suffix__suffix--error": props.error,
+  "ui-input-suffix__suffix--disabled": props.disabled,
 }));
 
 // Convert icon name to component name
@@ -241,12 +243,7 @@ defineExpose({
   flex: 1;
   min-width: 0;
   padding: var(--field-padding-y) var(--field-padding-x);
-  padding-right: calc(36px + var(--field-padding-x));
-}
-
-/* Adjust padding when error icon is present */
-.ui-input-suffix__field--error .ui-input-suffix__content {
-  padding-right: calc(36px + 18px + var(--gap-field-label) + var(--field-padding-x));
+  padding-right: calc(36px + var(--gap-field-label));
 }
 
 /* Hover state - default */
@@ -362,11 +359,10 @@ defineExpose({
 }
 
 .ui-input-suffix__error-icon-wrapper {
-  position: absolute;
-  right: calc(36px + var(--gap-field-label));
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .ui-input-suffix__icon--error {
@@ -416,28 +412,55 @@ defineExpose({
 
 .ui-input-suffix__suffix {
   position: absolute;
-  right: 3px;
-  top: 3px;
-  bottom: 3px;
+  right: -1px;
+  top: -1px;
+  bottom: -1px;
   width: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-left: var(--alias-border-width-sm) solid var(--border-default);
+  background-color: var(--surface-default-bis);
+  border: var(--alias-border-width-sm) solid var(--border-default);
+  border-radius: 0 var(--field-border-radius) var(--field-border-radius) 0;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
 }
 
+/* Focus: full border turns blue to match field */
+.ui-input-suffix__suffix--focused {
+  border-color: var(--border-action);
+}
+
+/* Error: no bg, left border only */
 .ui-input-suffix__suffix--error {
-  border-left-color: var(--border-error);
+  background-color: transparent;
+  border: none;
+  border-left: var(--alias-border-width-sm) solid var(--border-error);
+  border-radius: 0;
+}
+
+/* Disabled: no bg, left border only */
+.ui-input-suffix__suffix--disabled {
+  background-color: transparent;
+  border: none;
+  border-left: var(--alias-border-width-sm) solid var(--border-default);
+  border-radius: 0;
 }
 
 .ui-input-suffix__suffix-text {
   font-family: var(--font-family-body);
-  font-size: var(--body-font-size);
+  font-size: var(--body-small-font-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--body-line-height);
   color: var(--text-body-secondary);
   text-align: center;
+}
+
+/* Error suffix text color */
+.ui-input-suffix__suffix--error .ui-input-suffix__suffix-text {
+  color: var(--text-error);
 }
 
 /* ==========================================
