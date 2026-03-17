@@ -106,7 +106,7 @@ function resolveIcon(icon: string) {
   align-items: center;
   gap: var(--brand-scale-4, 4px);
   padding: var(--brand-scale-4, 4px);
-  background-color: var(--surface-default-bis, #f5f7f9);
+  background-color: var(--surface-default-bis, #eef0f5);
   border-radius: var(--alias-border-radius-lg, 8px);
 }
 

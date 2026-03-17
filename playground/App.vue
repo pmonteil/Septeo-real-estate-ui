@@ -1,5 +1,28 @@
 <template>
   <div class="playground">
+    <!-- TAB BAR -->
+    <div class="playground-tabs">
+      <button
+        class="playground-tabs__btn"
+        :class="{ 'playground-tabs__btn--active': activeTab === 'components' }"
+        @click="activeTab = 'components'"
+      >
+        Composants
+      </button>
+      <button
+        class="playground-tabs__btn"
+        :class="{ 'playground-tabs__btn--active': activeTab === 'tokens' }"
+        @click="activeTab = 'tokens'"
+      >
+        Design Tokens
+      </button>
+    </div>
+
+    <!-- TAB: TOKENS -->
+    <TokensPage v-if="activeTab === 'tokens'" />
+
+    <!-- TAB: COMPONENTS -->
+    <div v-show="activeTab === 'components'">
     <h1>Design System Components</h1>
 
     <!-- ===================== -->
@@ -1351,6 +1374,7 @@
         <UiButton label="Secondary" icon="settings" variant="secondary" />
         <UiButton label="Third" icon="plus" variant="third" />
         <UiButton label="Ghost" icon="edit" variant="ghost" />
+        <UiButton label="Tertiary" icon="dots" variant="tertiary" />
         <UiButton label="Error" icon="trash" variant="error" />
         <UiButton label="Accent" icon="star" variant="accent" />
         <UiButton label="AI" icon="sparkles" variant="ai" />
@@ -1402,11 +1426,15 @@
         <UiButton label="Star" icon="star" />
       </div>
     </section>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import TokensPage from "./TokensPage.vue";
+
+const activeTab = ref<"components" | "tokens">("components");
 import UiButton from "../src/components/UiButton.vue";
 import UiLabel from "../src/components/UiLabel.vue";
 import UiInput from "../src/components/UiInput.vue";
@@ -1847,6 +1875,45 @@ body {
 .playground {
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.playground-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  background: white;
+  padding: 4px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+.playground-tabs__btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #96a4c1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.playground-tabs__btn:hover {
+  color: #303441;
+  background: #f5f7f9;
+}
+
+.playground-tabs__btn--active {
+  background: #3d64ed;
+  color: white;
+}
+
+.playground-tabs__btn--active:hover {
+  background: #3456d0;
+  color: white;
 }
 
 h1 {

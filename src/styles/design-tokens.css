@@ -282,7 +282,7 @@
   /* Surface */
   --surface-page: var(--alias-primary-900);
   --surface-default: var(--alias-neutral-white);
-  --surface-default-bis: var(--alias-neutral-50);
+  --surface-default-bis: var(--alias-neutral-75);
   --surface-field: var(--alias-neutral-10);
   --surface-action: var(--alias-primary-default);
   --surface-action-hover: var(--alias-primary-600);
@@ -325,7 +325,11 @@
   --border-white: var(--alias-neutral-white);
   --border-action-ai: var(--alias-ai-default);
   --border-action-ai-hover: var(--alias-ai-500);
+  --border-dark: var(--alias-neutral-900);
   --border-dynamic: var(--alias-ai-100);
+
+  /* Shadow */
+  --shadow-tertiary: var(--alias-neutral-200);
 
   /* ========================================
    * TYPOGRAPHY TOKENS

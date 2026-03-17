@@ -40,7 +40,8 @@ type Variant =
   | "error"
   | "accent"
   | "ai"
-  | "third";
+  | "third"
+  | "tertiary";
 type Size = "sm" | "md";
 type IconProp = string | Component | FunctionalComponent;
 
@@ -101,7 +102,9 @@ const iconComponent = computed(() => {
   );
 });
 
-const isFlat = computed(() => props.variant === "ghost");
+const isFlat = computed(
+  () => props.variant === "ghost" || props.variant === "tertiary"
+);
 
 const isIconOnly = computed(() => props.icon && !props.label);
 
@@ -390,6 +393,35 @@ function handleClick(event: Event) {
   background-color: var(--surface-disable) !important;
   color: var(--text-disable) !important;
   border-color: var(--border-disabled);
+}
+
+/* TERTIARY (fond gris neutre) */
+.ui-button--tertiary {
+  background-color: var(--surface-default-bis) !important;
+  color: var(--text-body) !important;
+  border: var(--alias-border-width-none) solid transparent;
+  border-radius: var(--button-default-border-radius);
+}
+
+.ui-button--tertiary:hover:not(:disabled):not(.disabled) {
+  border: var(--alias-border-width-sm) solid var(--border-dark);
+  box-shadow: 0 0 16px 0 var(--shadow-tertiary);
+}
+
+.ui-button--tertiary:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
+  box-shadow: 0 0 16px 0 var(--shadow-tertiary);
+}
+
+.ui-button--tertiary:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-dark);
+  outline-offset: 1px;
+}
+
+.ui-button--tertiary:disabled,
+.ui-button--tertiary.disabled {
+  background-color: var(--surface-disable) !important;
+  color: var(--text-disable) !important;
+  border: var(--alias-border-width-sm) solid var(--border-disabled);
 }
 
 /* AI (gradient violet) */
