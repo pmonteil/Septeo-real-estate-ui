@@ -20,6 +20,7 @@ import {
 } from "vue";
 
 type PillColor = "blue" | "red" | "orange" | "green" | "purple" | "grey";
+type PillType = "default" | "rounded";
 type IconProp = string | Component | FunctionalComponent;
 
 const props = withDefaults(
@@ -27,15 +28,20 @@ const props = withDefaults(
     label?: string;
     icon?: IconProp;
     color?: PillColor;
+    type?: PillType;
   }>(),
   {
     label: "Label",
     icon: undefined,
     color: "blue",
+    type: "default",
   }
 );
 
-const rootClasses = computed(() => [`ui-pill--${props.color}`]);
+const rootClasses = computed(() => [
+  `ui-pill--${props.color}`,
+  { "ui-pill--rounded": props.type === "rounded" },
+]);
 
 function toIconName(name: string): string {
   return (
@@ -75,13 +81,17 @@ const iconComponent = computed(() => resolveIcon(props.icon));
   align-items: center;
   justify-content: center;
   gap: var(--gap-icon-text);
-  padding: var(--brand-scale-4);
+  padding: var(--brand-scale-4) var(--brand-scale-6);
   border-radius: var(--alias-border-radius-md);
   font-family: var(--font-family-body);
   font-size: var(--body-small-font-size);
   font-weight: var(--font-weight-semi-bold);
   line-height: var(--body-small-line-height);
   white-space: nowrap;
+}
+
+.ui-pill--rounded {
+  border-radius: 100px;
 }
 
 .ui-pill__icon {

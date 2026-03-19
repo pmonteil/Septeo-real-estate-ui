@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-tabs">
+  <div class="ui-tabs" :class="{ 'ui-tabs--xs': props.size === 'xs' }">
     <div class="ui-tabs__container">
       <button
         v-for="(tab, index) in tabs"
@@ -16,7 +16,7 @@
           v-if="tab.icon"
           :is="resolveIcon(tab.icon)" 
           class="ui-tabs__icon"
-          :size="16" 
+          :size="props.size === 'xs' ? 14 : 18" 
           :stroke="2" 
         />
         <span class="ui-tabs__label">{{ tab.label }}</span>
@@ -28,6 +28,8 @@
 <script setup lang="ts">
 import { defineAsyncComponent, type Component } from "vue";
 
+type TabSize = "default" | "xs";
+
 interface Tab {
   label: string;
   value: string | number;
@@ -35,10 +37,16 @@ interface Tab {
   disabled?: boolean;
 }
 
-const props = defineProps<{
-  tabs: Tab[];
-  modelValue: string | number;
-}>();
+const props = withDefaults(
+  defineProps<{
+    tabs: Tab[];
+    modelValue: string | number;
+    size?: TabSize;
+  }>(),
+  {
+    size: "default",
+  }
+);
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string | number): void;
@@ -97,10 +105,18 @@ function resolveIcon(icon: string) {
   transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: var(--font-family-body);
   font-size: var(--body-font-size);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   line-height: var(--body-line-height);
   color: var(--text-body);
   white-space: nowrap;
+}
+
+/* ── SIZE XS ─────────────────────────────── */
+.ui-tabs--xs .ui-tabs__tab {
+  padding: var(--scale-4, 4px) var(--brand-scale-6, 6px);
+  font-size: var(--body-small-font-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--body-small-line-height);
 }
 
 .ui-tabs__tab:hover:not(.ui-tabs__tab--active):not(.ui-tabs__tab--disabled) {

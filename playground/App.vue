@@ -26,6 +26,54 @@
     <h1>Design System Components</h1>
 
     <!-- ===================== -->
+    <!-- UICONTAINERSHEADER    -->
+    <!-- ===================== -->
+    <section class="section--wide">
+      <h2>UiContainersHeader - Default</h2>
+      <UiContainersHeader title="Liste des biens" @back="() => {}">
+        <template #state>
+          <UiPill label="Actif" color="green" icon="circle-check" />
+          <UiPill label="Vente" color="blue" icon="building" />
+        </template>
+        <template #tabs>
+          <UiTab v-model="containerTabDefault" :tabs="simpleTabs" />
+        </template>
+        <template #actions>
+          <UiButton label="Générer" icon="sparkles" variant="ai" />
+          <UiButton label="Ajouter" icon="plus" />
+        </template>
+      </UiContainersHeader>
+    </section>
+
+    <section class="section--wide">
+      <h2>UiContainersHeader - XS</h2>
+      <UiContainersHeader title="Détail du bien" size="xs" @back="() => {}">
+        <template #state>
+          <UiPill label="Actif" color="green" icon="circle-check" />
+        </template>
+        <template #tabs>
+          <UiTab v-model="containerTabXs" :tabs="simpleTabs" />
+        </template>
+        <template #actions>
+          <UiButton label="Générer" icon="sparkles" variant="ai" size="sm" />
+          <UiButton label="Ajouter" icon="plus" size="sm" />
+        </template>
+      </UiContainersHeader>
+    </section>
+
+    <section class="section--wide">
+      <h2>UiContainersHeader - Sans bouton retour</h2>
+      <UiContainersHeader title="Dashboard" :show-back-button="false">
+        <template #tabs>
+          <UiTab v-model="containerTabDefault" :tabs="simpleTabs" />
+        </template>
+        <template #actions>
+          <UiButton label="Exporter" icon="download" variant="secondary" />
+        </template>
+      </UiContainersHeader>
+    </section>
+
+    <!-- ===================== -->
     <!-- UIDYNAMICINPUT        -->
     <!-- ===================== -->
     <section>
@@ -303,6 +351,14 @@
       <div class="column" style="margin-top: 24px">
         <h3>Tabs avec état désactivé</h3>
         <UiTab v-model="selectedTabDisabled" :tabs="tabsWithDisabled" />
+      </div>
+      <div class="column" style="margin-top: 24px">
+        <h3>Tabs XS</h3>
+        <UiTab v-model="selectedTabXs" :tabs="simpleTabs" size="xs" />
+      </div>
+      <div class="column" style="margin-top: 24px">
+        <h3>Tabs XS avec icônes</h3>
+        <UiTab v-model="selectedTabXsIcon" :tabs="tabsWithIcons" size="xs" />
       </div>
     </section>
 
@@ -651,6 +707,18 @@
           <span class="input-demo__label">XS Sans icône</span>
           <UiFilter label="Prix" :count="5" :show-dropdown="false" size="xs" />
         </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>UiPill - Rounded</h2>
+      <div class="row">
+        <UiPill label="En cours" color="blue" icon="refresh" type="rounded" />
+        <UiPill label="Annulé" color="red" icon="x" type="rounded" />
+        <UiPill label="En attente" color="orange" icon="alert-circle" type="rounded" />
+        <UiPill label="Validé" color="green" icon="circle-check" type="rounded" />
+        <UiPill label="Exporté" color="purple" icon="arrow-up-right" type="rounded" />
+        <UiPill label="Archivé" color="grey" icon="archive" type="rounded" />
       </div>
     </section>
 
@@ -1508,6 +1576,7 @@ import UiPopup from "../src/components/UiPopup.vue";
 import UiPopupIcon from "../src/components/UiPopupIcon.vue";
 import UiDynamicInput from "../src/components/UiDynamicInput.vue";
 import UiFilter from "../src/components/UiFilter.vue";
+import UiContainersHeader from "../src/components/UiContainersHeader.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);
@@ -1825,8 +1894,12 @@ const tabsWithIcons = [
 ];
 
 const selectedTabDisabled = ref("active");
+const selectedTabXs = ref("all");
+const selectedTabXsIcon = ref("dashboard");
 const selectedTabDark = ref("all");
 const selectedTabDarkWithIcon = ref("dashboard");
+const containerTabDefault = ref("all");
+const containerTabXs = ref("all");
 const tabsWithDisabled = [
   { label: "Actifs", value: "active" },
   { label: "Archivés", value: "archived" },

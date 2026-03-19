@@ -33,7 +33,11 @@ Chaque page Figma correspond à un composant. Le **nom de la page = nom du compo
 | UiFilter         | 3076:528    | 3076:469       |
 | UiBadge          | 120:795     | 120:799        |
 
-Composants sans nodeId connu : UiCheckbox, UiRadio, UiSwitch, UiLink, UiBreadcrumb, UiAvatar, UiTag, UiSnackbar, UiPill, UiTab, UiTabDark, UiMenuOffice, UiTopbarOffice.
+| UiTab            | 219:4267    | 219:4266       |
+| UiPill           | 123:22337   | 123:22327      |
+| UiContainersHeader | 3086:445  | 3086:444       |
+
+Composants sans nodeId connu : UiCheckbox, UiRadio, UiSwitch, UiLink, UiBreadcrumb, UiAvatar, UiTag, UiSnackbar, UiTabDark, UiMenuOffice, UiTopbarOffice.
 
 ---
 
@@ -136,10 +140,6 @@ Ajouter une section dans `playground/App.vue` (onglet Composants) :
 - Démos de chaque variant et état
 - Import dans le `<script setup>`
 
-#### 4d. Mapping
-
-Ajouter le composant dans le mapping du fichier `real-estate-ui-scan.mdc` avec ses nodeIds.
-
 ### 5. Mise à jour d'un composant existant
 
 #### 5a. Comparaison systématique
@@ -180,7 +180,6 @@ Avant de livrer le code :
 - [ ] Les tokens CSS utilisés existent dans `design-tokens.css`
 - [ ] Le composant est exporté dans `src/index.ts`
 - [ ] Le playground contient des démos pour chaque variant/état
-- [ ] Le mapping dans `real-estate-ui-scan.mdc` est à jour
 - [ ] Pas de valeurs CSS en dur (toujours des tokens)
 - [ ] Le code compile sans erreur
 
