@@ -120,7 +120,7 @@ function handleClick(event: Event) {
   align-items: center;
   gap: 8px;
   width: fit-content;
-  height: 36px;
+  height: 34px;
   padding: var(--brand-scale-8) var(--brand-scale-12);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
