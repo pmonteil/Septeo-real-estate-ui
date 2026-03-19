@@ -120,10 +120,12 @@ function handleClick(event: Event) {
   align-items: center;
   gap: 8px;
   width: fit-content;
+  height: 36px;
   padding: var(--brand-scale-8) var(--brand-scale-12);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
   border-radius: var(--brand-scale-6);
+  box-sizing: border-box;
   cursor: pointer;
   font-family: var(--font-family-body);
   transition:
@@ -133,7 +135,8 @@ function handleClick(event: Event) {
 
 /* ── SIZE XS ─────────────────────────────── */
 .ui-filter--xs {
-  padding: var(--brand-scale-4) var(--brand-scale-8);
+  height: 28px;
+  padding: var(--brand-scale-6) var(--brand-scale-8);
   border-radius: var(--brand-scale-4);
 }
 
