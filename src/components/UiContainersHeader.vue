@@ -26,7 +26,7 @@
         <slot name="tabs" />
       </div>
 
-      <div v-if="$slots.actions" class="ui-containers-header__actions">
+      <div class="ui-containers-header__actions">
         <slot name="actions" />
       </div>
     </div>
@@ -120,7 +120,7 @@ const backIcon = defineAsyncComponent(() =>
 .ui-containers-header__title {
   font-family: var(--font-family-headings);
   font-size: var(--h2-font-size);
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-bold);
   line-height: var(--h2-line-height);
   color: var(--text-body);
   white-space: nowrap;
