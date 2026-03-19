@@ -31,5 +31,6 @@ export { default as UiToggle } from "./components/UiToggle.vue";
 export { default as UiPopup } from "./components/UiPopup.vue";
 export { default as UiPopupIcon } from "./components/UiPopupIcon.vue";
 export { default as UiDynamicInput } from "./components/UiDynamicInput.vue";
+export { default as UiFilter } from "./components/UiFilter.vue";
 // Re-export Vue utilities for icons
 export { markRaw } from "vue";

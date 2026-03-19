@@ -390,6 +390,7 @@ const mappedGroups: TokenGroup[] = [
       { var: "--surface-information", label: "information", ref: "→ primary-50" },
       { var: "--surface-accent", label: "accent", ref: "→ accent-default" },
       { var: "--surface-accent-hover", label: "accent-hover", ref: "→ accent-500" },
+      { var: "--surface-light-accent", label: "light-accent", ref: "→ accent-50" },
       { var: "--surface-active", label: "active", ref: "→ primary-400" },
       { var: "--surface-ai-light", label: "ai-light", ref: "→ ai-50" },
       { var: "--surface-dynamic", label: "dynamic", ref: "→ ai-50" },

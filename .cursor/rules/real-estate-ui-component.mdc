@@ -1,0 +1,229 @@
+---
+description: Règle de création et mise à jour de composants depuis Figma. S'active quand l'utilisateur demande de créer ou modifier un composant du design system.
+alwaysApply: false
+---
+
+# Création & mise à jour de composants — Design System Real Estate UI
+
+## Fichier Figma de référence
+
+- **URL** : https://www.figma.com/design/9ZjzJGJ07zCiTHMpbXB2j2/%E2%9C%85-Real-Estate-UI
+- **Serveur MCP** : `user-Figma Desktop`
+- **Paramètres MCP constants** : `"clientLanguages": "typescript,vue"`, `"clientFrameworks": "vue,quasar"`
+
+## Mapping composants → Node IDs Figma
+
+Chaque page Figma correspond à un composant. Le **nom de la page = nom du composant** (mapping 1:1).
+
+| Composant        | nodeId frame | nodeId default |
+|------------------|-------------|----------------|
+| UiButton         | 28:528      | 27:498         |
+| UiLabel          | 33:3296     | 33:3272        |
+| UiInput          | 208:91      | 33:3551        |
+| UiInputSuffix    | 208:650     | 208:651        |
+| UiSelect         | 208:347     | 208:348        |
+| UiTextarea       | 101:1083    | 101:959        |
+| UiTable          | 123:5966    | 123:5965       |
+| UiTableCell      | 123:1892    | 123:1779       |
+| UiPopup          | 129:14202   | 129:13822      |
+| UiPopupIcon      | 129:13802   | 129:13796      |
+| UiDynamicInput   | 818:4847    | 818:4848       |
+| UiToggle         | 219:7425    | 219:7425       |
+| Balise dynamique | 818:7236    | 818:4579       |
+| UiFilter         | 3076:528    | 3076:469       |
+| UiBadge          | 120:795     | 120:799        |
+
+Composants sans nodeId connu : UiCheckbox, UiRadio, UiSwitch, UiLink, UiBreadcrumb, UiAvatar, UiTag, UiSnackbar, UiPill, UiTab, UiTabDark, UiMenuOffice, UiTopbarOffice.
+
+---
+
+## Flow d'exécution obligatoire
+
+À chaque demande de création ou modification d'un composant, exécuter **dans cet ordre** :
+
+### 1. Identification du composant
+
+L'utilisateur fournit **uniquement le nom** du composant (ex: "Button", "Input", "Toggle").
+
+- Chercher dans le mapping ci-dessus le nodeId correspondant.
+- Si le composant n'est PAS dans le mapping : utiliser `get_metadata` sur la page racine pour trouver le frame correspondant au nom donné, puis noter son nodeId.
+- **Ne JAMAIS demander un lien Figma** à l'utilisateur.
+- **Ne JAMAIS deviner la structure** sans inspection MCP.
+
+### 2. Analyse complète du composant Figma
+
+**Obligatoire et exhaustive.** Aucune propriété ne doit être ignorée.
+
+#### 2a. Structure et variants
+
+Appeler `get_metadata` avec le **nodeId frame** :
+```json
+{ "nodeId": "<nodeId frame>", "clientLanguages": "typescript,vue", "clientFrameworks": "vue,quasar" }
+```
+Extraire la liste de TOUS les `<symbol>` enfants. Chaque symbol = un variant (combinaison type/état/taille).
+
+#### 2b. Design context de CHAQUE variant
+
+Pour **chaque symbol** retourné par `get_metadata`, appeler `get_design_context` :
+```json
+{ "nodeId": "<nodeId du symbol>", "artifactType": "REUSABLE_COMPONENT" }
+```
+Cela retourne le code de référence React+Tailwind contenant les classes CSS exactes (couleurs, bordures, padding, typographie, etc.).
+
+**CRITIQUE** : ne pas se limiter au variant par défaut. Scanner **toutes les combinaisons** :
+- tous les **types** (default, outline, ghost, AI, etc.)
+- tous les **états** (default, hover, focus, disabled, error, active)
+- toutes les **tailles** (XS, Default, XL, etc.)
+- tous les **states** (filled, not filled, selected, etc.)
+
+#### 2c. Design tokens
+
+Appeler `get_variable_defs` sur le **nodeId frame** pour récupérer les tokens/variables utilisés :
+```json
+{ "nodeId": "<nodeId frame>" }
+```
+Vérifier que chaque token existe dans `src/styles/design-tokens.css`. Si un token manque, l'ajouter au bon niveau (Brand → Alias → Mapped).
+
+#### 2d. Screenshot de référence
+
+Appeler `get_screenshot` sur le **nodeId frame** pour obtenir une vue d'ensemble visuelle du composant :
+```json
+{ "nodeId": "<nodeId frame>" }
+```
+
+### 3. Déterminer : création ou mise à jour
+
+- Vérifier si `src/components/Ui<Nom>.vue` existe.
+  - **N'existe pas** → création (étape 4).
+  - **Existe** → mise à jour (étape 5).
+
+### 4. Création d'un nouveau composant
+
+#### 4a. Fichier Vue
+
+Créer `src/components/Ui<Nom>.vue` en respectant les conventions du projet :
+
+**Template :**
+- Préfixe BEM : `ui-<nom>` (ex: `ui-button`, `ui-input`)
+- Classes conditionnelles via `computed` (pas de `:class` inline complexe)
+- Slots pour le contenu extensible
+
+**Script setup :**
+- `<script setup lang="ts">`
+- Types explicites pour les props (union types pour variants/states)
+- `withDefaults(defineProps<{...}>(), {...})`
+- `defineEmits<{...}>()`
+- Résolution d'icônes via `defineAsyncComponent` + `@tabler/icons-vue` (pattern identique à UiButton/UiInput)
+- Computed pour les classes conditionnelles
+
+**Style :**
+- `<style scoped>`
+- Variables CSS du design system (jamais de valeurs en dur si un token existe)
+- Structure organisée par sections : Base → Sizes → Variants → States → Overrides
+- Transitions CSS pour les changements d'état (0.15s–0.2s ease)
+
+#### 4b. Export
+
+Ajouter l'export dans `src/index.ts` :
+```typescript
+export { default as Ui<Nom> } from "./components/Ui<Nom>.vue";
+```
+
+#### 4c. Playground
+
+Ajouter une section dans `playground/App.vue` (onglet Composants) :
+- `<section>` avec `<h2>Ui<Nom></h2>`
+- Démos de chaque variant et état
+- Import dans le `<script setup>`
+
+#### 4d. Mapping
+
+Ajouter le composant dans le mapping du fichier `real-estate-ui-scan.mdc` avec ses nodeIds.
+
+### 5. Mise à jour d'un composant existant
+
+#### 5a. Comparaison systématique
+
+Lire le fichier `.vue` existant. Comparer **propriété par propriété** avec les données Figma :
+
+| Propriété          | Source Figma (design_context)           | Source code (.vue)              |
+|--------------------|----------------------------------------|----------------------------------|
+| Couleurs           | `bg-[var(--token)]`, `text-[color:...]`| `background-color: var(--token)` |
+| Bordures           | `border-[var(--token)]`, `border-solid`| `border: ... solid var(--token)` |
+| Border-radius      | `rounded-[var(--token)]`               | `border-radius: var(--token)`    |
+| Padding            | `px-[var(--token)]`, `py-[...]`        | `padding: var(--token)`          |
+| Gap                | `gap-[var(--token)]`                   | `gap: var(--token)`              |
+| Typographie        | `font-[...]`, `text-[length:...]`      | `font-size`, `font-weight`, etc. |
+| Variants           | Noms des `<symbol>` (Type=xxx)         | Union type dans `defineProps`    |
+| États              | Status=hover/disabled/error/...        | Classes CSS `:hover`, `:disabled`|
+| Tailles            | Button size=XS/Default/...             | Union type `Size`                |
+
+#### 5b. Appliquer les modifications
+
+- **Nouveau variant/type** → ajouter le type dans l'union, le CSS correspondant, et la démo playground.
+- **Propriété CSS modifiée** → mettre à jour la valeur dans `<style scoped>`.
+- **Nouveau token** → l'ajouter dans `design-tokens.css` puis l'utiliser dans le composant.
+- **Prop ajoutée/supprimée** → mettre à jour `defineProps` et le template.
+- **Ne JAMAIS écraser** le fichier sans avoir comparé chaque section.
+
+#### 5c. Playground
+
+Mettre à jour la section correspondante dans `playground/App.vue` pour refléter les modifications.
+
+### 6. Vérification finale
+
+Avant de livrer le code :
+
+- [ ] Tous les variants Figma sont implémentés
+- [ ] Tous les états (hover, focus, disabled, error) sont gérés
+- [ ] Toutes les tailles sont couvertes
+- [ ] Les tokens CSS utilisés existent dans `design-tokens.css`
+- [ ] Le composant est exporté dans `src/index.ts`
+- [ ] Le playground contient des démos pour chaque variant/état
+- [ ] Le mapping dans `real-estate-ui-scan.mdc` est à jour
+- [ ] Pas de valeurs CSS en dur (toujours des tokens)
+- [ ] Le code compile sans erreur
+
+---
+
+## Conventions du projet
+
+### Nommage
+- Composant : `Ui<NomPascalCase>` (ex: `UiButton`, `UiDynamicInput`)
+- Fichier : `Ui<NomPascalCase>.vue`
+- Classe CSS racine : `ui-<nom-kebab>` (ex: `ui-button`, `ui-dynamic-input`)
+- BEM : `ui-<nom>__<element>--<modifier>` (ex: `ui-button__icon--left`)
+
+### Stack technique
+- **Vue 3** avec `<script setup lang="ts">`
+- **Quasar** pour certains composants de base (`q-btn`, `q-tooltip`)
+- **@tabler/icons-vue** pour les icônes (chargement dynamique via `defineAsyncComponent`)
+- **CSS scoped** avec variables du design system
+- **Pas de Tailwind** dans le code final
+
+### Tokens CSS
+- Structure à 4 niveaux : Brand → Alias → Mapped → Component
+- Fichier : `src/styles/design-tokens.css`
+- Toujours référencer les tokens mapped (ex: `var(--surface-action)`) sauf pour les tokens composant spécifiques
+
+### Traduction Figma → Code
+Le MCP retourne du React+Tailwind. **Toujours convertir** :
+- `bg-[var(--token)]` → `background-color: var(--token)`
+- `text-[color:var(--token)]` → `color: var(--token)`
+- `border-[var(--token)]` → `border-color: var(--token)`
+- `rounded-[var(--token)]` → `border-radius: var(--token)`
+- `px-[var(--token)]` / `py-[var(--token)]` → `padding`
+- `gap-[var(--token)]` → `gap: var(--token)`
+- Les noms de tokens Figma utilisent `/` (ex: `--surface/action`) → les convertir en `-` (ex: `--surface-action`)
+
+---
+
+## Comportements interdits
+
+- Ne JAMAIS demander un lien Figma à l'utilisateur
+- Ne JAMAIS supposer la structure sans inspecter via MCP
+- Ne JAMAIS livrer un composant avec des variants manquants
+- Ne JAMAIS ignorer un état (hover, disabled, error, focus)
+- Ne JAMAIS utiliser de valeurs CSS en dur si un token existe
+- Ne JAMAIS écraser un fichier existant sans comparaison préalable
+- Ne JAMAIS omettre l'ajout au playground et à l'index d'export

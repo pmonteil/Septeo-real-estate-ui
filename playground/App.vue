@@ -568,41 +568,88 @@
     <!-- UIBADGE               -->
     <!-- ===================== -->
     <section>
-      <h2>UiBadge - Taille Default (avec nombre)</h2>
+      <h2>UiBadge - Type Notifications</h2>
       <div class="row">
         <div class="input-demo">
-          <span class="input-demo__label">Default (bleu)</span>
-          <UiBadge :value="5" status="default" />
+          <span class="input-demo__label">Unselected</span>
+          <UiBadge :value="5" type="notifications" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">Error (rouge)</span>
-          <UiBadge :value="12" status="error" />
-        </div>
-        <div class="input-demo">
-          <span class="input-demo__label">Success (vert)</span>
-          <UiBadge :value="99" status="success" />
+          <span class="input-demo__label">Selected</span>
+          <UiBadge :value="12" type="notifications" :selected="true" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">Max dépassé</span>
-          <UiBadge :value="150" :max="99" status="error" />
+          <UiBadge :value="150" :max="99" type="notifications" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS Unselected</span>
+          <UiBadge size="xs" type="notifications" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS Selected</span>
+          <UiBadge size="xs" type="notifications" :selected="true" />
         </div>
       </div>
     </section>
 
     <section>
-      <h2>UiBadge - Taille XS (point)</h2>
+      <h2>UiBadge - Type Quantity</h2>
+      <div class="row">
+        <div class="input-demo">
+          <span class="input-demo__label">Unselected</span>
+          <UiBadge :value="99" type="quantity" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Selected</span>
+          <UiBadge :value="99" type="quantity" :selected="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIFILTER              -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiFilter - Default</h2>
       <div class="row">
         <div class="input-demo">
           <span class="input-demo__label">Default</span>
-          <UiBadge size="xs" status="default" />
+          <UiFilter label="Type de bien" icon="building" :count="12" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">Error</span>
-          <UiBadge size="xs" status="error" />
+          <span class="input-demo__label">Active</span>
+          <UiFilter label="Ville" icon="map-pin" :count="3" :active="true" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">Success</span>
-          <UiBadge size="xs" status="success" />
+          <span class="input-demo__label">Sans badge</span>
+          <UiFilter label="Statut" icon="filter" :show-badge="false" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Sans icône</span>
+          <UiFilter label="Prix" :count="5" :show-dropdown="false" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>UiFilter - XS</h2>
+      <div class="row">
+        <div class="input-demo">
+          <span class="input-demo__label">XS Default</span>
+          <UiFilter label="Type de bien" icon="building" :count="12" size="xs" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS Active</span>
+          <UiFilter label="Ville" icon="map-pin" :count="3" :active="true" size="xs" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS Sans badge</span>
+          <UiFilter label="Statut" icon="filter" :show-badge="false" size="xs" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS Sans icône</span>
+          <UiFilter label="Prix" :count="5" :show-dropdown="false" size="xs" />
         </div>
       </div>
     </section>
@@ -1460,6 +1507,7 @@ import UiSelect from "../src/components/UiSelect.vue";
 import UiPopup from "../src/components/UiPopup.vue";
 import UiPopupIcon from "../src/components/UiPopupIcon.vue";
 import UiDynamicInput from "../src/components/UiDynamicInput.vue";
+import UiFilter from "../src/components/UiFilter.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);

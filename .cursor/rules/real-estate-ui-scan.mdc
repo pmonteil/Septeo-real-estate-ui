@@ -28,9 +28,11 @@ Chaque composant a un **nodeId frame** (la frame parent qui contient tous les va
 | UiDynamicInput   | 818:4847    | 818:4848                             |
 | UiToggle         | 219:7425    | 219:7425                             |
 | Balise dynamique (tags dans UiDynamicInput) | 818:7236 | 818:4579 |
+| UiFilter         | 3076:528    | 3076:469                             |
+| UiBadge          | 120:795     | 120:799                              |
 
 Composants sans nodeId Figma connu (à compléter quand trouvés) :
-UiCheckbox, UiRadio, UiSwitch, UiLink, UiBreadcrumb, UiAvatar, UiTag, UiBadge,
+UiCheckbox, UiRadio, UiSwitch, UiLink, UiBreadcrumb, UiAvatar, UiTag,
 UiSnackbar, UiPill, UiTab, UiTabDark, UiMenuOffice, UiTopbarOffice
 
 ## Procédure de scan

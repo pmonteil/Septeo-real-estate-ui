@@ -301,6 +301,7 @@
   --surface-ai-gradient-1: var(--alias-ai-300);
   --surface-ai-gradient-2: var(--alias-ai-500);
   --surface-ai-light: var(--alias-ai-50);
+  --surface-light-accent: var(--alias-accent-50);
   --surface-dynamic: var(--alias-ai-50);
 
   /* Gradients */
