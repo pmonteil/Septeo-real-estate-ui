@@ -250,8 +250,8 @@ defineExpose({ focusInput });
 }
 
 .ui-dynamic-input__field--disabled {
-  background-color: var(--surface-disable);
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
@@ -303,11 +303,6 @@ defineExpose({ focusInput });
   flex-shrink: 0;
 }
 
-/* Disabled tag variant */
-.ui-dynamic-input--disabled .ui-dynamic-input__tag {
-  background: var(--surface-disable);
-  border: var(--alias-border-width-sm) solid var(--border-default);
-}
 
 .ui-dynamic-input__tag-text {
   font-family: var(--font-family-body);
@@ -318,10 +313,6 @@ defineExpose({ focusInput });
   white-space: nowrap;
 }
 
-/* Disabled tag text */
-.ui-dynamic-input--disabled .ui-dynamic-input__tag-text {
-  color: var(--text-disable);
-}
 
 .ui-dynamic-input__tag-remove {
   display: flex;
@@ -343,10 +334,6 @@ defineExpose({ focusInput });
   opacity: 1;
 }
 
-/* Disabled tag remove button icon */
-.ui-dynamic-input--disabled .ui-dynamic-input__tag-remove {
-  color: var(--text-disable);
-}
 
 /* ─── Suffix { } ──────────────────────────────────────────────────────────────── */
 .ui-dynamic-input__suffix {
@@ -385,9 +372,8 @@ defineExpose({ focusInput });
 
 .ui-dynamic-input__suffix--disabled,
 .ui-dynamic-input__suffix:disabled {
-  background-color: var(--surface-disable);
-  border-color: var(--border-disabled);
-  color: var(--text-disable);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 

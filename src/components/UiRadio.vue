@@ -69,10 +69,8 @@ const emit = defineEmits<{
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
 
-// Check if this radio is selected
 const isChecked = computed(() => props.modelValue === props.value);
 
-// Root classes
 const rootClasses = computed(() => ({
   "ui-radio--disabled": props.disabled,
   "ui-radio--error": props.error,
@@ -80,15 +78,12 @@ const rootClasses = computed(() => ({
   "ui-radio--checked": isChecked.value,
 }));
 
-// Circle classes
 const circleClasses = computed(() => ({
   "ui-radio__circle--checked": isChecked.value,
-  "ui-radio__circle--disabled": props.disabled,
   "ui-radio__circle--error": props.error,
   "ui-radio__circle--focused": isFocused.value,
 }));
 
-// Event handlers
 function onChange() {
   if (props.value !== undefined) {
     emit("update:modelValue", props.value);
@@ -106,7 +101,6 @@ function onBlur(event: FocusEvent) {
   emit("blur", event);
 }
 
-// Expose methods
 defineExpose({
   focus: () => inputRef.value?.focus(),
   blur: () => inputRef.value?.blur(),
@@ -117,12 +111,22 @@ defineExpose({
 .ui-radio {
   display: inline-flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-md);
+  height: 36px;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
   cursor: pointer;
   user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.ui-radio--checked {
+  background-color: var(--surface-light-action);
 }
 
 .ui-radio--disabled {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
@@ -148,12 +152,11 @@ defineExpose({
   height: 18px;
   flex-shrink: 0;
   background-color: var(--surface-field);
-  border: var(--alias-border-width-sm) solid var(--border-default);
+  border: var(--alias-border-width-sm) solid var(--border-action-neutral);
   border-radius: 50%;
   transition: all 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Animation au changement d'état */
 .ui-radio__native:active + .ui-radio__circle {
   transform: scale(0.85);
 }
@@ -176,8 +179,8 @@ defineExpose({
 
 /* Hover state - unchecked */
 .ui-radio:hover:not(.ui-radio--disabled):not(.ui-radio--error) .ui-radio__circle:not(.ui-radio__circle--checked) {
-  background-color: var(--surface-default);
-  border-color: var(--border-action);
+  background-color: var(--surface-light-action-hover);
+  border-color: var(--border-action-hover);
 }
 
 /* Hover state - checked */
@@ -199,37 +202,25 @@ defineExpose({
 
 /* Error state - unchecked */
 .ui-radio__circle--error:not(.ui-radio__circle--checked) {
-  border-color: var(--border-error);
+  border-color: var(--border-danger);
 }
 
 /* Error state - checked */
 .ui-radio__circle--error.ui-radio__circle--checked {
-  background-color: var(--alias-error-default);
-  border-color: var(--alias-error-default);
+  background-color: var(--alias-danger-default);
+  border-color: var(--alias-danger-default);
 }
 
 /* Error hover state - unchecked */
 .ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__circle--error:not(.ui-radio__circle--checked) {
-  background-color: var(--surface-error);
-  border-color: var(--alias-error-600);
+  background-color: var(--surface-danger);
+  border-color: var(--alias-danger-600);
 }
 
 /* Error hover state - checked */
 .ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__circle--error.ui-radio__circle--checked {
-  background-color: var(--alias-error-600);
-  border-color: var(--alias-error-600);
-}
-
-/* Disabled state - unchecked */
-.ui-radio__circle--disabled:not(.ui-radio__circle--checked) {
-  background-color: var(--surface-disable);
-  border-color: var(--border-disabled);
-}
-
-/* Disabled state - checked */
-.ui-radio__circle--disabled.ui-radio__circle--checked {
-  background-color: var(--alias-neutral-300);
-  border-color: var(--alias-neutral-300);
+  background-color: var(--alias-danger-600);
+  border-color: var(--alias-danger-600);
 }
 
 /* ==========================================
@@ -270,24 +261,23 @@ defineExpose({
   color: var(--text-body);
 }
 
+/* Checked: label becomes action color */
+.ui-radio--checked .ui-radio__label {
+  color: var(--text-action);
+}
+
+/* Hover checked: label becomes action-hover color */
+.ui-radio--checked:hover:not(.ui-radio--disabled) .ui-radio__label {
+  color: var(--text-action-hover);
+}
+
 /* Error label */
 .ui-radio--error .ui-radio__label {
-  color: var(--text-error);
-}
-
-/* Disabled label */
-.ui-radio--disabled .ui-radio__label {
-  color: var(--text-disable);
-}
-
-/* Hover animation for label */
-.ui-radio:hover:not(.ui-radio--disabled) .ui-radio__label {
-  color: var(--text-action-hover);
+  color: var(--text-danger);
 }
 
 /* Keep error color on hover for error state */
 .ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__label {
-  color: var(--text-error);
+  color: var(--text-danger);
 }
 </style>
-

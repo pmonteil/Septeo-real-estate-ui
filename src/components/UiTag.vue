@@ -9,6 +9,7 @@
   >
     <span class="ui-tag__label">{{ props.label }}</span>
     <component
+      v-if="showIcon"
       :is="iconComponent"
       class="ui-tag__icon"
       :size="14"
@@ -37,17 +38,17 @@ const emit = defineEmits<{
   (e: "toggle", selected: boolean): void;
 }>();
 
-// Prevent shake animation right after clicking (until mouse leaves and re-enters)
 const canShake = ref(true);
 
-// Root classes
+const showIcon = computed(() => !props.disabled);
+
 const rootClasses = computed(() => ({
   "ui-tag--selected": props.selected,
   "ui-tag--disabled": props.disabled,
   "ui-tag--can-shake": canShake.value,
+  "ui-tag--no-icon": !showIcon.value,
 }));
 
-// Convert icon name to PascalCase for @tabler/icons-vue
 function toIconName(name: string): string {
   return (
     "Icon" +
@@ -58,11 +59,10 @@ function toIconName(name: string): string {
   );
 }
 
-// Icon component based on selected state
 const iconComponent = computed(() => {
   const iconName = props.selected ? "x" : "plus";
   const componentName = toIconName(iconName);
-  
+
   return defineAsyncComponent(() =>
     import("@tabler/icons-vue").then((module) => {
       const icons = module as unknown as Record<string, Component>;
@@ -80,14 +80,12 @@ const iconComponent = computed(() => {
 
 function onClick(event: MouseEvent) {
   if (props.disabled) return;
-  // Disable shake animation until mouse leaves
   canShake.value = false;
   emit("click", event);
   emit("toggle", !props.selected);
 }
 
 function onMouseLeave() {
-  // Re-enable shake animation when mouse leaves
   canShake.value = true;
 }
 </script>
@@ -97,9 +95,10 @@ function onMouseLeave() {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--gap-icon-text);
-  padding: var(--brand-scale-4);
-  border-radius: var(--alias-border-radius-md);
+  gap: var(--spacing-sm);
+  height: 22px;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   background: transparent;
   cursor: pointer;
   font-family: var(--font-family-body);
@@ -107,6 +106,10 @@ function onMouseLeave() {
   line-height: var(--body-small-line-height);
   color: var(--text-body);
   transition: all 0.2s ease;
+}
+
+.ui-tag--no-icon {
+  gap: 0;
 }
 
 /* Unselected state - dashed border, regular font */
@@ -121,7 +124,12 @@ function onMouseLeave() {
   font-weight: var(--font-weight-medium);
 }
 
-/* Pop animation only on initial selection (when canShake is false = just clicked) */
+/* Disabled selected: revert font-weight to regular */
+.ui-tag--selected.ui-tag--disabled {
+  font-weight: var(--font-weight-regular);
+}
+
+/* Pop animation only on initial selection */
 .ui-tag--selected:not(.ui-tag--can-shake) {
   animation: tag-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -165,17 +173,16 @@ function onMouseLeave() {
  * ========================================== */
 
 .ui-tag--selected:hover:not(.ui-tag--disabled) {
-  border-color: var(--border-error);
+  border-color: var(--border-danger);
   border-style: solid;
 }
 
-/* Only shake if canShake is true (mouse has left and re-entered) */
 .ui-tag--selected.ui-tag--can-shake:hover:not(.ui-tag--disabled) {
   animation: tag-shake 0.5s ease-in-out infinite;
 }
 
 .ui-tag--selected:hover:not(.ui-tag--disabled) .ui-tag__icon {
-  color: var(--border-error);
+  color: var(--border-danger);
 }
 
 @keyframes tag-shake {
@@ -207,13 +214,9 @@ function onMouseLeave() {
  * ========================================== */
 
 .ui-tag--disabled {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
-  border-color: var(--border-disabled);
-  color: var(--text-disable);
-}
-
-.ui-tag--disabled .ui-tag__icon {
-  color: var(--text-disable);
 }
 
 /* ==========================================
@@ -224,4 +227,3 @@ function onMouseLeave() {
   transform: scale(0.95);
 }
 </style>
-

@@ -33,5 +33,10 @@ export { default as UiPopupIcon } from "./components/UiPopupIcon.vue";
 export { default as UiDynamicInput } from "./components/UiDynamicInput.vue";
 export { default as UiFilter } from "./components/UiFilter.vue";
 export { default as UiContainersHeader } from "./components/UiContainersHeader.vue";
+export { default as UiAccordion } from "./components/UiAccordion.vue";
+export {
+  default as UiDropdown,
+  type DropdownItem,
+} from "./components/UiDropdown.vue";
 // Re-export Vue utilities for icons
 export { markRaw } from "vue";

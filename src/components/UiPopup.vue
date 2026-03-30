@@ -72,7 +72,7 @@ import { computed, defineAsyncComponent, type Component } from "vue";
 import UiPopupIcon from "./UiPopupIcon.vue";
 import UiButton from "./UiButton.vue";
 
-type PopupVariant = "positive" | "negative";
+type PopupVariant = "neutral" | "danger";
 type IconVariant = "information" | "error" | "warning" | "neutral";
 type ButtonVariant =
   | "primary"
@@ -99,7 +99,7 @@ const props = withDefaults(
   }>(),
   {
     modelValue: false,
-    variant: "positive",
+    variant: "neutral",
     title: "",
     description: "",
     iconVariant: undefined,
@@ -123,7 +123,7 @@ const emit = defineEmits<{
 // Determine icon variant based on popup variant if not explicitly set
 const computedIconVariant = computed<IconVariant>(() => {
   if (props.iconVariant) return props.iconVariant;
-  return props.variant === "negative" ? "error" : "information";
+  return props.variant === "danger" ? "error" : "information";
 });
 
 // Pass computed icon variant to the icon
@@ -131,7 +131,7 @@ const iconVariant = computed(() => computedIconVariant.value);
 
 // Determine confirm button variant
 const confirmVariant = computed<ButtonVariant>(() => {
-  return props.variant === "negative" ? "error" : "primary";
+  return props.variant === "danger" ? "error" : "primary";
 });
 
 // Show actions if at least one button label is provided

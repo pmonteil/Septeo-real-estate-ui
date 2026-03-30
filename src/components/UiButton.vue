@@ -276,9 +276,8 @@ function handleClick(event: Event) {
 
 .ui-button--primary:disabled,
 .ui-button--primary.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* SECONDARY (outline dans Figma) */
@@ -300,9 +299,8 @@ function handleClick(event: Event) {
 
 .ui-button--secondary:disabled,
 .ui-button--secondary.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* GHOST (transparent dans Figma) */
@@ -324,8 +322,8 @@ function handleClick(event: Event) {
 
 .ui-button--ghost:disabled,
 .ui-button--ghost.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* THIRD (fond bleu clair, pas de bordure par défaut) */
@@ -348,9 +346,8 @@ function handleClick(event: Event) {
 
 .ui-button--third:disabled,
 .ui-button--third.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
-  border: var(--alias-border-width-sm) solid var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* ERROR */
@@ -367,8 +364,8 @@ function handleClick(event: Event) {
 
 .ui-button--error:disabled,
 .ui-button--error.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* ACCENT (orange) */
@@ -390,9 +387,8 @@ function handleClick(event: Event) {
 
 .ui-button--accent:disabled,
 .ui-button--accent.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* TERTIARY (fond gris neutre) */
@@ -419,9 +415,8 @@ function handleClick(event: Event) {
 
 .ui-button--tertiary:disabled,
 .ui-button--tertiary.disabled {
-  background-color: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
-  border: var(--alias-border-width-sm) solid var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* AI (gradient violet) */
@@ -450,8 +445,8 @@ function handleClick(event: Event) {
 
 .ui-button--ai:disabled,
 .ui-button--ai.disabled {
-  background: var(--surface-disable) !important;
-  color: var(--text-disable) !important;
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
 }
 
 /* ======================== */

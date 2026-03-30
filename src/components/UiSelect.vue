@@ -475,8 +475,8 @@ defineExpose({
 
 /* Disabled state */
 .ui-select__field--disabled {
-  background-color: var(--surface-disable);
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
@@ -508,10 +508,6 @@ defineExpose({
   color: var(--text-error);
 }
 
-/* Disabled state */
-.ui-select__field--disabled .ui-select__value {
-  color: var(--text-disable);
-}
 
 /* ==========================================
  * ICONS
@@ -561,10 +557,6 @@ defineExpose({
 /* Error state - icons */
 .ui-select__field--error .ui-select__icon {
   color: var(--icon-error);
-}
-
-.ui-select__field--disabled .ui-select__icon {
-  color: var(--icon-disable);
 }
 
 /* Hover state - icons */

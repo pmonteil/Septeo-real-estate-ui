@@ -1,11 +1,10 @@
 /**
  * Design Tokens CSS Variables
- * Généré à partir de design-tokens.tokens.json
+ * Généré à partir du Design System Figma — v1.1
  * 
- * Structure: Brand → Alias → Mapped → Component
+ * Structure: Brand → Alias → Mapped → Responsive → Component
  */
 
-/* Import Inter font with all weights */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
@@ -13,9 +12,14 @@
    * BRAND TOKENS - Couleurs de base
    * ======================================== */
 
+  /* Foundation */
+  --brand-foundation-black: #000000;
+  --brand-foundation-white: #ffffff;
+
   /* Grey */
   --brand-grey-10: #fcfcfd;
   --brand-grey-50: #f5f7f9;
+  --brand-grey-60: #f5f7f9;
   --brand-grey-75: #eef0f5;
   --brand-grey-100: #dde2eb;
   --brand-grey-200: #c5cddd;
@@ -112,10 +116,6 @@
   --brand-purple-900: #4d198a;
   --brand-purple-950: #2a0f4a;
 
-  /* Foundation */
-  --brand-foundation-black: #000000;
-  --brand-foundation-white: #ffffff;
-
   /* Scale */
   --brand-scale-0: 0px;
   --brand-scale-1: 1px;
@@ -129,6 +129,10 @@
   --brand-scale-24: 24px;
   --brand-scale-28: 28px;
   --brand-scale-32: 32px;
+  --brand-scale-100: 100px;
+
+  /* Opacity */
+  --brand-opacity-50: 0.5;
 
   /* ========================================
    * ALIAS TOKENS - Référence sémantique
@@ -162,19 +166,19 @@
   --alias-accent-900: var(--brand-orange-900);
   --alias-accent-950: var(--brand-orange-950);
 
-  /* Error (red) */
-  --alias-error-10: var(--brand-red-10);
-  --alias-error-50: var(--brand-red-50);
-  --alias-error-100: var(--brand-red-100);
-  --alias-error-200: var(--brand-red-200);
-  --alias-error-300: var(--brand-red-300);
-  --alias-error-400: var(--brand-red-400);
-  --alias-error-default: var(--brand-red-500);
-  --alias-error-600: var(--brand-red-600);
-  --alias-error-700: var(--brand-red-700);
-  --alias-error-800: var(--brand-red-800);
-  --alias-error-900: var(--brand-red-900);
-  --alias-error-950: var(--brand-red-950);
+  /* Danger (red) — renamed from Error */
+  --alias-danger-10: var(--brand-red-10);
+  --alias-danger-50: var(--brand-red-50);
+  --alias-danger-100: var(--brand-red-100);
+  --alias-danger-200: var(--brand-red-200);
+  --alias-danger-300: var(--brand-red-300);
+  --alias-danger-400: var(--brand-red-400);
+  --alias-danger-default: var(--brand-red-500);
+  --alias-danger-600: var(--brand-red-600);
+  --alias-danger-700: var(--brand-red-700);
+  --alias-danger-800: var(--brand-red-800);
+  --alias-danger-900: var(--brand-red-900);
+  --alias-danger-950: var(--brand-red-950);
 
   /* Success (green) */
   --alias-success-10: var(--brand-green-10);
@@ -193,6 +197,7 @@
   /* Neutral (grey) */
   --alias-neutral-10: var(--brand-grey-10);
   --alias-neutral-50: var(--brand-grey-50);
+  --alias-neutral-60: var(--brand-grey-60);
   --alias-neutral-75: var(--brand-grey-75);
   --alias-neutral-100: var(--brand-grey-100);
   --alias-neutral-200: var(--brand-grey-200);
@@ -221,6 +226,9 @@
   --alias-warning-900: var(--brand-yellow-900);
   --alias-warning-950: var(--brand-yellow-950);
 
+  /* Information (blue — default = Blue/600) */
+  --alias-information-default: var(--brand-blue-600);
+
   /* AI (purple) */
   --alias-ai-10: var(--brand-purple-10);
   --alias-ai-50: var(--brand-purple-50);
@@ -241,12 +249,6 @@
   --alias-border-width-md: var(--brand-scale-2);
   --alias-border-width-lg: var(--brand-scale-4);
 
-  /* Border Radius */
-  --alias-border-radius-none: var(--brand-scale-0);
-  --alias-border-radius-sm: var(--brand-scale-6);
-  --alias-border-radius-md: var(--brand-scale-4);
-  --alias-border-radius-lg: var(--brand-scale-8);
-
   /* ========================================
    * MAPPED TOKENS - Usage contextuel
    * ======================================== */
@@ -254,83 +256,170 @@
   /* Text */
   --text-headings: var(--alias-neutral-black);
   --text-body: var(--alias-neutral-900);
-  --text-body-secondary: var(--alias-neutral-default);
+  --text-body-secondary: var(--alias-neutral-700);
+  --text-placeholder: var(--alias-neutral-600);
+  --text-placeholder-negative: var(--alias-neutral-600);
   --text-action: var(--alias-primary-default);
   --text-action-hover: var(--alias-primary-600);
-  --text-disable: var(--alias-neutral-default);
+  --text-dynamic: var(--alias-ai-500);
+  --text-action-ai: var(--alias-ai-default);
+  --text-action-ai-hover: var(--alias-ai-500);
   --text-on-action: var(--alias-neutral-white);
-  --text-error: var(--alias-error-default);
-  --text-success: var(--alias-success-default);
+  --text-information: var(--alias-information-default);
   --text-warning: var(--alias-warning-default);
-  --text-information: var(--alias-primary-600);
-  --text-placeholder: var(--alias-neutral-600);
+  --text-success: var(--alias-success-default);
+  --text-danger: var(--alias-danger-default);
   --text-accent: var(--alias-accent-default);
 
   /* Icon */
+  --icon-title: var(--alias-neutral-black);
   --icon-default: var(--alias-neutral-900);
-  --icon-secondary: var(--alias-neutral-500);
+  --icon-secondary: var(--alias-neutral-700);
   --icon-action: var(--alias-primary-default);
   --icon-action-hover: var(--alias-primary-600);
-  --icon-disable: var(--alias-neutral-default);
+  --icon-dynamic: var(--alias-ai-500);
+  --icon-action-ai: var(--alias-ai-default);
+  --icon-action-ai-hover: var(--alias-ai-500);
   --icon-on-action: var(--alias-neutral-white);
-  --icon-error: var(--alias-error-default);
-  --icon-success: var(--alias-success-default);
-  --icon-warning: var(--alias-warning-default);
   --icon-accent: var(--alias-accent-default);
   --icon-accent-hover: var(--alias-accent-500);
+  --icon-information: var(--alias-information-default);
+  --icon-warning: var(--alias-warning-default);
+  --icon-success: var(--alias-success-default);
+  --icon-danger: var(--alias-danger-default);
 
   /* Surface */
   --surface-page: var(--alias-primary-900);
-  --surface-default: var(--alias-neutral-white);
-  --surface-default-bis: var(--alias-neutral-75);
   --surface-field: var(--alias-neutral-10);
+  --surface-field-negative: var(--alias-neutral-white);
+  --surface-default: var(--alias-neutral-white);
+  --surface-default-bis: var(--alias-neutral-60);
+  --surface-neutral-hover: var(--alias-neutral-60);
   --surface-action: var(--alias-primary-default);
   --surface-action-hover: var(--alias-primary-600);
+  --surface-active: var(--alias-primary-400);
+  --surface-dynamic: var(--alias-ai-50);
   --surface-light-action: var(--alias-primary-50);
   --surface-light-action-hover: var(--alias-primary-100);
-  --surface-disable: var(--alias-neutral-75);
-  --surface-neutral-hover: var(--alias-neutral-75);
-  --surface-error: var(--alias-error-50);
-  --surface-error-hover: var(--alias-error-100);
+  --surface-light-accent: var(--alias-accent-50);
+  --surface-light-accent-hover: var(--alias-accent-100);
+  --surface-accent: var(--alias-accent-default);
+  --surface-accent-hover: var(--alias-accent-500);
+  --surface-unselected: var(--alias-neutral-200);
+  --surface-unselected-hover: var(--alias-neutral-300);
   --surface-success: var(--alias-success-50);
   --surface-warning: var(--alias-warning-50);
   --surface-information: var(--alias-primary-50);
-  --surface-accent: var(--alias-accent-default);
-  --surface-accent-hover: var(--alias-accent-500);
-  --surface-active: var(--alias-primary-400);
+  --surface-danger: var(--alias-danger-50);
+  --surface-danger-hover: var(--alias-danger-100);
   --surface-ai-gradient-1: var(--alias-ai-300);
   --surface-ai-gradient-2: var(--alias-ai-500);
   --surface-ai-light: var(--alias-ai-50);
-  --surface-light-accent: var(--alias-accent-50);
-  --surface-dynamic: var(--alias-ai-50);
+  --surface-orange-gradient-1: var(--alias-accent-300);
+  --surface-orange-gradient-2: var(--alias-accent-default);
 
   /* Gradients */
-  --gradient-menu-active: linear-gradient(90deg, #ff9271 0%, #ff6136 100%);
+  --gradient-menu-active: linear-gradient(90deg, var(--surface-orange-gradient-1) 0%, var(--surface-orange-gradient-2) 100%);
 
   /* Border */
   --border-default: var(--alias-neutral-100);
   --border-default-light: var(--alias-neutral-75);
+  --border-white: var(--alias-neutral-white);
+  --border-negative: var(--alias-primary-900);
+  --border-negative-light: var(--alias-neutral-700);
+  --border-dark: var(--alias-neutral-900);
+  --border-success: var(--alias-success-100);
+  --border-information: var(--alias-primary-100);
+  --border-warning: var(--alias-warning-100);
+  --border-danger: var(--alias-danger-default);
   --border-action: var(--alias-primary-default);
   --border-action-hover: var(--alias-primary-600);
-  --border-action-neutral: var(--brand-grey-200);
-  --border-light-action: var(--alias-primary-50);
-  --border-light-action-hover: var(--alias-primary-100);
-  --border-disabled: var(--alias-neutral-75);
-  --border-focus: var(--alias-primary-default);
-  --border-error: var(--alias-error-default);
-  --border-success: var(--alias-success-100);
-  --border-warning: var(--alias-warning-100);
-  --border-information: var(--alias-primary-100);
+  --border-action-neutral: var(--alias-neutral-200);
   --border-action-accent: var(--alias-accent-default);
   --border-action-accent-hover: var(--alias-accent-500);
-  --border-white: var(--alias-neutral-white);
+  --border-focus: var(--alias-primary-default);
+  --border-light-action: var(--alias-primary-50);
+  --border-light-action-hover: var(--alias-primary-100);
   --border-action-ai: var(--alias-ai-default);
   --border-action-ai-hover: var(--alias-ai-500);
-  --border-dark: var(--alias-neutral-900);
   --border-dynamic: var(--alias-ai-100);
+  --border-dynamic-dark: var(--alias-ai-500);
+
+  /* Context Colors */
+  --context-grey-light: var(--alias-neutral-50);
+  --context-grey-dark: var(--alias-neutral-600);
+  --context-blue-lighter: var(--alias-primary-50);
+  --context-blue-light: var(--alias-primary-200);
+  --context-blue-default: var(--alias-primary-300);
+  --context-blue-dark: var(--alias-primary-400);
+  --context-blue-darker: var(--alias-primary-600);
+  --context-red-lighter: var(--alias-danger-50);
+  --context-red-light: var(--alias-danger-200);
+  --context-red-default: var(--alias-danger-300);
+  --context-red-dark: var(--alias-danger-400);
+  --context-red-darker: var(--alias-danger-600);
+  --context-green-lighter: var(--brand-green-50);
+  --context-green-light: var(--brand-green-200);
+  --context-green-default: var(--brand-green-300);
+  --context-green-dark: var(--brand-green-400);
+  --context-green-darker: var(--brand-green-600);
+  --context-purple-lighter: var(--brand-purple-50);
+  --context-purple-light: var(--brand-purple-200);
+  --context-purple-default: var(--brand-purple-300);
+  --context-purple-dark: var(--brand-purple-400);
+  --context-purple-darker: var(--brand-purple-600);
+  --context-orange-lighter: var(--brand-orange-50);
+  --context-orange-light: var(--brand-orange-200);
+  --context-orange-default: var(--brand-orange-300);
+  --context-orange-dark: var(--brand-orange-400);
+  --context-orange-darker: var(--brand-orange-600);
+
+  /* Glow */
+  --glow-primary: var(--alias-primary-200);
+  --glow-ia: var(--alias-ai-200);
+  --glow-accent: var(--alias-accent-200);
+  --glow-error: var(--alias-danger-200);
+  --glow-tertiary: var(--alias-neutral-200);
 
   /* Shadow */
   --shadow-tertiary: var(--alias-neutral-200);
+
+  /* ========================================
+   * RESPONSIVE TOKENS - Spacing / Radius / Sizing
+   * ======================================== */
+
+  /* Spacing (Desktop values) */
+  --spacing-none: var(--brand-scale-0);
+  --spacing-xs: var(--brand-scale-2);
+  --spacing-sm: var(--brand-scale-4);
+  --spacing-md: var(--brand-scale-8);
+  --spacing-lg: var(--brand-scale-12);
+  --spacing-xl: var(--brand-scale-16);
+  --spacing-2xl: var(--brand-scale-20);
+  --spacing-3xl: var(--brand-scale-24);
+  --spacing-4xl: var(--brand-scale-32);
+
+  /* Radius (Desktop values) */
+  --radius-none: var(--brand-scale-0);
+  --radius-sm: var(--brand-scale-4);
+  --radius-md: var(--brand-scale-6);
+  --radius-lg: var(--brand-scale-8);
+  --radius-xl: var(--brand-scale-12);
+  --radius-full: var(--brand-scale-100);
+
+  /* Sizing */
+  --sizing-icon-xxxs: 10px;
+  --sizing-icon-xxs: 14px;
+  --sizing-icon-xs: 18px;
+  --sizing-icon-default: 20px;
+  --sizing-icon-xl: 48px;
+  --sizing-sm: 16px;
+  --sizing-md: 20px;
+  --sizing-lg: 24px;
+  --sizing-xl: 32px;
+
+  /* Opacity */
+  --opacity-disabled: 0.5;
 
   /* ========================================
    * TYPOGRAPHY TOKENS
@@ -344,56 +433,91 @@
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
 
-  /* Body */
-  --body-font-size: 14px;
-  --body-line-height: 20px;
-
-  /* Body Small */
-  --body-small-font-size: 12px;
-  --body-small-line-height: 18px;
-
-  /* Caption */
-  --caption-font-size: 10px;
-  --caption-line-height: 20px;
-
   /* H1 */
-  --h1-font-size: 20px;
-  --h1-line-height: 28px;
+  --h1-font-size: 40px;
+  --h1-line-height: 50px;
 
   /* H2 */
-  --h2-font-size: 18px;
+  --h2-font-size: 20px;
   --h2-line-height: 24px;
 
   /* H3 */
   --h3-font-size: 16px;
   --h3-line-height: 20px;
 
+  /* H4 */
+  --h4-font-size: 14px;
+  --h4-line-height: 20px;
+
+  /* Body */
+  --body-font-size: 14px;
+  --body-line-height: 20px;
+
+  /* Body Small */
+  --body-small-font-size: 12px;
+  --body-small-line-height: 12px;
+
+  /* Caption */
+  --caption-font-size: 10px;
+  --caption-line-height: 16px;
+
+  /* Mentions */
+  --mentions-font-size: 8px;
+  --mentions-line-height: 4px;
+
   /* ========================================
-   * COMPONENT TOKENS - Button
+   * COMPONENT TOKENS
    * ======================================== */
 
   /* Button Default (MD) */
-  --button-default-padding-y: var(--brand-scale-8);
-  --button-default-padding-x: var(--brand-scale-8);
-  --button-default-border-radius: var(--alias-border-radius-lg);
-  --button-default-icon-size: 20px;
+  --button-default-padding-y: var(--spacing-md);
+  --button-default-padding-x: var(--spacing-md);
+  --button-default-border-radius: var(--radius-lg);
+  --button-default-icon-size: var(--sizing-icon-default);
 
   /* Button XS (SM) */
-  --button-xs-padding-y: var(--brand-scale-4);
-  --button-xs-padding-x: 6px;
-  --button-xs-border-radius: var(--alias-border-radius-sm);
-  --button-xs-icon-size: 14px;
+  --button-xs-padding-y: var(--spacing-sm);
+  --button-xs-padding-x: var(--spacing-md);
+  --button-xs-border-radius: var(--radius-md);
+  --button-xs-icon-size: var(--sizing-icon-xxs);
 
   /* Button - Gap */
-  --gap-icon-text: var(--brand-scale-4);
+  --gap-icon-text: var(--spacing-sm);
+
+  /* Input/Field */
+  --gap-field-label: var(--spacing-sm);
+  --field-padding-x: var(--spacing-lg);
+  --field-padding-y: var(--spacing-md);
+  --field-border-radius: var(--radius-lg);
+  --field-icon-size: var(--sizing-icon-xs);
 
   /* ========================================
-   * COMPONENT TOKENS - Input/Field
+   * BACKWARD COMPATIBILITY ALIASES
+   * (for components still using old names)
    * ======================================== */
+  --alias-error-default: var(--alias-danger-default);
+  --alias-error-50: var(--alias-danger-50);
+  --alias-error-100: var(--alias-danger-100);
+  --alias-error-200: var(--alias-danger-200);
+  --alias-error-300: var(--alias-danger-300);
+  --alias-error-400: var(--alias-danger-400);
+  --alias-error-600: var(--alias-danger-600);
+  --alias-error-700: var(--alias-danger-700);
 
-  --gap-field-label: var(--brand-scale-4);
-  --field-padding-x: var(--brand-scale-12);
-  --field-padding-y: var(--brand-scale-8);
-  --field-border-radius: var(--alias-border-radius-lg);
-  --field-icon-size: 18px;
+  --alias-border-radius-none: var(--radius-none);
+  --alias-border-radius-sm: var(--radius-sm);
+  --alias-border-radius-md: var(--radius-md);
+  --alias-border-radius-lg: var(--radius-lg);
+  --alias-border-radius-xl: var(--radius-xl);
+  --alias-border-radius-full: var(--radius-full);
+
+  --text-error: var(--text-danger);
+  --icon-error: var(--icon-danger);
+  --surface-error: var(--surface-danger);
+  --surface-error-hover: var(--surface-danger-hover);
+  --border-error: var(--border-danger);
+  --text-disable: var(--alias-neutral-default);
+  --icon-disable: var(--alias-neutral-default);
+  --surface-disable: var(--alias-neutral-75);
+  --border-disabled: var(--alias-neutral-75);
 }

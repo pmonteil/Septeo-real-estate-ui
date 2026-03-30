@@ -108,6 +108,8 @@ defineExpose({
 }
 
 .ui-switch--disabled {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
@@ -186,17 +188,6 @@ defineExpose({
   border-color: var(--alias-error-600);
 }
 
-/* Disabled state - unchecked */
-.ui-switch__track--disabled:not(.ui-switch__track--checked) {
-  background-color: var(--alias-neutral-300);
-  border-color: var(--alias-neutral-300);
-}
-
-/* Disabled state - checked */
-.ui-switch__track--disabled.ui-switch__track--checked {
-  background-color: var(--alias-neutral-300);
-  border-color: var(--alias-neutral-300);
-}
 
 /* ==========================================
  * THUMB (the circle)
@@ -270,11 +261,6 @@ defineExpose({
 /* Error label */
 .ui-switch--error .ui-switch__label {
   color: var(--text-error);
-}
-
-/* Disabled label */
-.ui-switch--disabled .ui-switch__label {
-  color: var(--text-disable);
 }
 
 /* Hover animation for label */

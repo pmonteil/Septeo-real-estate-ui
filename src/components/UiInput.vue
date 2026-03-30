@@ -275,8 +275,8 @@ defineExpose({
 
 /* Disabled state */
 .ui-input__field--disabled {
-  background-color: var(--surface-disable);
-  border-color: var(--border-disabled);
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
   cursor: not-allowed;
 }
 
@@ -315,12 +315,7 @@ defineExpose({
 
 /* Disabled state */
 .ui-input__field--disabled .ui-input__native {
-  color: var(--text-disable);
   cursor: not-allowed;
-}
-
-.ui-input__field--disabled .ui-input__native::placeholder {
-  color: var(--text-disable);
 }
 
 /* ==========================================
@@ -365,9 +360,6 @@ defineExpose({
   color: var(--icon-error);
 }
 
-.ui-input__field--disabled .ui-input__icon {
-  color: var(--icon-disable);
-}
 
 /* Tooltip styling */
 .ui-input__tooltip {

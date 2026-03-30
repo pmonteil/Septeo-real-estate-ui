@@ -136,12 +136,12 @@
       <h2>UiPopup</h2>
       <div class="row">
         <UiButton
-          label="Popup positive"
+          label="Popup neutral"
           icon="info-circle"
           @click="showPopupPositive = true"
         />
         <UiButton
-          label="Popup négative"
+          label="Popup danger"
           icon="trash"
           variant="error"
           @click="showPopupNegative = true"
@@ -163,7 +163,7 @@
       <!-- Popup instances -->
       <UiPopup
         v-model="showPopupPositive"
-        variant="positive"
+        variant="neutral"
         title="Confirmer l'action"
         description="Êtes-vous sûr de vouloir confirmer cette action ? Cette opération peut prendre quelques instants."
         confirm-label="Je confirme"
@@ -175,7 +175,7 @@
 
       <UiPopup
         v-model="showPopupNegative"
-        variant="negative"
+        variant="danger"
         title="Supprimer cet élément ?"
         description="Cette action est irréversible. Toutes les données associées seront définitivement supprimées."
         confirm-label="Supprimer"
@@ -186,7 +186,7 @@
 
       <UiPopup
         v-model="showPopupWarning"
-        variant="positive"
+        variant="neutral"
         icon-variant="warning"
         title="Attention requise"
         description="Cette action nécessite votre attention. Veuillez vérifier les informations avant de continuer."
@@ -197,7 +197,7 @@
 
       <UiPopup
         v-model="showPopupNeutral"
-        variant="positive"
+        variant="neutral"
         icon-variant="neutral"
         title="Information"
         description="Ceci est une popup d'information générale avec une icône neutre."
@@ -624,27 +624,31 @@
     <!-- UIBADGE               -->
     <!-- ===================== -->
     <section>
-      <h2>UiBadge - Type Notifications</h2>
+      <h2>UiBadge - Type Notification</h2>
       <div class="row">
         <div class="input-demo">
-          <span class="input-demo__label">Unselected</span>
-          <UiBadge :value="5" type="notifications" />
+          <span class="input-demo__label">Not Selected</span>
+          <UiBadge :value="5" type="notification" status="not-selected" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">Selected</span>
-          <UiBadge :value="12" type="notifications" :selected="true" />
+          <UiBadge :value="12" type="notification" status="selected" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiBadge :value="3" type="notification" status="disabled" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">Max dépassé</span>
-          <UiBadge :value="150" :max="99" type="notifications" />
+          <UiBadge :value="150" :max="99" type="notification" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">XS Unselected</span>
-          <UiBadge size="xs" type="notifications" />
+          <span class="input-demo__label">XS Not Selected</span>
+          <UiBadge size="xs" type="notification" status="not-selected" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">XS Selected</span>
-          <UiBadge size="xs" type="notifications" :selected="true" />
+          <UiBadge size="xs" type="notification" status="selected" />
         </div>
       </div>
     </section>
@@ -653,12 +657,16 @@
       <h2>UiBadge - Type Quantity</h2>
       <div class="row">
         <div class="input-demo">
-          <span class="input-demo__label">Unselected</span>
-          <UiBadge :value="99" type="quantity" />
+          <span class="input-demo__label">Not Selected</span>
+          <UiBadge :value="99" type="quantity" status="not-selected" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">Selected</span>
-          <UiBadge :value="99" type="quantity" :selected="true" />
+          <UiBadge :value="99" type="quantity" status="selected" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiBadge :value="99" type="quantity" status="disabled" />
         </div>
       </div>
     </section>
@@ -670,16 +678,16 @@
       <h2>UiFilter - Default</h2>
       <div class="row">
         <div class="input-demo">
-          <span class="input-demo__label">Default</span>
+          <span class="input-demo__label">Not Selected</span>
           <UiFilter label="Type de bien" icon="building" :count="12" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">Active</span>
-          <UiFilter label="Ville" icon="map-pin" :count="3" :active="true" />
+          <span class="input-demo__label">Selected</span>
+          <UiFilter label="Ville" icon="map-pin" :count="3" state="selected" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">Sans badge</span>
-          <UiFilter label="Statut" icon="filter" :show-badge="false" />
+          <span class="input-demo__label">Disabled</span>
+          <UiFilter label="Statut" icon="filter" :count="2" :disabled="true" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">Sans icône</span>
@@ -692,16 +700,16 @@
       <h2>UiFilter - XS</h2>
       <div class="row">
         <div class="input-demo">
-          <span class="input-demo__label">XS Default</span>
+          <span class="input-demo__label">XS Not Selected</span>
           <UiFilter label="Type de bien" icon="building" :count="12" size="xs" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">XS Active</span>
-          <UiFilter label="Ville" icon="map-pin" :count="3" :active="true" size="xs" />
+          <span class="input-demo__label">XS Selected</span>
+          <UiFilter label="Ville" icon="map-pin" :count="3" state="selected" size="xs" />
         </div>
         <div class="input-demo">
-          <span class="input-demo__label">XS Sans badge</span>
-          <UiFilter label="Statut" icon="filter" :show-badge="false" size="xs" />
+          <span class="input-demo__label">XS Disabled</span>
+          <UiFilter label="Statut" icon="filter" :count="1" :disabled="true" size="xs" />
         </div>
         <div class="input-demo">
           <span class="input-demo__label">XS Sans icône</span>
@@ -719,6 +727,82 @@
         <UiPill label="Validé" color="green" icon="circle-check" type="rounded" />
         <UiPill label="Exporté" color="purple" icon="arrow-up-right" type="rounded" />
         <UiPill label="Archivé" color="grey" icon="archive" type="rounded" />
+      </div>
+    </section>
+
+    <section>
+      <h2>UiPill - XS</h2>
+      <div class="row">
+        <UiPill label="En cours" color="blue" icon="refresh" size="xs" />
+        <UiPill label="Annulé" color="red" icon="x" size="xs" />
+        <UiPill label="Validé" color="green" icon="circle-check" size="xs" />
+        <UiPill label="Exporté" color="purple" size="xs" type="rounded" />
+        <UiPill label="Archivé" color="grey" size="xs" type="rounded" />
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIACCORDION           -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiAccordion</h2>
+      <div class="column" style="gap: 12px; width: 100%">
+        <UiAccordion
+          v-model="accordion1"
+          title="Design"
+          icon="palette"
+        >
+          <template #state>
+            <UiPill label="En cours" color="blue" icon="refresh" size="xs" />
+          </template>
+          <p style="margin: 0; color: var(--text-body-secondary)">
+            Contenu de la section Design. Ici vous pouvez mettre n'importe quel contenu.
+          </p>
+        </UiAccordion>
+
+        <UiAccordion
+          v-model="accordion2"
+          title="Développement"
+          icon="code"
+        >
+          <p style="margin: 0; color: var(--text-body-secondary)">
+            Contenu de la section Développement.
+          </p>
+        </UiAccordion>
+
+        <UiAccordion
+          title="Section en erreur"
+          icon="alert-triangle"
+          :error="true"
+          :model-value="false"
+        />
+
+        <UiAccordion
+          title="Section désactivée"
+          icon="lock"
+          :disabled="true"
+          :model-value="false"
+        />
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIDROPDOWN            -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiDropdown</h2>
+      <div class="row">
+        <UiDropdown v-model="dropdownSelected" :items="dropdownItems" @select="handleDropdownSelect">
+          <template #trigger="{ isOpen }">
+            <UiButton :label="isOpen ? 'Fermer' : 'Ouvrir le menu'" icon="menu-2" variant="secondary" />
+          </template>
+        </UiDropdown>
+
+        <UiDropdown :items="dropdownCheckboxItems" v-model="dropdownCheckboxSelected">
+          <template #trigger>
+            <UiButton label="Multi-select" icon="list-check" variant="secondary" />
+          </template>
+        </UiDropdown>
       </div>
     </section>
 
@@ -1577,6 +1661,9 @@ import UiPopupIcon from "../src/components/UiPopupIcon.vue";
 import UiDynamicInput from "../src/components/UiDynamicInput.vue";
 import UiFilter from "../src/components/UiFilter.vue";
 import UiContainersHeader from "../src/components/UiContainersHeader.vue";
+import UiAccordion from "../src/components/UiAccordion.vue";
+import UiDropdown from "../src/components/UiDropdown.vue";
+import type { DropdownItem } from "../src/components/UiDropdown.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);
@@ -1982,6 +2069,39 @@ function handleBreadcrumbNavigate(
 function handleNotificationClick() {
   console.log("Notification clicked");
   alert("Ouverture des notifications...");
+}
+
+// Accordion demos
+const accordion1 = ref(true);
+const accordion2 = ref(false);
+
+// Dropdown demos
+const dropdownSelected = ref<(string | number)[]>([]);
+const dropdownItems: DropdownItem[] = [
+  { label: "Actions", type: "title1" },
+  { label: "Modifier", value: "edit", icon: "pencil" },
+  { label: "Dupliquer", value: "duplicate", icon: "copy" },
+  { label: "Partager", value: "share", icon: "share" },
+  { label: "", type: "separator" },
+  { label: "Avancé", type: "title2" },
+  { label: "Variable dynamique", value: "dynamic", type: "dynamic", icon: "code" },
+  { label: "Archiver", value: "archive", icon: "archive", disabled: true },
+  { label: "", type: "separator" },
+  { label: "Supprimer", value: "delete", icon: "trash" },
+];
+
+const dropdownCheckboxItems: DropdownItem[] = [
+  { label: "Colonnes visibles", type: "title1" },
+  { label: "Référence", value: "ref", type: "checkbox", selected: true },
+  { label: "Type de bien", value: "type", type: "checkbox", selected: true },
+  { label: "Ville", value: "city", type: "checkbox", selected: true },
+  { label: "Prix", value: "price", type: "checkbox", selected: false },
+  { label: "Surface", value: "surface", type: "checkbox", selected: false },
+];
+const dropdownCheckboxSelected = ref<(string | number)[]>(["ref", "type", "city"]);
+
+function handleDropdownSelect(item: DropdownItem) {
+  console.log("Dropdown selected:", item);
 }
 </script>
 

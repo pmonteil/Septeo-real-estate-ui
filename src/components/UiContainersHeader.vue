@@ -72,13 +72,13 @@ const backIcon = defineAsyncComponent(() =>
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: var(--spacing-lg) var(--spacing-xl);
   border-bottom: var(--alias-border-width-sm) solid var(--border-default);
   box-sizing: border-box;
 }
 
 .ui-containers-header--xs {
-  padding: 8px 16px;
+  padding: var(--spacing-md) var(--spacing-xl);
 }
 
 .ui-containers-header__content {
@@ -106,7 +106,7 @@ const backIcon = defineAsyncComponent(() =>
   padding: var(--button-xs-padding-y) var(--button-xs-padding-x);
   background-color: var(--surface-default);
   border: var(--alias-border-width-sm) solid var(--border-default-light);
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
   color: var(--icon-default);
   flex-shrink: 0;

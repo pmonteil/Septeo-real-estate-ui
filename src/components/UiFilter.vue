@@ -3,6 +3,7 @@
     class="ui-filter"
     :class="rootClasses"
     type="button"
+    :disabled="props.disabled"
     @click="handleClick"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
@@ -22,7 +23,7 @@
         v-if="props.showBadge && props.count !== undefined"
         :value="props.count"
         type="quantity"
-        :selected="props.active || isHovered"
+        :status="badgeStatus"
         class="ui-filter__badge"
       />
     </span>
@@ -48,6 +49,8 @@ import {
 import UiBadge from "./UiBadge.vue";
 
 type IconProp = string | Component | FunctionalComponent;
+type FilterState = "selected" | "not-selected";
+type FilterStatus = "default" | "hover" | "disabled";
 type FilterSize = "default" | "xs";
 
 const props = withDefaults(
@@ -55,13 +58,15 @@ const props = withDefaults(
     label?: string;
     icon?: IconProp;
     count?: number;
-    active?: boolean;
+    state?: FilterState;
+    disabled?: boolean;
     showBadge?: boolean;
     showDropdown?: boolean;
     size?: FilterSize;
   }>(),
   {
-    active: false,
+    state: "not-selected",
+    disabled: false,
     showBadge: true,
     showDropdown: true,
     size: "default",
@@ -104,10 +109,18 @@ const isHovered = ref(false);
 const iconComponent = computed(() => resolveIcon(props.icon));
 const chevronComponent = computed(() => resolveIcon("chevron-down"));
 
+const isSelected = computed(() => props.state === "selected");
+
 const rootClasses = computed(() => ({
-  "ui-filter--active": props.active,
+  "ui-filter--selected": isSelected.value,
+  "ui-filter--disabled": props.disabled,
   "ui-filter--xs": props.size === "xs",
 }));
+
+const badgeStatus = computed(() => {
+  if (isSelected.value || isHovered.value) return "selected";
+  return "not-selected";
+});
 
 function handleClick(event: Event) {
   emit("click", event);
@@ -118,13 +131,13 @@ function handleClick(event: Event) {
 .ui-filter {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-md);
   width: fit-content;
   height: 34px;
-  padding: var(--brand-scale-8) var(--brand-scale-12);
+  padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--brand-scale-6);
+  border-radius: var(--radius-md);
   box-sizing: border-box;
   cursor: pointer;
   font-family: var(--font-family-body);
@@ -136,43 +149,50 @@ function handleClick(event: Event) {
 /* ── SIZE XS ─────────────────────────────── */
 .ui-filter--xs {
   height: 28px;
-  padding: var(--brand-scale-6) var(--brand-scale-8);
-  border-radius: var(--brand-scale-4);
+  padding: var(--radius-md) var(--spacing-md);
+  border-radius: var(--radius-sm);
 }
 
 /* ── HOVER ───────────────────────────────── */
-.ui-filter:hover:not(.ui-filter--active) {
+.ui-filter:hover:not(.ui-filter--selected):not(.ui-filter--disabled) {
   border-color: var(--border-action-accent);
 }
 
-.ui-filter:hover:not(.ui-filter--active) .ui-filter__label {
+.ui-filter:hover:not(.ui-filter--selected):not(.ui-filter--disabled) .ui-filter__label {
   color: var(--text-accent);
 }
 
-.ui-filter:hover:not(.ui-filter--active) .ui-filter__icon,
-.ui-filter:hover:not(.ui-filter--active) .ui-filter__chevron {
+.ui-filter:hover:not(.ui-filter--selected):not(.ui-filter--disabled) .ui-filter__icon,
+.ui-filter:hover:not(.ui-filter--selected):not(.ui-filter--disabled) .ui-filter__chevron {
   color: var(--icon-accent);
 }
 
-/* ── ACTIVE ──────────────────────────────── */
-.ui-filter--active {
+/* ── SELECTED ───────────────────────────── */
+.ui-filter--selected {
   border-color: var(--border-action-accent);
 }
 
-.ui-filter--active .ui-filter__label {
+.ui-filter--selected .ui-filter__label {
   color: var(--text-accent);
 }
 
-.ui-filter--active .ui-filter__icon,
-.ui-filter--active .ui-filter__chevron {
+.ui-filter--selected .ui-filter__icon,
+.ui-filter--selected .ui-filter__chevron {
   color: var(--icon-accent);
+}
+
+/* ── DISABLED ───────────────────────────── */
+.ui-filter--disabled {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 /* ── LEFT GROUP ──────────────────────────── */
 .ui-filter__left {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--spacing-sm);
 }
 
 /* ── ICON ────────────────────────────────── */

@@ -113,9 +113,9 @@ function resolveIcon(icon: string) {
 
 /* ── SIZE XS ─────────────────────────────── */
 .ui-tabs--xs .ui-tabs__tab {
-  padding: var(--scale-4, 4px) var(--brand-scale-6, 6px);
+  padding: var(--spacing-sm) var(--radius-md);
   font-size: var(--body-small-font-size);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-medium);
   line-height: var(--body-small-line-height);
 }
 

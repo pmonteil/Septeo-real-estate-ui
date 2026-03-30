@@ -4,7 +4,7 @@
       v-if="iconComponent"
       :is="iconComponent"
       class="ui-pill__icon"
-      :size="14"
+      :size="props.size === 'xs' ? 10 : 14"
       :stroke="2"
     />
     <span class="ui-pill__label">{{ props.label }}</span>
@@ -21,6 +21,7 @@ import {
 
 type PillColor = "blue" | "red" | "orange" | "green" | "purple" | "grey";
 type PillType = "default" | "rounded";
+type PillSize = "default" | "xs";
 type IconProp = string | Component | FunctionalComponent;
 
 const props = withDefaults(
@@ -29,18 +30,23 @@ const props = withDefaults(
     icon?: IconProp;
     color?: PillColor;
     type?: PillType;
+    size?: PillSize;
   }>(),
   {
     label: "Label",
     icon: undefined,
     color: "blue",
     type: "default",
+    size: "default",
   }
 );
 
 const rootClasses = computed(() => [
   `ui-pill--${props.color}`,
-  { "ui-pill--rounded": props.type === "rounded" },
+  {
+    "ui-pill--rounded": props.type === "rounded",
+    "ui-pill--xs": props.size === "xs",
+  },
 ]);
 
 function toIconName(name: string): string {
@@ -81,8 +87,8 @@ const iconComponent = computed(() => resolveIcon(props.icon));
   align-items: center;
   justify-content: center;
   gap: var(--gap-icon-text);
-  padding: var(--brand-scale-4) var(--brand-scale-6);
-  border-radius: var(--alias-border-radius-md);
+  padding: var(--spacing-sm) var(--radius-md);
+  border-radius: var(--radius-md);
   font-family: var(--font-family-body);
   font-size: var(--body-small-font-size);
   font-weight: var(--font-weight-semi-bold);
@@ -91,7 +97,13 @@ const iconComponent = computed(() => resolveIcon(props.icon));
 }
 
 .ui-pill--rounded {
-  border-radius: 100px;
+  border-radius: var(--radius-full);
+}
+
+.ui-pill--xs {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--caption-font-size);
+  line-height: var(--caption-line-height);
 }
 
 .ui-pill__icon {
@@ -106,72 +118,71 @@ const iconComponent = computed(() => resolveIcon(props.icon));
  * COLOR: BLUE
  * ========================================== */
 .ui-pill--blue {
-  background-color: var(--context-blue-lighter, #eef4ff);
-  color: var(--context-blue-darker, #3456d0);
+  background-color: var(--context-blue-lighter);
+  color: var(--context-blue-darker);
 }
 
 .ui-pill--blue .ui-pill__icon {
-  color: var(--context-blue-darker, #3456d0);
+  color: var(--context-blue-darker);
 }
 
 /* ==========================================
  * COLOR: RED
  * ========================================== */
 .ui-pill--red {
-  background-color: var(--context-red-lighter, #fff0f0);
-  color: var(--context-red-darker, #ed1136);
+  background-color: var(--context-red-lighter);
+  color: var(--context-red-darker);
 }
 
 .ui-pill--red .ui-pill__icon {
-  color: var(--context-red-darker, #ed1136);
+  color: var(--context-red-darker);
 }
 
 /* ==========================================
  * COLOR: ORANGE
  * ========================================== */
 .ui-pill--orange {
-  background-color: var(--context-orange-lighter, #fff2ed);
-  color: var(--context-orange-darker, #dd370e);
+  background-color: var(--context-orange-lighter);
+  color: var(--context-orange-darker);
 }
 
 .ui-pill--orange .ui-pill__icon {
-  color: var(--context-orange-darker, #dd370e);
+  color: var(--context-orange-darker);
 }
 
 /* ==========================================
  * COLOR: GREEN
  * ========================================== */
 .ui-pill--green {
-  background-color: var(--context-green-lighter, #f2fbf9);
-  color: var(--context-green-darker, #20817c);
+  background-color: var(--context-green-lighter);
+  color: var(--context-green-darker);
 }
 
 .ui-pill--green .ui-pill__icon {
-  color: var(--context-green-darker, #20817c);
+  color: var(--context-green-darker);
 }
 
 /* ==========================================
  * COLOR: PURPLE
  * ========================================== */
 .ui-pill--purple {
-  background-color: var(--context-purple-lighter, #f4f0ff);
-  color: var(--context-purple-darker, #802ced);
+  background-color: var(--context-purple-lighter);
+  color: var(--context-purple-darker);
 }
 
 .ui-pill--purple .ui-pill__icon {
-  color: var(--context-purple-darker, #802ced);
+  color: var(--context-purple-darker);
 }
 
 /* ==========================================
  * COLOR: GREY
  * ========================================== */
 .ui-pill--grey {
-  background-color: var(--context-grey-light, #f5f7f9);
-  color: var(--context-grey-dark, #6a7896);
+  background-color: var(--context-grey-light);
+  color: var(--context-grey-dark);
 }
 
 .ui-pill--grey .ui-pill__icon {
-  color: var(--context-grey-dark, #6a7896);
+  color: var(--context-grey-dark);
 }
 </style>
-
