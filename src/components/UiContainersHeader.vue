@@ -85,7 +85,7 @@ const backIcon = defineAsyncComponent(() =>
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-lg);
   min-width: 0;
 }
 
@@ -93,7 +93,7 @@ const backIcon = defineAsyncComponent(() =>
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-lg);
   min-width: 0;
 }
 
@@ -136,7 +136,7 @@ const backIcon = defineAsyncComponent(() =>
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-lg);
   overflow: hidden;
   min-width: 0;
 }
@@ -150,7 +150,7 @@ const backIcon = defineAsyncComponent(() =>
   flex: 1;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: var(--spacing-lg);
   min-width: 0;
 }
 </style>

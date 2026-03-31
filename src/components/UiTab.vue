@@ -89,17 +89,17 @@ function resolveIcon(icon: string) {
   gap: var(--scale-4, 4px);
   padding: var(--scale-4, 4px);
   background-color: var(--alias-neutral-50);
-  border-radius: 100px;
+  border-radius: var(--radius-full);
 }
 
 .ui-tabs__tab {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--gap-icon-text, 4px);
+  gap: var(--spacing-sm);
   padding: var(--scale-4, 4px) var(--scale-12, 12px);
   border: none;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
   background: transparent;
   cursor: pointer;
   transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);

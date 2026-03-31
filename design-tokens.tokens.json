@@ -3549,7 +3549,7 @@
       "page": {
         "description": "",
         "type": "color",
-        "value": "{alias.primary.900}",
+        "value": "{alias.neutral.50}",
         "extensions": {
           "org.lukasoppermann.figmaDesignTokens": {
             "collection": "Mapped",

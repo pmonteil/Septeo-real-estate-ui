@@ -102,7 +102,7 @@ defineExpose({
 .ui-switch {
   display: inline-flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   cursor: pointer;
   user-select: none;
 }
@@ -134,10 +134,10 @@ defineExpose({
   width: 40px;
   height: 22px;
   flex-shrink: 0;
-  padding: 4px;
+  padding: var(--spacing-sm);
   background-color: var(--alias-neutral-500);
   border: var(--alias-border-width-sm) solid var(--alias-neutral-500);
-  border-radius: 100px;
+  border-radius: var(--radius-full);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -194,8 +194,8 @@ defineExpose({
  * ========================================== */
 
 .ui-switch__thumb {
-  width: 14px;
-  height: 14px;
+  width: var(--sizing-icon-xxs);
+  height: var(--sizing-icon-xxs);
   background-color: var(--alias-neutral-white);
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -204,7 +204,7 @@ defineExpose({
 
 /* Checked state - move thumb to the right */
 .ui-switch__track--checked .ui-switch__thumb {
-  transform: translateX(18px);
+  transform: translateX(var(--sizing-icon-xs));
 }
 
 /* Animation au clic (effet de pression) */
@@ -239,10 +239,10 @@ defineExpose({
     transform: translateX(0) scale(0.8);
   }
   50% {
-    transform: translateX(18px) scale(1.1);
+    transform: translateX(var(--sizing-icon-xs)) scale(1.1);
   }
   100% {
-    transform: translateX(18px) scale(1);
+    transform: translateX(var(--sizing-icon-xs)) scale(1);
   }
 }
 

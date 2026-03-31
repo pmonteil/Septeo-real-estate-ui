@@ -193,7 +193,7 @@ function getActionClasses(action: ActionItem): Record<string, boolean> {
 .ui-table-cell__content {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-md);
   flex: 1;
   min-width: 0;
 }
@@ -236,13 +236,13 @@ function getActionClasses(action: ActionItem): Record<string, boolean> {
 .ui-table-cell__actions {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--spacing-sm);
 }
 
 /* Override button padding for table actions to make them square */
 .ui-table-cell__actions :deep(.ui-button) {
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
 }
 
 /* Secondary action buttons - lighter color */

@@ -149,7 +149,7 @@ function handleClick(event: Event) {
 /* ── SIZE XS ─────────────────────────────── */
 .ui-filter--xs {
   height: 28px;
-  padding: var(--radius-md) var(--spacing-md);
+  padding: var(--spacing-md);
   border-radius: var(--radius-sm);
 }
 

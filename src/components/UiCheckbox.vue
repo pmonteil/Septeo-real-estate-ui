@@ -148,8 +148,8 @@ defineExpose({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--sizing-icon-xs);
+  height: var(--sizing-icon-xs);
   flex-shrink: 0;
   padding: var(--spacing-sm);
   background-color: var(--surface-default);
@@ -229,8 +229,8 @@ defineExpose({
  * ========================================== */
 
 .ui-checkbox__icon {
-  width: 14px;
-  height: 14px;
+  width: var(--sizing-icon-xxs);
+  height: var(--sizing-icon-xxs);
   color: var(--icon-on-action);
   animation: checkmark-draw 0.25s ease-out;
 }

@@ -203,12 +203,12 @@ defineExpose({
 .ui-textarea {
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-2);
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
 .ui-textarea__label {
-  margin-bottom: calc(var(--gap-field-label) - var(--brand-scale-2));
+  margin-bottom: calc(var(--spacing-sm) - var(--spacing-xs));
 }
 
 /* ==========================================
@@ -219,11 +219,11 @@ defineExpose({
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: var(--gap-field-label);
-  padding: var(--brand-scale-12);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   min-height: 140px;
 }
@@ -336,8 +336,8 @@ defineExpose({
 
 .ui-textarea__icon-wrapper {
   position: absolute;
-  top: var(--brand-scale-12);
-  right: var(--brand-scale-12);
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
   display: inline-flex;
   align-items: center;
   justify-content: center;

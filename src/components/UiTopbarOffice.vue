@@ -119,7 +119,7 @@ function resolveIcon(iconName: string): Component {
   align-items: center;
   justify-content: space-between;
   background-color: #2E3862;
-  padding: 0 var(--brand-scale-16, 16px);
+  padding: 0 var(--spacing-xl);
   height: 44px;
   min-height: 44px;
   width: 100%;
@@ -214,7 +214,7 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-4, 4px);
+  gap: var(--spacing-sm);
   z-index: 1;
 }
 
@@ -253,7 +253,7 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-8, 8px);
+  gap: var(--spacing-md);
   z-index: 1;
 }
 
@@ -267,7 +267,7 @@ function resolveIcon(iconName: string): Component {
   height: 32px;
   background: rgba(255, 255, 255, 0.08);
   border: none;
-  border-radius: var(--alias-border-radius-md, 6px);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background 0.15s ease;
 }

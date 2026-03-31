@@ -192,20 +192,20 @@ defineExpose({
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000;
-  padding: 20px;
+  padding: var(--spacing-2xl);
 }
 
 .ui-popup {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-24, 24px);
+  gap: var(--spacing-3xl);
   width: 100%;
   max-width: 430px;
-  padding: 20px;
+  padding: var(--spacing-2xl);
   background-color: var(--surface-default);
   border: 1px solid var(--border-default-light);
-  border-radius: var(--alias-border-radius-md);
+  border-radius: var(--radius-md);
   box-shadow: 0 8px 100px -50px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
@@ -225,7 +225,7 @@ defineExpose({
   padding: var(--button-xs-padding-y) var(--button-xs-padding-x);
   background-color: var(--surface-default);
   border: var(--alias-border-width-sm) solid var(--border-default-light);
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -248,7 +248,7 @@ defineExpose({
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--brand-scale-24, 24px);
+  gap: var(--spacing-3xl);
   width: 100%;
 }
 
@@ -260,7 +260,7 @@ defineExpose({
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--brand-scale-16, 16px);
+  gap: var(--spacing-xl);
   width: 100%;
   text-align: center;
 }
@@ -288,7 +288,7 @@ defineExpose({
 /* Actions */
 .ui-popup__actions {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-md);
   width: 100%;
 }
 

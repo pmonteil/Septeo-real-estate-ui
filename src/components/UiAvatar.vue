@@ -75,7 +75,7 @@ const rootStyles = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
   flex-shrink: 0;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -88,7 +88,7 @@ const rootStyles = computed(() => {
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
   overflow: hidden;
 }
 
@@ -157,7 +157,7 @@ const rootStyles = computed(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
 }
 
 /* ==========================================

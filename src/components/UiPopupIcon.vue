@@ -69,7 +69,7 @@ const iconClasses = computed(() => ({
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-radius: var(--alias-border-radius-lg);
+  border-radius: var(--radius-lg);
   flex-shrink: 0;
 }
 

@@ -148,8 +148,8 @@ defineExpose({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--sizing-icon-xs);
+  height: var(--sizing-icon-xs);
   flex-shrink: 0;
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-action-neutral);
@@ -228,8 +228,8 @@ defineExpose({
  * ========================================== */
 
 .ui-radio__icon {
-  width: 10px;
-  height: 10px;
+  width: var(--sizing-icon-xxxs);
+  height: var(--sizing-icon-xxxs);
   color: var(--icon-on-action);
   animation: checkmark-draw 0.25s ease-out;
 }

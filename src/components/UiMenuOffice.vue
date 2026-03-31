@@ -389,7 +389,7 @@ function resolveIcon(iconName: string): Component {
   flex-direction: column;
   justify-content: space-between;
   background-color: #2E3862;
-  padding: var(--brand-scale-16, 16px) var(--brand-scale-12, 12px);
+  padding: var(--spacing-xl) var(--spacing-lg);
   width: 206px;
   min-height: 100%;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -512,7 +512,7 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-8, 8px);
+  gap: var(--spacing-md);
   z-index: 1;
 }
 
@@ -530,10 +530,10 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--gap-icon-text, 4px);
+  gap: var(--spacing-sm);
   width: 100%;
-  padding: var(--brand-scale-8, 8px);
-  border-radius: var(--alias-border-radius-lg, 8px);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -641,14 +641,14 @@ function resolveIcon(iconName: string): Component {
   top: 0;
   min-width: 180px;
   background: var(--alias-neutral-white, #ffffff);
-  border-radius: var(--alias-border-radius-lg, 8px);
+  border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 100;
 }
 
 .ui-menu-office__flyout-header {
-  padding: var(--brand-scale-8, 8px) var(--brand-scale-12, 12px);
+  padding: var(--spacing-md) var(--spacing-lg);
   font-family: var(--font-family-body, 'Inter', sans-serif);
   font-size: var(--body-small-font-size, 12px);
   font-weight: var(--font-weight-semi-bold, 600);
@@ -661,9 +661,9 @@ function resolveIcon(iconName: string): Component {
 .ui-menu-office__flyout-item {
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-8, 8px);
+  gap: var(--spacing-md);
   width: 100%;
-  padding: var(--brand-scale-10, 10px) var(--brand-scale-12, 12px);
+  padding: var(--brand-scale-10) var(--spacing-lg);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -721,7 +721,7 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-12, 12px);
+  gap: var(--spacing-lg);
   margin-top: auto;
   z-index: 1;
 }
@@ -768,9 +768,9 @@ function resolveIcon(iconName: string): Component {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-8, 8px);
-  padding: var(--brand-scale-8, 8px);
-  border-radius: var(--alias-border-radius-lg, 8px);
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: background 0.2s ease;
@@ -783,7 +783,7 @@ function resolveIcon(iconName: string): Component {
 
 .ui-menu-office--collapsed .ui-menu-office__user {
   justify-content: center;
-  padding: var(--brand-scale-4, 4px);
+  padding: var(--spacing-sm);
 }
 
 .ui-menu-office__user-avatar {
@@ -849,7 +849,7 @@ function resolveIcon(iconName: string): Component {
   left: 0;
   right: 0;
   background: var(--alias-neutral-white, #ffffff);
-  border-radius: var(--alias-border-radius-lg, 8px);
+  border-radius: var(--radius-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 100;
@@ -864,9 +864,9 @@ function resolveIcon(iconName: string): Component {
 .ui-menu-office__user-menu-item {
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-8, 8px);
+  gap: var(--spacing-md);
   width: 100%;
-  padding: var(--brand-scale-12, 12px);
+  padding: var(--spacing-lg);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -893,7 +893,7 @@ function resolveIcon(iconName: string): Component {
 .ui-menu-office__user-menu-divider {
   height: 1px;
   background: var(--border-default, #dde2eb);
-  margin: var(--brand-scale-4, 4px) 0;
+  margin: var(--spacing-sm) 0;
 }
 
 /* Animations */
@@ -914,14 +914,14 @@ function resolveIcon(iconName: string): Component {
   left: calc(100% + 8px);
   top: 50%;
   transform: translateY(-50%);
-  padding: var(--brand-scale-6, 6px) var(--brand-scale-10, 10px);
+  padding: var(--radius-md) var(--brand-scale-10);
   background: var(--alias-neutral-900, #303441);
   color: var(--alias-neutral-white, #ffffff);
   font-family: var(--font-family-body, 'Inter', sans-serif);
   font-size: var(--body-small-font-size, 12px);
   font-weight: var(--font-weight-medium, 500);
   white-space: nowrap;
-  border-radius: var(--alias-border-radius-sm, 6px);
+  border-radius: var(--radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 100;
   pointer-events: none;

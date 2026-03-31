@@ -195,12 +195,12 @@ defineExpose({
 .ui-input {
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-2);
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
 .ui-input__label {
-  margin-bottom: calc(var(--gap-field-label) - var(--brand-scale-2));
+  margin-bottom: calc(var(--spacing-sm) - var(--spacing-xs));
 }
 
 /* ==========================================
@@ -210,11 +210,11 @@ defineExpose({
 .ui-input__field {
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
-  padding: var(--field-padding-y) var(--field-padding-x);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   cursor: text;
 }
@@ -223,7 +223,7 @@ defineExpose({
 .ui-input__content {
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   flex: 1;
   min-width: 0;
 }
@@ -368,7 +368,7 @@ defineExpose({
   background-color: var(--alias-neutral-900);
   color: var(--alias-neutral-white);
   padding: 6px 10px;
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 /* ==========================================

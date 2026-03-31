@@ -207,7 +207,7 @@ defineExpose({ focusInput });
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   width: 100%;
 }
 
@@ -221,14 +221,14 @@ defineExpose({ focusInput });
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   width: 100%;
   min-height: 36px;
-  padding: var(--brand-scale-8) var(--brand-scale-12);
-  padding-right: calc(36px + var(--brand-scale-12));
+  padding: var(--spacing-md) var(--spacing-lg);
+  padding-right: calc(36px + var(--spacing-lg));
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   cursor: text;
   transition:
     border-color 0.15s ease,
@@ -255,12 +255,12 @@ defineExpose({ focusInput });
   cursor: not-allowed;
 }
 
-/* ─── Content (tags + input) ──────────────────────────────────────────────────── */
+/* ─── Content / Variables list ─────────────────────────────────────────────────── */
 .ui-dynamic-input__content {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: var(--spacing-sm);
   flex: 1 0 0;
   min-width: 0;
 }
@@ -287,13 +287,13 @@ defineExpose({ focusInput });
   cursor: not-allowed;
 }
 
-/* ─── Tag (balise dynamique) ──────────────────────────────────────────────────── */
+/* ─── Variable (ex balise dynamique) ──────────────────────────────────────────── */
 .ui-dynamic-input__tag {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 6px 4px;
-  border-radius: 4px;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   background: linear-gradient(
     90deg,
     var(--surface-ai-gradient-1) 0%,
@@ -301,18 +301,25 @@ defineExpose({ focusInput });
   );
   cursor: default;
   flex-shrink: 0;
+  transition: background 0.15s ease;
 }
 
+.ui-dynamic-input__tag:hover {
+  background: var(--context-purple-darker);
+}
+
+.ui-dynamic-input--disabled .ui-dynamic-input__tag {
+  background: var(--surface-ai-gradient-1);
+}
 
 .ui-dynamic-input__tag-text {
   font-family: var(--font-family-body);
-  font-size: 12px;
+  font-size: var(--body-small-font-size);
   font-weight: var(--font-weight-semi-bold);
-  line-height: 10px;
-  color: #fff;
+  line-height: var(--caption-line-height);
+  color: var(--text-on-action);
   white-space: nowrap;
 }
-
 
 .ui-dynamic-input__tag-remove {
   display: flex;
@@ -324,14 +331,13 @@ defineExpose({ focusInput });
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #fff;
-  opacity: 0.85;
+  color: var(--text-on-action);
   flex-shrink: 0;
   transition: opacity 0.1s ease;
 }
 
 .ui-dynamic-input__tag-remove:hover {
-  opacity: 1;
+  opacity: 0.85;
 }
 
 
@@ -347,7 +353,7 @@ defineExpose({ focusInput });
   justify-content: center;
   background-color: var(--surface-dynamic);
   border: var(--alias-border-width-sm) solid var(--border-dynamic);
-  border-radius: 0 var(--field-border-radius) var(--field-border-radius) 0;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   color: var(--alias-ai-default);
   cursor: pointer;
   transition:

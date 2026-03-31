@@ -379,12 +379,12 @@ defineExpose({
 .ui-select {
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-2);
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
 .ui-select__label {
-  margin-bottom: calc(var(--gap-field-label) - var(--brand-scale-2));
+  margin-bottom: calc(var(--spacing-sm) - var(--spacing-xs));
 }
 
 /* ==========================================
@@ -394,11 +394,11 @@ defineExpose({
 .ui-select__field {
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
-  padding: var(--field-padding-y) var(--field-padding-x);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   cursor: pointer;
   position: relative;
@@ -409,7 +409,7 @@ defineExpose({
 .ui-select__content {
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   flex: 1;
   min-width: 0;
 }
@@ -418,7 +418,7 @@ defineExpose({
 .ui-select__icons-right {
   display: flex;
   align-items: center;
-  gap: var(--gap-icon-text);
+  gap: var(--spacing-sm);
 }
 
 /* Hover state - default */
@@ -574,7 +574,7 @@ defineExpose({
   background-color: var(--alias-neutral-900);
   color: var(--alias-neutral-white);
   padding: 6px 10px;
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 /* ==========================================
@@ -588,7 +588,7 @@ defineExpose({
   right: 0;
   background-color: var(--surface-default);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 100;
   max-height: 200px;
@@ -596,7 +596,7 @@ defineExpose({
 }
 
 .ui-select__option {
-  padding: var(--field-padding-y) var(--field-padding-x);
+  padding: var(--spacing-md) var(--spacing-lg);
   font-family: var(--font-family-body);
   font-size: var(--body-font-size);
   font-weight: var(--font-weight-regular);

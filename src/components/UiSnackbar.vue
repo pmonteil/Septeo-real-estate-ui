@@ -220,23 +220,23 @@ onUnmounted(() => {
   width: 380px;
   background-color: var(--surface-default);
   border: var(--alias-border-width-sm) solid var(--border-default-light);
-  border-radius: var(--alias-border-radius-md);
+  border-radius: var(--radius-md);
   box-shadow: 0px 8px 100px -50px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  padding: 20px;
-  padding-bottom: 24px;
+  padding: var(--spacing-2xl);
+  padding-bottom: var(--spacing-3xl);
 }
 
 .ui-snackbar__content {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
 }
 
 .ui-snackbar__main {
   display: flex;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   flex: 1;
   min-width: 0;
 }
@@ -248,7 +248,7 @@ onUnmounted(() => {
 .ui-snackbar__text {
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-16);
+  gap: var(--spacing-xl);
   flex: 1;
   min-width: 0;
 }
@@ -273,8 +273,8 @@ onUnmounted(() => {
 .ui-snackbar__link {
   display: inline-flex;
   align-items: center;
-  gap: var(--gap-icon-text);
-  padding: var(--brand-scale-4) 0;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -305,7 +305,7 @@ onUnmounted(() => {
   cursor: pointer;
   color: var(--icon-secondary);
   transition: color 0.2s ease, transform 0.2s ease;
-  border-radius: var(--alias-border-radius-md);
+  border-radius: var(--radius-md);
 }
 
 .ui-snackbar__close:hover {
@@ -328,7 +328,7 @@ onUnmounted(() => {
   left: 0;
   top: 0;
   bottom: 0;
-  border-radius: 100px;
+  border-radius: var(--radius-full);
 }
 
 /* DEFAULT (Blue) */

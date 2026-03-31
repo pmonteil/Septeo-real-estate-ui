@@ -212,12 +212,12 @@ defineExpose({
 .ui-input-suffix {
   display: flex;
   flex-direction: column;
-  gap: var(--brand-scale-2);
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
 .ui-input-suffix__label {
-  margin-bottom: calc(var(--gap-field-label) - var(--brand-scale-2));
+  margin-bottom: calc(var(--spacing-sm) - var(--spacing-xs));
 }
 
 /* ==========================================
@@ -230,7 +230,7 @@ defineExpose({
   position: relative;
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: var(--field-border-radius);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   cursor: text;
 }
@@ -239,11 +239,11 @@ defineExpose({
 .ui-input-suffix__content {
   display: flex;
   align-items: center;
-  gap: var(--gap-field-label);
+  gap: var(--spacing-sm);
   flex: 1;
   min-width: 0;
-  padding: var(--field-padding-y) var(--field-padding-x);
-  padding-right: calc(36px + var(--gap-field-label));
+  padding: var(--spacing-md) var(--spacing-lg);
+  padding-right: calc(36px + var(--spacing-sm));
 }
 
 /* Hover state - default */
@@ -403,7 +403,7 @@ defineExpose({
   background-color: var(--alias-neutral-900);
   color: var(--alias-neutral-white);
   padding: 6px 10px;
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 /* ==========================================
@@ -422,7 +422,7 @@ defineExpose({
   justify-content: center;
   background-color: var(--surface-default-bis);
   border: var(--alias-border-width-sm) solid var(--border-default);
-  border-radius: 0 var(--field-border-radius) var(--field-border-radius) 0;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
   transition:
     border-color 0.15s ease,
     background-color 0.15s ease;

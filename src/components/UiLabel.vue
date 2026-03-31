@@ -102,8 +102,8 @@ const iconComponent = computed(() => {
 .ui-label {
   display: flex;
   align-items: center;
-  gap: var(--gap-icon-text);
-  padding: 0 2px;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-none) var(--spacing-xs);
 }
 
 .ui-label__text {
@@ -161,6 +161,6 @@ const iconComponent = computed(() => {
   background-color: var(--alias-neutral-900);
   color: var(--alias-neutral-white);
   padding: 6px 10px;
-  border-radius: var(--alias-border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 </style>

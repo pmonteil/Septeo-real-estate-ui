@@ -289,7 +289,7 @@
   --icon-danger: var(--alias-danger-default);
 
   /* Surface */
-  --surface-page: var(--alias-primary-900);
+  --surface-page: var(--alias-neutral-50);
   --surface-field: var(--alias-neutral-10);
   --surface-field-negative: var(--alias-neutral-white);
   --surface-default: var(--alias-neutral-white);

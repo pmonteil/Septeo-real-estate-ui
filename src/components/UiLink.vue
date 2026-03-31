@@ -129,9 +129,9 @@ function onClick(event: MouseEvent) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--gap-icon-text);
-  padding: var(--brand-scale-4) 0;
-  border-radius: var(--alias-border-radius-md);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -218,13 +218,9 @@ function onClick(event: MouseEvent) {
  * ========================================== */
 
 .ui-link--disabled {
-  color: var(--text-disable);
+  opacity: var(--opacity-disabled);
   cursor: not-allowed;
   pointer-events: none;
-}
-
-.ui-link--disabled .ui-link__icon {
-  color: var(--text-disable);
 }
 
 /* ==========================================

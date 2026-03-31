@@ -58,9 +58,9 @@ const rootClasses = computed(() => [
 /* ── SIZES ───────────────────────────────────── */
 
 .ui-badge--size-default {
-  padding: 2px;
-  width: 17px;
-  height: 17px;
+  padding: var(--spacing-xs);
+  width: 20px;
+  height: 20px;
 }
 
 .ui-badge--size-xs {

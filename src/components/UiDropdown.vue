@@ -312,8 +312,8 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: var(--sizing-icon-xs);
+  height: var(--sizing-icon-xs);
   flex-shrink: 0;
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-default);
@@ -327,8 +327,8 @@ onBeforeUnmount(() => {
 }
 
 .ui-dropdown__check-icon {
-  width: 14px;
-  height: 14px;
+  width: var(--sizing-icon-xxs);
+  height: var(--sizing-icon-xxs);
   color: var(--icon-on-action);
 }
 

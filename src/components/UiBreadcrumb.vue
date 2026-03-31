@@ -101,7 +101,7 @@ function onItemClick(event: MouseEvent, item: BreadcrumbItem, index: number) {
 .ui-breadcrumb__list {
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-4);
+  gap: var(--spacing-sm);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -110,7 +110,7 @@ function onItemClick(event: MouseEvent, item: BreadcrumbItem, index: number) {
 .ui-breadcrumb__item {
   display: flex;
   align-items: center;
-  gap: var(--brand-scale-4);
+  gap: var(--spacing-sm);
 }
 
 .ui-breadcrumb__separator {

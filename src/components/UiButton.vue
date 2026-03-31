@@ -129,7 +129,7 @@ function handleClick(event: Event) {
   font-weight: var(--font-weight-semi-bold);
   line-height: var(--body-line-height);
   letter-spacing: 0;
-  border-radius: var(--alias-border-radius-lg);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   overflow: hidden;
 }
@@ -137,7 +137,7 @@ function handleClick(event: Event) {
 .ui-button__content {
   display: flex;
   align-items: center;
-  gap: var(--gap-icon-text);
+  gap: var(--spacing-sm);
 }
 
 /* Glow & bounce animation on hover (not for disabled/loading) */

@@ -307,7 +307,7 @@ const sortedRows = computed(() => {
 .ui-table__toolbar {
   display: flex;
   align-items: center;
-  gap: var(--gap-icon-text, 4px);
+  gap: var(--spacing-sm);
 }
 
 /* Table container with 8px radius */
@@ -460,7 +460,7 @@ const sortedRows = computed(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--spacing-md);
   height: 30px;
 }
 
