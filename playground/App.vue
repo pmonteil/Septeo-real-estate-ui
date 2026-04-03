@@ -1625,6 +1625,269 @@
         <UiButton label="Star" icon="star" />
       </div>
     </section>
+
+    <!-- ===================== -->
+    <!-- UIDIVIDER             -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiDivider</h2>
+      <div class="column" style="width: 100%">
+        <span class="input-demo__label">Default</span>
+        <UiDivider />
+        <span class="input-demo__label">Compact</span>
+        <UiDivider size="compact" />
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISEARCHBAR           -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiSearchBar</h2>
+      <div class="grid-inputs">
+        <div class="input-demo">
+          <span class="input-demo__label">Default</span>
+          <UiSearchBar v-model="searchBarValue" placeholder="Rechercher un bien..." />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS</span>
+          <UiSearchBar v-model="searchBarXsValue" placeholder="Rechercher..." size="xs" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Error</span>
+          <UiSearchBar placeholder="Rechercher..." :error="true" hint-text="Aucun résultat" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiSearchBar placeholder="Non disponible" :disabled="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISLIDER              -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiSlider</h2>
+      <div class="grid-inputs">
+        <div class="input-demo">
+          <span class="input-demo__label">Default</span>
+          <UiSlider v-model="sliderValue" label="Surface" suffix=" m²" :max="200" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Minimal</span>
+          <UiSlider v-model="sliderMinimalValue" label="Budget" suffix=" k€" style="minimal" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiSlider :model-value="30" label="Verrouillé" :disabled="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIPROGRESSBAR         -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiProgressBar</h2>
+      <div class="column" style="gap: 16px; width: 100%">
+        <div class="input-demo">
+          <span class="input-demo__label">Partiel ({{ progressValue }}%)</span>
+          <UiProgressBar :value="progressValue" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Complet (100%)</span>
+          <UiProgressBar :value="100" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Début (15%)</span>
+          <UiProgressBar :value="15" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UITOAST               -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiToast</h2>
+      <div class="row">
+        <UiButton label="Toast Notification" icon="info-circle" @click="showToastNotif = true" />
+        <UiButton label="Toast Danger" icon="alert-triangle" variant="error" @click="showToastDanger = true" />
+      </div>
+      <div style="margin-top: 16px">
+        <UiToast v-model="showToastNotif" message="Action effectuée avec succès" type="notification" :duration="0" />
+        <UiToast v-model="showToastDanger" message="Une erreur est survenue" type="danger" :duration="0" />
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIATTRIBUTE           -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiAttribute</h2>
+      <div class="row">
+        <UiAttribute label="75 m²" icon="ruler-2" />
+        <UiAttribute label="3 pièces" icon="door" />
+        <UiAttribute label="2ème étage" icon="stairs-up" />
+        <UiAttribute label="Balcon" icon="fence" />
+      </div>
+      <div class="row" style="margin-top: 16px">
+        <div class="input-demo">
+          <span class="input-demo__label">XS</span>
+          <div class="row">
+            <UiAttribute label="75 m²" icon="ruler-2" size="xs" />
+            <UiAttribute label="3 pièces" icon="door" size="xs" />
+          </div>
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Disabled</span>
+          <UiAttribute label="Non dispo" icon="x" :disabled="true" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Sans icône</span>
+          <UiAttribute label="DPE : A" :has-icon="false" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIPAGINATION          -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiPagination</h2>
+      <div class="column" style="gap: 16px">
+        <div class="input-demo">
+          <span class="input-demo__label">Default (page {{ paginationPage }})</span>
+          <UiPagination v-model="paginationPage" :total-pages="12" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">XS</span>
+          <UiPagination :model-value="5" :total-pages="20" size="xs" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISTEPPER             -->
+    <!-- ===================== -->
+    <section class="section--wide">
+      <h2>UiStepper</h2>
+      <div class="column" style="gap: 32px; width: 100%">
+        <div class="input-demo">
+          <span class="input-demo__label">Step 2 actif (Default)</span>
+          <UiStepper :steps="stepperSteps" :active-step="1" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Step 3 actif (XS)</span>
+          <UiStepper :steps="stepperSteps" :active-step="2" size="xs" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UICARD                -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiCard</h2>
+      <div class="row" style="align-items: stretch">
+        <UiCard title="Appartement T3" subtitle="Paris 15ème" style="width: 300px">
+          <p style="margin: 0; color: var(--text-body-secondary)">Bel appartement lumineux avec balcon et vue dégagée.</p>
+          <template #footer>
+            <UiButton label="Voir" size="sm" variant="ghost" icon="eye" />
+            <UiButton label="Modifier" size="sm" variant="secondary" icon="pencil" />
+          </template>
+        </UiCard>
+
+        <UiCard type="media-top" title="Villa Côte d'Azur" subtitle="950 000 €" style="width: 300px">
+          <template #media>
+            <div style="height: 160px; background: linear-gradient(135deg, var(--alias-primary-100), var(--alias-primary-300))"></div>
+          </template>
+          <p style="margin: 0; color: var(--text-body-secondary)">Superbe villa avec piscine et jardin.</p>
+          <template #footer>
+            <UiPill label="En vente" color="green" icon="circle-check" size="xs" />
+          </template>
+        </UiCard>
+
+        <UiCard type="minimal" style="width: 300px">
+          <div style="text-align: center; padding: 16px 0">
+            <p style="margin: 0 0 8px; font-weight: 600; color: var(--text-headings)">Ajouter un bien</p>
+            <p style="margin: 0; color: var(--text-body-secondary); font-size: 12px">Cliquez pour créer une nouvelle annonce</p>
+          </div>
+        </UiCard>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISECTIONTITLE        -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiSectionTitle</h2>
+      <div class="column" style="gap: 24px; width: 100%">
+        <UiSectionTitle title="Section H1" type="h1" has-icon icon="layout-dashboard" />
+        <UiSectionTitle title="Section H2" type="h2" />
+        <UiSectionTitle title="Section avec description" type="h2" description="Description détaillée de la section" style="with-description" has-icon icon="info-circle" />
+        <UiSectionTitle title="Section H3 XS" type="h3" size="xs" />
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UISECTION             -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiSection</h2>
+      <div style="border: 1px solid var(--border-default); border-radius: var(--radius-xl); overflow: hidden">
+        <UiSection title="Informations générales" description="Détails du bien immobilier" heading-type="h2" has-icon icon="info-circle">
+          <p style="margin: 0; color: var(--text-body)">Contenu de la section avec les informations du bien.</p>
+        </UiSection>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIMODAL               -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiModal</h2>
+      <div class="row">
+        <UiButton label="Modal Default" icon="layout-grid" @click="showModal = true" />
+        <UiButton label="Modal Danger" icon="trash" variant="error" @click="showModalDanger = true" />
+      </div>
+      <UiModal v-model="showModal" title="Confirmer la publication" description="Le bien sera visible par tous les utilisateurs. Êtes-vous sûr de vouloir publier ?" icon="info-circle" />
+      <UiModal v-model="showModalDanger" title="Supprimer le bien ?" description="Cette action est irréversible. Toutes les données seront perdues." type="danger" icon="alert-triangle" confirm-label="Supprimer" />
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIDRAWER              -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiDrawer</h2>
+      <UiButton label="Ouvrir le Drawer" icon="layout-sidebar-right" @click="showDrawer = true" />
+      <UiDrawer v-model="showDrawer" title="Détails du bien" icon="building" :has-footer="true">
+        <UiSection title="Informations" heading-type="h3" no-padding>
+          <p style="margin: 0; color: var(--text-body)">Contenu détaillé du bien immobilier avec toutes les informations nécessaires.</p>
+        </UiSection>
+        <template #footer>
+          <UiButton label="Annuler" variant="secondary" size="sm" @click="showDrawer = false" />
+          <UiButton label="Enregistrer" size="sm" @click="showDrawer = false" />
+        </template>
+      </UiDrawer>
+    </section>
+
+    <!-- ===================== -->
+    <!-- UIPAGEHEADER          -->
+    <!-- ===================== -->
+    <section class="section--wide" style="padding: 0; overflow: hidden">
+      <UiPageHeader title="Liste des biens" has-back @back="() => {}">
+        <template #tabs>
+          <UiTab v-model="selectedTab" :tabs="simpleTabs" />
+        </template>
+        <template #actions>
+          <UiButton label="Exporter" icon="download" variant="secondary" size="sm" />
+          <UiButton label="Ajouter" icon="plus" size="sm" />
+        </template>
+      </UiPageHeader>
+    </section>
+
     </div>
   </div>
 </template>
@@ -1664,6 +1927,20 @@ import UiContainersHeader from "../src/components/UiContainersHeader.vue";
 import UiAccordion from "../src/components/UiAccordion.vue";
 import UiDropdown from "../src/components/UiDropdown.vue";
 import type { DropdownItem } from "../src/components/UiDropdown.vue";
+import UiSearchBar from "../src/components/UiSearchBar.vue";
+import UiSlider from "../src/components/UiSlider.vue";
+import UiProgressBar from "../src/components/UiProgressBar.vue";
+import UiToast from "../src/components/UiToast.vue";
+import UiAttribute from "../src/components/UiAttribute.vue";
+import UiDivider from "../src/components/UiDivider.vue";
+import UiPagination from "../src/components/UiPagination.vue";
+import UiStepper from "../src/components/UiStepper.vue";
+import UiCard from "../src/components/UiCard.vue";
+import UiModal from "../src/components/UiModal.vue";
+import UiSectionTitle from "../src/components/UiSectionTitle.vue";
+import UiSection from "../src/components/UiSection.vue";
+import UiDrawer from "../src/components/UiDrawer.vue";
+import UiPageHeader from "../src/components/UiPageHeader.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);
@@ -2103,6 +2380,26 @@ const dropdownCheckboxSelected = ref<(string | number)[]>(["ref", "type", "city"
 function handleDropdownSelect(item: DropdownItem) {
   console.log("Dropdown selected:", item);
 }
+
+// New components demos
+const searchBarValue = ref("");
+const searchBarXsValue = ref("");
+const sliderValue = ref(40);
+const sliderMinimalValue = ref(65);
+const progressValue = ref(65);
+const showToastNotif = ref(false);
+const showToastDanger = ref(false);
+const paginationPage = ref(3);
+const showModal = ref(false);
+const showModalDanger = ref(false);
+const showDrawer = ref(false);
+
+const stepperSteps = [
+  { label: "Informations", description: "Détails du bien" },
+  { label: "Photos", description: "Ajouter des médias" },
+  { label: "Tarification", description: "Prix et conditions" },
+  { label: "Publication", description: "Mise en ligne" },
+];
 </script>
 
 <style>

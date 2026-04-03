@@ -36,8 +36,11 @@ import {
 type Variant =
   | "primary"
   | "secondary"
+  | "outline"
   | "ghost"
+  | "text"
   | "error"
+  | "danger"
   | "accent"
   | "ai"
   | "third"
@@ -102,14 +105,24 @@ const iconComponent = computed(() => {
   );
 });
 
-const isFlat = computed(
-  () => props.variant === "ghost" || props.variant === "tertiary"
-);
+const normalizedVariant = computed(() => {
+  const map: Record<string, string> = {
+    outline: "secondary",
+    text: "ghost",
+    danger: "error",
+  };
+  return map[props.variant] || props.variant;
+});
+
+const isFlat = computed(() => {
+  const v = normalizedVariant.value;
+  return v === "ghost" || v === "tertiary";
+});
 
 const isIconOnly = computed(() => props.icon && !props.label);
 
 const buttonClasses = computed(() => [
-  `ui-button--${props.variant}`,
+  `ui-button--${normalizedVariant.value}`,
   `ui-button--${props.size}`,
   { "ui-button--icon-only": isIconOnly.value },
 ]);

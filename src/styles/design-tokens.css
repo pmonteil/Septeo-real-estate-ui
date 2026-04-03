@@ -1,6 +1,6 @@
 /**
  * Design Tokens CSS Variables
- * Généré à partir du Design System Figma — v1.1
+ * Généré à partir du Design System Figma — v2.0
  * 
  * Structure: Brand → Alias → Mapped → Responsive → Component
  */
@@ -132,7 +132,13 @@
   --brand-scale-100: 100px;
 
   /* Opacity */
+  --brand-opacity-0: 0;
+  --brand-opacity-20: 0.2;
+  --brand-opacity-40: 0.4;
   --brand-opacity-50: 0.5;
+  --brand-opacity-60: 0.6;
+  --brand-opacity-80: 0.8;
+  --brand-opacity-100: 1;
 
   /* ========================================
    * ALIAS TOKENS - Référence sémantique
@@ -166,7 +172,7 @@
   --alias-accent-900: var(--brand-orange-900);
   --alias-accent-950: var(--brand-orange-950);
 
-  /* Danger (red) — renamed from Error */
+  /* Danger (red) */
   --alias-danger-10: var(--brand-red-10);
   --alias-danger-50: var(--brand-red-50);
   --alias-danger-100: var(--brand-red-100);
@@ -226,8 +232,19 @@
   --alias-warning-900: var(--brand-yellow-900);
   --alias-warning-950: var(--brand-yellow-950);
 
-  /* Information (blue — default = Blue/600) */
+  /* Information (blue) */
+  --alias-information-10: var(--brand-blue-10);
+  --alias-information-50: var(--brand-blue-50);
+  --alias-information-100: var(--brand-blue-100);
+  --alias-information-200: var(--brand-blue-200);
+  --alias-information-300: var(--brand-blue-300);
+  --alias-information-400: var(--brand-blue-400);
+  --alias-information-500: var(--brand-blue-500);
   --alias-information-default: var(--brand-blue-600);
+  --alias-information-700: var(--brand-blue-700);
+  --alias-information-800: var(--brand-blue-800);
+  --alias-information-900: var(--brand-blue-900);
+  --alias-information-950: var(--brand-blue-950);
 
   /* AI (purple) */
   --alias-ai-10: var(--brand-purple-10);
@@ -295,10 +312,12 @@
   --surface-default: var(--alias-neutral-white);
   --surface-default-bis: var(--alias-neutral-60);
   --surface-neutral-hover: var(--alias-neutral-60);
+  --surface-negative: var(--alias-primary-950);
   --surface-action: var(--alias-primary-default);
   --surface-action-hover: var(--alias-primary-600);
   --surface-active: var(--alias-primary-400);
   --surface-dynamic: var(--alias-ai-50);
+  --surface-dynamic-hover: var(--alias-ai-75);
   --surface-light-action: var(--alias-primary-50);
   --surface-light-action-hover: var(--alias-primary-100);
   --surface-light-accent: var(--alias-accent-50);
@@ -419,7 +438,8 @@
   --sizing-xl: 32px;
 
   /* Opacity */
-  --opacity-disabled: 0.5;
+  --opacity-disabled: 0.6;
+  --opacity-overlay: 0.2;
 
   /* ========================================
    * TYPOGRAPHY TOKENS
@@ -433,37 +453,75 @@
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
 
+  /* Display */
+  --display-font-size: 40px;
+  --display-line-height: 50px;
+  --display-paragraph-spacing: 12px;
+
+  /* Display Small */
+  --display-small-font-size: 32px;
+  --display-small-line-height: 40px;
+  --display-small-paragraph-spacing: 8px;
+
   /* H1 */
-  --h1-font-size: 40px;
-  --h1-line-height: 50px;
+  --h1-font-size: 18px;
+  --h1-line-height: 20px;
+  --h1-paragraph-spacing: 8px;
+
+  /* H1 Small */
+  --h1-small-font-size: 16px;
+  --h1-small-line-height: 20px;
+  --h1-small-paragraph-spacing: 8px;
 
   /* H2 */
-  --h2-font-size: 20px;
-  --h2-line-height: 24px;
+  --h2-font-size: 16px;
+  --h2-line-height: 20px;
+  --h2-paragraph-spacing: 8px;
+
+  /* H2 Small */
+  --h2-small-font-size: 14px;
+  --h2-small-line-height: 18px;
+  --h2-small-paragraph-spacing: 8px;
 
   /* H3 */
-  --h3-font-size: 16px;
-  --h3-line-height: 20px;
+  --h3-font-size: 14px;
+  --h3-line-height: 16px;
+  --h3-paragraph-spacing: 8px;
+
+  /* H3 Small */
+  --h3-small-font-size: 12px;
+  --h3-small-line-height: 14px;
+  --h3-small-paragraph-spacing: 4px;
 
   /* H4 */
-  --h4-font-size: 14px;
-  --h4-line-height: 20px;
+  --h4-font-size: 12px;
+  --h4-line-height: 16px;
+  --h4-paragraph-spacing: 8px;
+
+  /* H4 Small */
+  --h4-small-font-size: 10px;
+  --h4-small-line-height: 14px;
+  --h4-small-paragraph-spacing: 4px;
 
   /* Body */
   --body-font-size: 14px;
   --body-line-height: 20px;
+  --body-paragraph-spacing: 8px;
 
   /* Body Small */
   --body-small-font-size: 12px;
-  --body-small-line-height: 12px;
+  --body-small-line-height: 14px;
+  --body-small-paragraph-spacing: 8px;
 
   /* Caption */
   --caption-font-size: 10px;
   --caption-line-height: 16px;
+  --caption-paragraph-spacing: 4px;
 
   /* Mentions */
   --mentions-font-size: 8px;
   --mentions-line-height: 4px;
+  --mentions-paragraph-spacing: 8px;
 
   /* ========================================
    * COMPONENT TOKENS

@@ -1,0 +1,143 @@
+---
+description: Regles de creation et modification de composants dans Figma via le MCP. A suivre systematiquement lors de toute operation sur le Design System Figma.
+alwaysApply: false
+globs: 
+---
+
+# Regles de creation/modification de composants Figma
+
+## 1. Variables uniquement - zero valeur hardcodee
+
+Toute valeur doit etre liee a une variable des collections **Mapped** ou **Responsive**.
+
+- **Spacing** : `spacing/none`, `spacing/xs`, `spacing/sm`, `spacing/md`, `spacing/lg`, `spacing/xl`, `spacing/2xl`, `spacing/3xl`, `spacing/4xl`
+- **Radius** : `radius/none`, `radius/sm`, `radius/md`, `radius/lg`, `radius/xl`, `radius/full`
+- **Sizing** : `sizing/icon-xxxs`, `sizing/icon-xxs`, `sizing/icon-xs`, `sizing/icon-default`, `sizing/icon-xl`, `sizing/sm`, `sizing/md`, `sizing/lg`, `sizing/xl`
+- **Couleurs** : toujours des variables Mapped (`Surface/*`, `Text/*`, `Icon/*`, `border/*`)
+- **Typographie** : `body/font size`, `body/line height`, `Font Weight/*`, `Font Family/*`, etc.
+- **Border Width** : `Border Width/none` (0), `Border Width/sm` (1), `Border Width/md` (2), `Border Width/lg` (4)
+- **Opacite** : `opacity/disabled`
+
+Apres creation, toujours faire un **audit des bindings** pour verifier qu'aucune propriete n'est `UNBOUND`.
+
+## 2. Organisation visuelle des variants
+
+### Component Set
+
+Layout : 2 proprietes max par axe pour des auto-labels Figma propres.
+
+- **Axe X (colonnes)** : `Type` (outer) x `Style` (inner sub-columns)
+- **Axe Y (lignes)** : `Size` (outer) x `Status` (inner rows)
+
+| Constante | Valeur | Usage |
+|-----------|--------|-------|
+| `PAD` | 48px | Marge interne |
+| `GAP_STYLE_X` | 40px | Entre sous-colonnes Label/Icon |
+| `GAP_TYPE_X` | 80px | Entre groupes Type |
+| `GAP_STATUS_Y` | 8px | Entre lignes Default/Hover/Disabled |
+| `GAP_SIZE_Y` | 48px | Entre groupes Default et XS |
+
+Pas de frame overview. Le component set avec ses auto-labels Figma est la reference visuelle directe.
+
+### Ordre des proprietes dans le nom
+
+```
+Type=X, Style=X, Size=X, Status=X
+```
+
+Les 2 premieres (Type, Style) varient sur X, les 2 dernieres (Size, Status) sur Y.
+
+### Nommage PascalCase
+
+Toutes les valeurs en **PascalCase** : `Primary`, `Outline`, `Default`, `Hover`, `Disabled`, `Label`, `Icon`.
+
+## 3. Fusionner des composants similaires
+
+Quand deux composants font la meme chose avec un style different :
+
+1. Garder **un seul component set** comme base
+2. Ajouter une propriete `Type` (ou `Style`) avec les deux variantes
+3. **Renommer** les variants existants pour inclure la nouvelle propriete
+4. **Cloner** puis **modifier** les clones pour le nouveau type
+5. **Supprimer** les anciens component sets et sections vides
+
+## 4. Texte - toujours lier aux variables typographiques + styles de texte
+
+**Regle absolue : aucun texte sans style de texte (Text Style) applique.** Tout noeud texte doit utiliser un style de texte Figma existant (ex. `Body/Default`, `Body/Small`, `Heading/H3`). Ne jamais laisser un texte avec des proprietes manuelles sans style associe.
+
+Chaque noeud texte doit avoir ces bindings :
+
+- `fills` -> variable de couleur (`Text/body`, `Text/body secondary`, `Text/action`, etc.)
+- `fontSize` -> `body/font size` ou `body small/font size` (selon Size)
+- `fontStyle` -> `Font Weight/Regular`, `Font Weight/Medium`, `Font Weight/Semi Bold`, `Font Weight/Bold`
+- `fontFamily` -> `Font Family/Body` ou `Font Family/Headings`
+- `lineHeight` -> `body/line height` ou `body small/line height`
+- `paragraphSpacing` -> `body/paragraph spacing` ou `body small/paragraph spacing`
+
+Avant de creer ou modifier un texte :
+1. Lister les styles de texte disponibles (`figma.getLocalTextStyles()`)
+2. Appliquer le style approprie via `textNode.textStyleId = style.id`
+3. Ensuite surcharger uniquement les proprietes necessaires (ex. `fills`, `fontStyle`) tout en conservant le style de base
+
+Charger la font avant de modifier : `await figma.loadFontAsync({ family: 'Inter', style: 'Semi Bold' })`
+Attention : pour Inter, le style est `"Semi Bold"` avec espace (pas `"SemiBold"`).
+
+## 5. Strokes - lier les poids aux variables
+
+- `strokeBottomWeight`, `strokeTopWeight`, etc. -> `Border Width/none`, `Border Width/sm`, `Border Width/md`
+- Couleur du stroke -> variable Mapped (`border/action accent`, `border/default`, etc.)
+- Pour un underline bottom-only : mettre `strokeTopWeight=0, strokeLeftWeight=0, strokeRightWeight=0`
+
+## 6. Alignement underline / bordure container
+
+Quand un item a un underline qui doit s'aligner sur la bordure du container :
+- Mettre `paddingBottom = spacing/none` (0px) sur le container
+- L'underline de l'item (stroke bottom) se superpose alors a la bordure du container
+
+## 7. Etat disabled
+
+Pattern global : `opacity: 0.5` + `pointer-events: none`. Ne PAS utiliser de couleurs specifiques pour le disabled.
+
+## 8. Descriptions obligatoires
+
+Toujours ajouter une `description` au component set avec :
+- Role du composant
+- Description de chaque valeur de `Type`/`Style`
+- Liste des proprietes (State, Status, Size, etc.)
+
+## 9. Processus standard de creation
+
+```
+1. Explorer le composant existant (structure, variants, bindings)
+2. Planifier les changements (nouvelles proprietes, valeurs)
+3. Renommer les variants existants pour ajouter la nouvelle propriete
+4. Cloner les variants
+5. Modifier les clones (fills, text, strokes, radius, padding)
+6. Mettre a jour les instances dans les containers
+7. Supprimer les anciens composants obsoletes
+8. Organiser le CS (voir section 2 - 2 props/axe, gaps equilibres)
+9. Audit final des bindings (verifier zero UNBOUND)
+10. Ajouter/mettre a jour les descriptions
+```
+
+**L'etape 8 est critique** : le CS doit avoir max 2 proprietes par axe pour des auto-labels propres.
+
+## 10. Nommage des proprietes
+
+Toutes les valeurs en **PascalCase**.
+
+| Propriete | Usage | Exemples de valeurs |
+|-----------|-------|---------------------|
+| `Type` | Distinguer des styles fondamentalement differents | `Primary`/`Secondary`, `Navigation`/`Form` |
+| `Style` | Variante de presentation d'un meme composant | `Label`/`Icon`, `Card`/`Standalone` |
+| `State` | Etat de selection | `Selected`/`Not selected`, `Default`/`Active` |
+| `Status` | Etat d'interaction | `Default`/`Hover`/`Disabled`/`Focus`/`Error` |
+| `Size` | Taille | `Default`/`XS` |
+
+### Ordre dans le nom du variant
+
+```
+Type=X, Style=X, Size=X, State=X, Status=X
+```
+
+Toujours du plus structurant au plus detaille.
