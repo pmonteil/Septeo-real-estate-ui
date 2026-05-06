@@ -1049,69 +1049,32 @@
     <!-- UICHECKBOX            -->
     <!-- ===================== -->
     <section>
-      <h2>UiCheckbox - États</h2>
-      <div class="grid-inputs">
-        <!-- Default - Unchecked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Default (non coché)</span>
-          <UiCheckbox v-model="checkbox1" label="J'accepte les conditions" />
-        </div>
-
-        <!-- Default - Checked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Default (coché)</span>
-          <UiCheckbox v-model="checkbox2" label="Option sélectionnée" />
-        </div>
-
-        <!-- Error - Unchecked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Erreur (non coché)</span>
-          <UiCheckbox
-            v-model="checkbox3"
-            label="Ce champ est requis"
-            :error="true"
-          />
-        </div>
-
-        <!-- Error - Checked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Erreur (coché)</span>
-          <UiCheckbox
-            v-model="checkbox4"
-            label="Valeur en erreur"
-            :error="true"
-          />
-        </div>
-
-        <!-- Disabled - Unchecked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Désactivé (non coché)</span>
-          <UiCheckbox
-            :model-value="false"
-            label="Option indisponible"
-            :disabled="true"
-          />
-        </div>
-
-        <!-- Disabled - Checked -->
-        <div class="input-demo">
-          <span class="input-demo__label">Désactivé (coché)</span>
-          <UiCheckbox
-            :model-value="true"
-            label="Option verrouillée"
-            :disabled="true"
-          />
-        </div>
+      <h2>UiCheckbox — Style Label</h2>
+      <div class="row">
+        <UiCheckbox v-model="checkbox1" label="Unselected" />
+        <UiCheckbox v-model="checkbox2" label="Selected" />
+        <UiCheckbox :model-value="true" :indeterminate="true" label="Indeterminate" />
+        <UiCheckbox :model-value="false" label="Disabled" :disabled="true" />
+        <UiCheckbox :model-value="true" label="Disabled checked" :disabled="true" />
       </div>
     </section>
 
     <section>
-      <h2>UiCheckbox - Sans label</h2>
+      <h2>UiCheckbox — Style LabelIcon</h2>
+      <div class="row">
+        <UiCheckbox v-model="checkboxIcon1" label="Email" icon="mail" />
+        <UiCheckbox v-model="checkboxIcon2" label="Téléphone" icon="phone" />
+        <UiCheckbox v-model="checkboxIcon3" label="Maison" icon="home" />
+        <UiCheckbox :model-value="false" label="Disabled" icon="lock" :disabled="true" />
+      </div>
+    </section>
+
+    <section>
+      <h2>UiCheckbox — Style Standalone (sans label)</h2>
       <div class="row">
         <UiCheckbox :model-value="false" />
         <UiCheckbox :model-value="true" />
-        <UiCheckbox :model-value="false" :error="true" />
-        <UiCheckbox :model-value="true" :error="true" />
+        <UiCheckbox :model-value="true" :indeterminate="true" />
         <UiCheckbox :model-value="false" :disabled="true" />
         <UiCheckbox :model-value="true" :disabled="true" />
       </div>
@@ -1121,115 +1084,38 @@
     <!-- UIRADIO               -->
     <!-- ===================== -->
     <section>
-      <h2>UiRadio - États</h2>
-      <div class="grid-inputs">
-        <!-- Default Group -->
-        <div class="input-demo">
-          <span class="input-demo__label">Default (groupe)</span>
-          <div class="column">
-            <UiRadio
-              v-model="radioValue1"
-              name="group1"
-              value="option1"
-              label="Option 1"
-            />
-            <UiRadio
-              v-model="radioValue1"
-              name="group1"
-              value="option2"
-              label="Option 2"
-            />
-            <UiRadio
-              v-model="radioValue1"
-              name="group1"
-              value="option3"
-              label="Option 3"
-            />
-          </div>
+      <h2>UiRadio — Groupe vertical</h2>
+      <div class="row" style="align-items: flex-start; gap: 32px;">
+        <div class="column">
+          <span class="input-demo__label">Type de bien</span>
+          <UiRadio v-model="radioValue1" name="typebien" value="maison" label="Maison" />
+          <UiRadio v-model="radioValue1" name="typebien" value="appartement" label="Appartement" />
+          <UiRadio v-model="radioValue1" name="typebien" value="terrain" label="Terrain" />
+          <UiRadio v-model="radioValue1" name="typebien" value="local" label="Local commercial" />
         </div>
-
-        <!-- Another Group -->
-        <div class="input-demo">
-          <span class="input-demo__label">Autre groupe</span>
-          <div class="column">
-            <UiRadio
-              v-model="radioValue2"
-              name="group2"
-              value="optionA"
-              label="Choix A"
-            />
-            <UiRadio
-              v-model="radioValue2"
-              name="group2"
-              value="optionB"
-              label="Choix B"
-            />
-          </div>
-        </div>
-
-        <!-- Error Group -->
-        <div class="input-demo">
-          <span class="input-demo__label">Erreur</span>
-          <div class="column">
-            <UiRadio
-              v-model="radioValueError"
-              name="group3"
-              value="error1"
-              label="Option en erreur"
-              :error="true"
-            />
-            <UiRadio
-              v-model="radioValueError"
-              name="group3"
-              value="error2"
-              label="Autre option"
-              :error="true"
-            />
-          </div>
-        </div>
-
-        <!-- Disabled -->
-        <div class="input-demo">
-          <span class="input-demo__label">Désactivé</span>
-          <div class="column">
-            <UiRadio
-              model-value="disabled1"
-              name="group4"
-              value="disabled1"
-              label="Option verrouillée"
-              :disabled="true"
-            />
-            <UiRadio
-              model-value="disabled1"
-              name="group4"
-              value="disabled2"
-              label="Non disponible"
-              :disabled="true"
-            />
-          </div>
+        <div class="column">
+          <span class="input-demo__label">Canal préféré</span>
+          <UiRadio v-model="radioValue2" name="canal" value="email" label="Email" />
+          <UiRadio v-model="radioValue2" name="canal" value="sms" label="SMS" />
+          <UiRadio v-model="radioValue2" name="canal" value="tel" label="Téléphone" />
         </div>
       </div>
     </section>
 
     <section>
-      <h2>UiRadio - Sans label</h2>
+      <h2>UiRadio — Groupe horizontal</h2>
       <div class="row">
-        <UiRadio model-value="a" name="nolabel" value="a" />
-        <UiRadio model-value="a" name="nolabel" value="b" />
-        <UiRadio model-value="c" name="nolabel-error" value="c" :error="true" />
-        <UiRadio model-value="c" name="nolabel-error" value="d" :error="true" />
-        <UiRadio
-          model-value="e"
-          name="nolabel-disabled"
-          value="e"
-          :disabled="true"
-        />
-        <UiRadio
-          model-value="e"
-          name="nolabel-disabled"
-          value="f"
-          :disabled="true"
-        />
+        <UiRadio v-model="radioValue3" name="periode" value="mois" label="Ce mois" />
+        <UiRadio v-model="radioValue3" name="periode" value="trim" label="Ce trimestre" />
+        <UiRadio v-model="radioValue3" name="periode" value="annee" label="Cette année" />
+      </div>
+    </section>
+
+    <section>
+      <h2>UiRadio — Désactivé</h2>
+      <div class="row">
+        <UiRadio model-value="a" name="disabled-grp" value="a" label="Sélectionné verrouillé" :disabled="true" />
+        <UiRadio model-value="a" name="disabled-grp" value="b" label="Indisponible" :disabled="true" />
       </div>
     </section>
 
@@ -1567,62 +1453,75 @@
     <!-- ===================== -->
 
     <section>
-      <h2>Variants</h2>
+      <h2>Types — Label (Default)</h2>
       <div class="row">
-        <UiButton label="Primary" icon="send" />
+        <UiButton label="Primary" icon="send" variant="primary" />
         <UiButton label="Secondary" icon="settings" variant="secondary" />
-        <UiButton label="Third" icon="plus" variant="third" />
-        <UiButton label="Ghost" icon="edit" variant="ghost" />
-        <UiButton label="Tertiary" icon="dots" variant="tertiary" />
-        <UiButton label="Error" icon="trash" variant="error" />
-        <UiButton label="Accent" icon="star" variant="accent" />
+        <UiButton label="Tertiary" icon="plus" variant="tertiary" />
+        <UiButton label="Text" icon="edit" variant="text" />
         <UiButton label="AI" icon="sparkles" variant="ai" />
+        <UiButton label="Accent" icon="star" variant="accent" />
+        <UiButton label="Danger" icon="trash" variant="danger" />
       </div>
     </section>
 
     <section>
-      <h2>Sizes</h2>
+      <h2>Types — Label (XS / sm)</h2>
       <div class="row">
-        <UiButton label="Size SM" icon="plus" size="sm" />
-        <UiButton label="Size MD" icon="plus" size="md" />
+        <UiButton label="Primary" icon="send" variant="primary" size="sm" />
+        <UiButton label="Secondary" icon="settings" variant="secondary" size="sm" />
+        <UiButton label="Tertiary" icon="plus" variant="tertiary" size="sm" />
+        <UiButton label="Text" icon="edit" variant="text" size="sm" />
+        <UiButton label="AI" icon="sparkles" variant="ai" size="sm" />
+        <UiButton label="Accent" icon="star" variant="accent" size="sm" />
+        <UiButton label="Danger" icon="trash" variant="danger" size="sm" />
       </div>
     </section>
 
     <section>
-      <h2>Sans icône</h2>
+      <h2>Style Icon-only (Default)</h2>
       <div class="row">
-        <UiButton label="Primary" />
-        <UiButton label="Secondary" variant="secondary" />
-        <UiButton label="Ghost" variant="ghost" />
+        <UiButton icon="send" variant="primary" />
+        <UiButton icon="settings" variant="secondary" />
+        <UiButton icon="plus" variant="tertiary" />
+        <UiButton icon="edit" variant="text" />
+        <UiButton icon="sparkles" variant="ai" />
+        <UiButton icon="star" variant="accent" />
+        <UiButton icon="trash" variant="danger" />
       </div>
     </section>
 
     <section>
-      <h2>Icône seule</h2>
+      <h2>Style Icon-only (XS / sm)</h2>
       <div class="row">
-        <UiButton icon="plus" />
-        <UiButton icon="plus" variant="secondary" />
-        <UiButton icon="plus" variant="ghost" />
+        <UiButton icon="send" variant="primary" size="sm" />
+        <UiButton icon="settings" variant="secondary" size="sm" />
+        <UiButton icon="plus" variant="tertiary" size="sm" />
+        <UiButton icon="edit" variant="text" size="sm" />
+        <UiButton icon="sparkles" variant="ai" size="sm" />
+        <UiButton icon="star" variant="accent" size="sm" />
+        <UiButton icon="trash" variant="danger" size="sm" />
       </div>
     </section>
 
     <section>
       <h2>États</h2>
       <div class="row">
-        <UiButton label="Normal" icon="check" />
+        <UiButton label="Default" icon="check" />
         <UiButton label="Disabled" icon="check" disabled />
         <UiButton label="Loading" icon="check" loading />
+        <UiButton label="Danger Disabled" icon="trash" variant="danger" disabled />
       </div>
     </section>
 
     <section>
-      <h2>Autres icônes (strings)</h2>
+      <h2>Icônes diverses</h2>
       <div class="row">
         <UiButton label="Mail" icon="mail" />
         <UiButton label="Search" icon="search" />
         <UiButton label="Download" icon="download" />
         <UiButton label="Arrow Left" icon="arrow-left" />
-        <UiButton label="Star" icon="star" />
+        <UiButton label="Star" icon="star" variant="accent" />
       </div>
     </section>
 
@@ -1888,6 +1787,25 @@
       </UiPageHeader>
     </section>
 
+    <!-- ===================== -->
+    <!-- UIAISEARCHPROMPT      -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiAiSearchPrompt</h2>
+
+      <div class="input-demo__label" style="margin-bottom: 16px;">
+        Trigger de recherche & prompt IA — s'utilise dans la TopBar ou en Dashboard
+      </div>
+
+      <div class="column">
+        <div class="input-demo__label">Topbar — Default</div>
+        <UiAiSearchPrompt type="Topbar" @click="() => {}" />
+
+        <div class="input-demo__label" style="margin-top: 8px;">Dashboard — Default</div>
+        <UiAiSearchPrompt type="Dashboard" @click="() => {}" />
+      </div>
+    </section>
+
     </div>
   </div>
 </template>
@@ -1941,6 +1859,7 @@ import UiSectionTitle from "../src/components/UiSectionTitle.vue";
 import UiSection from "../src/components/UiSection.vue";
 import UiDrawer from "../src/components/UiDrawer.vue";
 import UiPageHeader from "../src/components/UiPageHeader.vue";
+import UiAiSearchPrompt from "../src/components/UiAiSearchPrompt.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);
@@ -2022,9 +1941,9 @@ const textareaFilled = ref(
 const textareaError = ref("");
 
 // Radio demos
-const radioValue1 = ref("option1");
-const radioValue2 = ref("optionA");
-const radioValueError = ref("error1");
+const radioValue1 = ref("maison");
+const radioValue2 = ref("email");
+const radioValue3 = ref("mois");
 
 // Tag demos
 const tags = ref([
@@ -2066,8 +1985,9 @@ const switch4 = ref(true);
 // Checkbox demos
 const checkbox1 = ref(false);
 const checkbox2 = ref(true);
-const checkbox3 = ref(false);
-const checkbox4 = ref(true);
+const checkboxIcon1 = ref(false);
+const checkboxIcon2 = ref(true);
+const checkboxIcon3 = ref(false);
 
 // Input demos
 const inputEmpty = ref("");

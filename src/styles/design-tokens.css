@@ -116,6 +116,13 @@
   --brand-purple-900: #4d198a;
   --brand-purple-950: #2a0f4a;
 
+  /* AI Gradient (5-stop) */
+  --brand-ai-gradient-0: #ff96be;
+  --brand-ai-gradient-25: #786acd;
+  --brand-ai-gradient-50: #4e5cd2;
+  --brand-ai-gradient-75: #5377d3;
+  --brand-ai-gradient-100: #64e4dd;
+
   /* Scale */
   --brand-scale-0: 0px;
   --brand-scale-1: 1px;
@@ -294,7 +301,7 @@
   --icon-secondary: var(--alias-neutral-700);
   --icon-action: var(--alias-primary-default);
   --icon-action-hover: var(--alias-primary-600);
-  --icon-dynamic: var(--alias-ai-500);
+  --icon-dynamic: var(--alias-ai-default);
   --icon-action-ai: var(--alias-ai-default);
   --icon-action-ai-hover: var(--alias-ai-500);
   --icon-on-action: var(--alias-neutral-white);
@@ -311,13 +318,17 @@
   --surface-field-negative: var(--alias-neutral-white);
   --surface-default: var(--alias-neutral-white);
   --surface-default-bis: var(--alias-neutral-60);
-  --surface-neutral-hover: var(--alias-neutral-60);
+  --surface-neutral: var(--alias-neutral-50);
+  --surface-neutral-hover: var(--alias-neutral-75);
+  --surface-neutral-elevation: var(--alias-neutral-75);
   --surface-negative: var(--alias-primary-950);
   --surface-action: var(--alias-primary-default);
   --surface-action-hover: var(--alias-primary-600);
   --surface-active: var(--alias-primary-400);
-  --surface-dynamic: var(--alias-ai-50);
-  --surface-dynamic-hover: var(--alias-ai-75);
+  --surface-dynamic: var(--alias-ai-default);
+  --surface-dynamic-hover: var(--alias-ai-default);
+  --surface-light-dynamic: var(--alias-ai-50);
+  --surface-light-dynamic-hover: var(--alias-ai-75);
   --surface-light-action: var(--alias-primary-50);
   --surface-light-action-hover: var(--alias-primary-100);
   --surface-light-accent: var(--alias-accent-50);
@@ -334,6 +345,13 @@
   --surface-ai-gradient-1: var(--alias-ai-300);
   --surface-ai-gradient-2: var(--alias-ai-500);
   --surface-ai-light: var(--alias-ai-50);
+
+  /* AI Gradient 5-stop (Figma AI/0→100) */
+  --ai-0: var(--brand-ai-gradient-0);
+  --ai-25: var(--brand-ai-gradient-25);
+  --ai-50: var(--brand-ai-gradient-50);
+  --ai-75: var(--brand-ai-gradient-75);
+  --ai-100: var(--brand-ai-gradient-100);
   --surface-orange-gradient-1: var(--alias-accent-300);
   --surface-orange-gradient-2: var(--alias-accent-default);
 
@@ -361,7 +379,8 @@
   --border-light-action-hover: var(--alias-primary-100);
   --border-action-ai: var(--alias-ai-default);
   --border-action-ai-hover: var(--alias-ai-500);
-  --border-dynamic: var(--alias-ai-100);
+  --border-dynamic: var(--alias-ai-75);
+  --border-dynamic-hover: var(--alias-ai-default);
   --border-dynamic-dark: var(--alias-ai-500);
 
   /* Context Colors */
@@ -386,7 +405,7 @@
   --context-purple-light: var(--brand-purple-200);
   --context-purple-default: var(--brand-purple-300);
   --context-purple-dark: var(--brand-purple-400);
-  --context-purple-darker: var(--brand-purple-600);
+  --context-purple-darker: var(--brand-purple-700);
   --context-orange-lighter: var(--brand-orange-50);
   --context-orange-light: var(--brand-orange-200);
   --context-orange-default: var(--brand-orange-300);
@@ -402,6 +421,8 @@
 
   /* Shadow */
   --shadow-tertiary: var(--alias-neutral-200);
+  --shadow-base: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
+  --shadow-popup: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
 
   /* ========================================
    * RESPONSIVE TOKENS - Spacing / Radius / Sizing
@@ -515,7 +536,8 @@
 
   /* Caption */
   --caption-font-size: 10px;
-  --caption-line-height: 16px;
+  --caption-line-height: 12px;
+  --caption-line-height-semibold: 13px;
   --caption-paragraph-spacing: 4px;
 
   /* Mentions */

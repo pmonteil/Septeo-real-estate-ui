@@ -1,22 +1,27 @@
 <template>
-  <label class="ui-radio" :class="rootClasses">
-    <!-- Hidden native radio -->
+  <label
+    class="ui-radio"
+    :class="rootClasses"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+  >
+    <!-- Native radio (masqué) -->
     <input
       ref="inputRef"
       type="radio"
       class="ui-radio__native"
-      :name="props.name"
-      :value="props.value"
+      :name="name"
+      :value="value"
       :checked="isChecked"
-      :disabled="props.disabled"
+      :disabled="disabled"
       @change="onChange"
       @focus="onFocus"
       @blur="onBlur"
     />
 
-    <!-- Custom radio circle -->
+    <!-- Cercle radio (18×18px) -->
     <span class="ui-radio__circle" :class="circleClasses">
-      <!-- Check icon -->
+      <!-- Check icon (selected) -->
       <svg
         v-if="isChecked"
         class="ui-radio__icon"
@@ -35,9 +40,10 @@
     </span>
 
     <!-- Label -->
-    <span v-if="props.label" class="ui-radio__label">
-      {{ props.label }}
-    </span>
+    <span v-if="label" class="ui-radio__label">{{ label }}</span>
+
+    <!-- Slot pour contenu custom -->
+    <slot />
   </label>
 </template>
 
@@ -51,11 +57,9 @@ const props = withDefaults(
     name?: string;
     label?: string;
     disabled?: boolean;
-    error?: boolean;
   }>(),
   {
     disabled: false,
-    error: false,
   }
 );
 
@@ -68,20 +72,19 @@ const emit = defineEmits<{
 
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
+const isHovered = ref(false);
 
 const isChecked = computed(() => props.modelValue === props.value);
 
 const rootClasses = computed(() => ({
-  "ui-radio--disabled": props.disabled,
-  "ui-radio--error": props.error,
-  "ui-radio--focused": isFocused.value,
   "ui-radio--checked": isChecked.value,
+  "ui-radio--hover": isHovered.value && !props.disabled,
+  "ui-radio--focused": isFocused.value,
+  "ui-radio--disabled": props.disabled,
 }));
 
 const circleClasses = computed(() => ({
   "ui-radio__circle--checked": isChecked.value,
-  "ui-radio__circle--error": props.error,
-  "ui-radio__circle--focused": isFocused.value,
 }));
 
 function onChange() {
@@ -108,6 +111,10 @@ defineExpose({
 </script>
 
 <style scoped>
+/* ==========================================
+ * BASE
+ * ========================================== */
+
 .ui-radio {
   display: inline-flex;
   align-items: center;
@@ -117,20 +124,38 @@ defineExpose({
   border-radius: var(--radius-md);
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease;
+  border: 1.5px solid transparent;
 }
 
+/* Checked — fond bleu clair */
 .ui-radio--checked {
   background-color: var(--surface-light-action);
 }
 
+/* Hover unchecked — fond neutre gris */
+.ui-radio:hover:not(.ui-radio--disabled):not(.ui-radio--checked) {
+  background-color: var(--surface-neutral);
+}
+
+/* Hover checked — fond identique (pas de changement card) */
+.ui-radio--checked:hover:not(.ui-radio--disabled) {
+  background-color: var(--surface-light-action);
+}
+
+/* Focus — bordure bleue sur la card */
+.ui-radio--focused {
+  border-color: var(--border-action);
+}
+
+/* Disabled */
 .ui-radio--disabled {
   opacity: var(--opacity-disabled);
   pointer-events: none;
   cursor: not-allowed;
 }
 
-/* Hide native radio */
+/* Native input masqué */
 .ui-radio__native {
   position: absolute;
   opacity: 0;
@@ -141,112 +166,48 @@ defineExpose({
 }
 
 /* ==========================================
- * RADIO CIRCLE
+ * RADIO CIRCLE (18×18px)
  * ========================================== */
 
 .ui-radio__circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-icon-xs);
-  height: var(--sizing-icon-xs);
+  width: var(--sizing-icon-xs);    /* 18px */
+  height: var(--sizing-icon-xs);   /* 18px */
   flex-shrink: 0;
   background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-action-neutral);
-  border-radius: 50%;
-  transition: all 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: var(--radius-full);
+  transition: all 0.15s ease;
 }
 
-.ui-radio__native:active + .ui-radio__circle {
-  transform: scale(0.85);
-}
-
-.ui-radio--checked .ui-radio__circle {
-  animation: radio-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes radio-pop {
-  0% {
-    transform: scale(0.8);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Hover state - unchecked */
-.ui-radio:hover:not(.ui-radio--disabled):not(.ui-radio--error) .ui-radio__circle:not(.ui-radio__circle--checked) {
-  background-color: var(--surface-light-action-hover);
-  border-color: var(--border-action-hover);
-}
-
-/* Hover state - checked */
-.ui-radio:hover:not(.ui-radio--disabled):not(.ui-radio--error) .ui-radio__circle--checked {
-  background-color: var(--surface-action-hover);
-}
-
-/* Focus state */
-.ui-radio__circle--focused {
+/* Hover unchecked circle — bordure action */
+.ui-radio:hover:not(.ui-radio--disabled) .ui-radio__circle:not(.ui-radio__circle--checked) {
   border-color: var(--border-action);
-  box-shadow: 0 0 0 2px var(--alias-primary-100);
 }
 
-/* Checked state */
+/* Checked circle — fond bleu */
 .ui-radio__circle--checked {
   background-color: var(--surface-action);
   border-color: var(--surface-action);
 }
 
-/* Error state - unchecked */
-.ui-radio__circle--error:not(.ui-radio__circle--checked) {
-  border-color: var(--border-danger);
-}
-
-/* Error state - checked */
-.ui-radio__circle--error.ui-radio__circle--checked {
-  background-color: var(--alias-danger-default);
-  border-color: var(--alias-danger-default);
-}
-
-/* Error hover state - unchecked */
-.ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__circle--error:not(.ui-radio__circle--checked) {
-  background-color: var(--surface-danger);
-  border-color: var(--alias-danger-600);
-}
-
-/* Error hover state - checked */
-.ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__circle--error.ui-radio__circle--checked {
-  background-color: var(--alias-danger-600);
-  border-color: var(--alias-danger-600);
+/* Hover checked circle */
+.ui-radio:hover:not(.ui-radio--disabled) .ui-radio__circle--checked {
+  background-color: var(--surface-action-hover);
+  border-color: var(--surface-action-hover);
 }
 
 /* ==========================================
- * CHECK ICON
+ * CHECK ICON (14px)
  * ========================================== */
 
 .ui-radio__icon {
-  width: var(--sizing-icon-xxxs);
-  height: var(--sizing-icon-xxxs);
+  width: var(--sizing-icon-xxs);   /* 14px */
+  height: var(--sizing-icon-xxs);  /* 14px */
   color: var(--icon-on-action);
-  animation: checkmark-draw 0.25s ease-out;
-}
-
-@keyframes checkmark-draw {
-  0% {
-    opacity: 0;
-    transform: scale(0) rotate(-45deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2) rotate(0deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+  flex-shrink: 0;
 }
 
 /* ==========================================
@@ -256,28 +217,20 @@ defineExpose({
 .ui-radio__label {
   font-family: var(--font-family-body);
   font-size: var(--body-font-size);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semi-bold);
   line-height: var(--body-line-height);
-  color: var(--text-body);
+  color: var(--text-body-secondary);
+  transition: color 0.15s ease;
+  white-space: nowrap;
 }
 
-/* Checked: label becomes action color */
+/* Checked — label bleu */
 .ui-radio--checked .ui-radio__label {
   color: var(--text-action);
 }
 
-/* Hover checked: label becomes action-hover color */
+/* Hover checked — label bleu hover */
 .ui-radio--checked:hover:not(.ui-radio--disabled) .ui-radio__label {
   color: var(--text-action-hover);
-}
-
-/* Error label */
-.ui-radio--error .ui-radio__label {
-  color: var(--text-danger);
-}
-
-/* Keep error color on hover for error state */
-.ui-radio--error:hover:not(.ui-radio--disabled) .ui-radio__label {
-  color: var(--text-danger);
 }
 </style>

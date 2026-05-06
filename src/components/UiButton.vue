@@ -36,15 +36,15 @@ import {
 type Variant =
   | "primary"
   | "secondary"
-  | "outline"
-  | "ghost"
+  | "tertiary"
   | "text"
-  | "error"
-  | "danger"
-  | "accent"
   | "ai"
-  | "third"
-  | "tertiary";
+  | "accent"
+  | "danger"
+  | "outline"  // compat → secondary
+  | "ghost"    // compat → text
+  | "error"    // compat → danger
+  | "third";   // compat → tertiary
 type Size = "sm" | "md";
 type IconProp = string | Component | FunctionalComponent;
 
@@ -108,16 +108,14 @@ const iconComponent = computed(() => {
 const normalizedVariant = computed(() => {
   const map: Record<string, string> = {
     outline: "secondary",
-    text: "ghost",
-    danger: "error",
+    ghost: "text",
+    third: "tertiary",
+    error: "danger",
   };
   return map[props.variant] || props.variant;
 });
 
-const isFlat = computed(() => {
-  const v = normalizedVariant.value;
-  return v === "ghost" || v === "tertiary";
-});
+const isFlat = computed(() => normalizedVariant.value === "text");
 
 const isIconOnly = computed(() => props.icon && !props.label);
 
@@ -153,61 +151,8 @@ function handleClick(event: Event) {
   gap: var(--spacing-sm);
 }
 
-/* Glow & bounce animation on hover (not for disabled/loading) */
 .ui-button {
-  box-shadow: 0 0 0 0 transparent;
-}
-
-.ui-button__content {
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading) {
-  transition: all 0.2s ease, box-shadow 0.25s ease-out, filter 0.2s ease;
-}
-
-.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  box-shadow: 0 0 16px 4px rgba(61, 100, 237, 0.2);
-  filter: brightness(1.06);
-}
-
-/* Ghost : pas de halo */
-.ui-button--ghost:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  box-shadow: none;
-}
-
-/* Error : halo rouge + bordure + background hover */
-.ui-button--error:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  background-color: var(--surface-error-hover) !important;
-  box-shadow: 0 0 16px 4px rgba(255, 72, 94, 0.25);
-  border: var(--alias-border-width-sm) solid var(--border-error);
-}
-
-/* AI : halo violet */
-.ui-button--ai:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  box-shadow: 0 0 16px 4px rgba(128, 44, 237, 0.3);
-}
-
-/* Accent : halo orange */
-.ui-button--accent:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  box-shadow: 0 0 16px 4px rgba(255, 97, 54, 0.25);
-}
-
-.ui-button:not(:disabled):not(.disabled):not(.q-btn--loading):hover
-  .ui-button__content {
-  animation: soft-bounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes soft-bounce {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  transition: all 0.2s ease;
 }
 
 .ui-button__icon {
@@ -293,21 +238,20 @@ function handleClick(event: Event) {
   pointer-events: none;
 }
 
-/* SECONDARY (outline dans Figma) */
+/* SECONDARY — fond neutre gris, sans bordure (Figma Secondary) */
 .ui-button--secondary {
-  background-color: var(--surface-default) !important;
+  background-color: var(--surface-neutral) !important;
   color: var(--text-body) !important;
-  border: var(--alias-border-width-sm) solid var(--border-default-light);
+  border: none;
 }
 
 .ui-button--secondary:hover:not(:disabled):not(.disabled) {
-  border-color: var(--border-action-hover);
+  background-color: var(--surface-neutral-hover) !important;
 }
 
 .ui-button--secondary:focus-visible {
   outline: var(--alias-border-width-md) solid var(--border-focus);
   outline-offset: 1px;
-  border-color: var(--border-action);
 }
 
 .ui-button--secondary:disabled,
@@ -316,67 +260,47 @@ function handleClick(event: Event) {
   pointer-events: none;
 }
 
-/* GHOST (transparent dans Figma) */
-.ui-button--ghost {
+/* TEXT — transparent, texte action (Figma Text) */
+.ui-button--text {
   background-color: transparent !important;
-  color: var(--text-action) !important;
-  border: var(--alias-border-width-sm) solid transparent;
-}
-
-.ui-button--ghost:hover:not(:disabled):not(.disabled) {
-  color: var(--text-action-hover) !important;
-  background-color: var(--surface-light-action) !important;
-}
-
-.ui-button--ghost:focus-visible {
-  outline: var(--alias-border-width-md) solid var(--border-focus);
-  outline-offset: -2px;
-}
-
-.ui-button--ghost:disabled,
-.ui-button--ghost.disabled {
-  opacity: var(--opacity-disabled);
-  pointer-events: none;
-}
-
-/* THIRD (fond bleu clair, pas de bordure par défaut) */
-.ui-button--third {
-  background-color: var(--surface-light-action) !important;
   color: var(--text-action) !important;
   border: none;
 }
 
-.ui-button--third:hover:not(:disabled):not(.disabled) {
+.ui-button--text:hover:not(:disabled):not(.disabled) {
+  color: var(--text-action-hover) !important;
   background-color: var(--surface-light-action) !important;
-  border: var(--alias-border-width-sm) solid var(--border-action-hover);
-  box-shadow: 0 0 16px 0 var(--alias-primary-200);
 }
 
-.ui-button--third:focus-visible {
+.ui-button--text:focus-visible {
   outline: var(--alias-border-width-md) solid var(--border-focus);
-  outline-offset: 1px;
+  outline-offset: -2px;
 }
 
-.ui-button--third:disabled,
-.ui-button--third.disabled {
+.ui-button--text:disabled,
+.ui-button--text.disabled {
   opacity: var(--opacity-disabled);
   pointer-events: none;
 }
 
-/* ERROR */
-.ui-button--error {
-  background-color: var(--surface-error) !important;
-  color: var(--text-error) !important;
-  border: var(--alias-border-width-sm) solid var(--surface-error);
+/* DANGER — fond rouge clair, texte danger (Figma Danger) */
+.ui-button--danger {
+  background-color: var(--surface-danger) !important;
+  color: var(--text-danger) !important;
+  border: none;
 }
 
-.ui-button--error:focus-visible {
-  outline: var(--alias-border-width-md) solid var(--border-error);
+.ui-button--danger:hover:not(:disabled):not(.disabled) {
+  background-color: var(--surface-danger-hover) !important;
+}
+
+.ui-button--danger:focus-visible {
+  outline: var(--alias-border-width-md) solid var(--border-danger);
   outline-offset: -2px;
 }
 
-.ui-button--error:disabled,
-.ui-button--error.disabled {
+.ui-button--danger:disabled,
+.ui-button--danger.disabled {
   opacity: var(--opacity-disabled);
   pointer-events: none;
 }
@@ -404,25 +328,19 @@ function handleClick(event: Event) {
   pointer-events: none;
 }
 
-/* TERTIARY (fond gris neutre) */
+/* TERTIARY — fond bleu clair, texte action (Figma Tertiary) */
 .ui-button--tertiary {
-  background-color: var(--surface-default-bis) !important;
-  color: var(--text-body) !important;
-  border: var(--alias-border-width-none) solid transparent;
-  border-radius: var(--button-default-border-radius);
+  background-color: var(--surface-light-action) !important;
+  color: var(--text-action) !important;
+  border: none;
 }
 
 .ui-button--tertiary:hover:not(:disabled):not(.disabled) {
-  border: var(--alias-border-width-sm) solid var(--border-dark);
-  box-shadow: 0 0 16px 0 var(--shadow-tertiary);
-}
-
-.ui-button--tertiary:not(:disabled):not(.disabled):not(.q-btn--loading):hover {
-  box-shadow: 0 0 16px 0 var(--shadow-tertiary);
+  background-color: var(--surface-light-action-hover) !important;
 }
 
 .ui-button--tertiary:focus-visible {
-  outline: var(--alias-border-width-md) solid var(--border-dark);
+  outline: var(--alias-border-width-md) solid var(--border-focus);
   outline-offset: 1px;
 }
 
@@ -432,24 +350,20 @@ function handleClick(event: Event) {
   pointer-events: none;
 }
 
-/* AI (gradient violet) */
+/* AI — gradient 5 stops (Figma AI) */
 .ui-button--ai {
   background: linear-gradient(
     90deg,
-    var(--surface-ai-gradient-1),
-    var(--surface-ai-gradient-2)
+    var(--ai-0) 0%,
+    var(--ai-25) 25%,
+    var(--ai-50) 50%,
+    var(--ai-75) 75%,
+    var(--ai-100) 100%
   ) !important;
   color: var(--text-on-action) !important;
   border: none;
 }
 
-.ui-button--ai:hover:not(:disabled):not(.disabled) {
-  background: linear-gradient(
-    90deg,
-    var(--surface-ai-gradient-2),
-    var(--surface-ai-gradient-2)
-  ) !important;
-}
 
 .ui-button--ai:focus-visible {
   outline: var(--alias-border-width-md) solid var(--border-action-ai);

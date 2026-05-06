@@ -1,22 +1,43 @@
 <template>
-  <label class="ui-checkbox" :class="rootClasses">
-    <!-- Hidden native checkbox -->
+  <label
+    class="ui-checkbox"
+    :class="rootClasses"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+  >
+    <!-- Native checkbox (masqué) -->
     <input
       ref="inputRef"
       type="checkbox"
       class="ui-checkbox__native"
       :checked="modelValue"
-      :disabled="props.disabled"
+      :indeterminate="indeterminate"
+      :disabled="disabled"
       @change="onChange"
       @focus="onFocus"
       @blur="onBlur"
     />
 
-    <!-- Custom checkbox box -->
+    <!-- Checkbox box -->
     <span class="ui-checkbox__box" :class="boxClasses">
+      <!-- Indeterminate icon (minus) -->
+      <svg
+        v-if="indeterminate && !modelValue"
+        class="ui-checkbox__icon"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.91675 7H11.0834"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
       <!-- Check icon -->
       <svg
-        v-if="modelValue"
+        v-else-if="modelValue"
         class="ui-checkbox__icon"
         viewBox="0 0 14 14"
         fill="none"
@@ -32,27 +53,46 @@
       </svg>
     </span>
 
+    <!-- Icône contextuelle (Style=LabelIcon) -->
+    <component
+      v-if="iconComponent"
+      :is="iconComponent"
+      class="ui-checkbox__context-icon"
+      :size="18"
+      :stroke="2"
+    />
+
     <!-- Label -->
-    <span v-if="props.label" class="ui-checkbox__label">
-      {{ props.label }}
-    </span>
+    <span v-if="label" class="ui-checkbox__label">{{ label }}</span>
+
+    <!-- Slot pour contenu custom -->
+    <slot />
   </label>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import {
+  ref,
+  computed,
+  defineAsyncComponent,
+  type Component,
+  type FunctionalComponent,
+} from "vue";
+
+type IconProp = string | Component | FunctionalComponent;
 
 const props = withDefaults(
   defineProps<{
     modelValue?: boolean;
     label?: string;
+    icon?: IconProp;
     disabled?: boolean;
-    error?: boolean;
+    indeterminate?: boolean;
   }>(),
   {
     modelValue: false,
     disabled: false,
-    error: false,
+    indeterminate: false,
   }
 );
 
@@ -65,18 +105,46 @@ const emit = defineEmits<{
 
 const inputRef = ref<HTMLInputElement | null>(null);
 const isFocused = ref(false);
+const isHovered = ref(false);
+
+const isActive = computed(() => props.modelValue || props.indeterminate);
+
+function toIconName(name: string): string {
+  return (
+    "Icon" +
+    name
+      .split("-")
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+      .join("")
+  );
+}
+
+const iconComponent = computed(() => {
+  if (!props.icon) return null;
+  if (typeof props.icon !== "string") return props.icon;
+  const iconName = toIconName(props.icon);
+  return defineAsyncComponent(() =>
+    import("@tabler/icons-vue").then((module) => {
+      const icons = module as unknown as Record<string, Component>;
+      const icon = icons[iconName];
+      if (!icon) {
+        console.warn(`[UiCheckbox] Icon "${iconName}" not found in @tabler/icons-vue`);
+        return { render: () => null };
+      }
+      return icon;
+    })
+  );
+});
 
 const rootClasses = computed(() => ({
-  "ui-checkbox--disabled": props.disabled,
-  "ui-checkbox--error": props.error,
+  "ui-checkbox--active": isActive.value,
+  "ui-checkbox--hover": isHovered.value && !props.disabled,
   "ui-checkbox--focused": isFocused.value,
-  "ui-checkbox--checked": props.modelValue,
+  "ui-checkbox--disabled": props.disabled,
 }));
 
 const boxClasses = computed(() => ({
-  "ui-checkbox__box--checked": props.modelValue,
-  "ui-checkbox__box--error": props.error,
-  "ui-checkbox__box--focused": isFocused.value,
+  "ui-checkbox__box--active": isActive.value,
 }));
 
 function onChange(event: Event) {
@@ -108,6 +176,10 @@ defineExpose({
 </script>
 
 <style scoped>
+/* ==========================================
+ * BASE
+ * ========================================== */
+
 .ui-checkbox {
   display: inline-flex;
   align-items: center;
@@ -117,20 +189,38 @@ defineExpose({
   border-radius: var(--radius-md);
   cursor: pointer;
   user-select: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease;
+  border: 1.5px solid transparent;
 }
 
-.ui-checkbox--checked {
+/* Active (selected / indeterminate) — fond bleu clair */
+.ui-checkbox--active {
   background-color: var(--surface-light-action);
 }
 
+/* Hover unselected — fond neutre gris */
+.ui-checkbox:hover:not(.ui-checkbox--disabled):not(.ui-checkbox--active) {
+  background-color: var(--surface-neutral);
+}
+
+/* Hover active — fond identique (pas de changement card) */
+.ui-checkbox--active:hover:not(.ui-checkbox--disabled) {
+  background-color: var(--surface-light-action);
+}
+
+/* Focus — bordure bleue sur la card */
+.ui-checkbox--focused {
+  border-color: var(--border-action);
+}
+
+/* Disabled */
 .ui-checkbox--disabled {
   opacity: var(--opacity-disabled);
   pointer-events: none;
   cursor: not-allowed;
 }
 
-/* Hide native checkbox */
+/* Native input masqué */
 .ui-checkbox__native {
   position: absolute;
   opacity: 0;
@@ -141,113 +231,66 @@ defineExpose({
 }
 
 /* ==========================================
- * CHECKBOX BOX
+ * CHECKBOX BOX (18×18px)
  * ========================================== */
 
 .ui-checkbox__box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--sizing-icon-xs);
-  height: var(--sizing-icon-xs);
+  width: var(--sizing-icon-xs);    /* 18px */
+  height: var(--sizing-icon-xs);   /* 18px */
   flex-shrink: 0;
-  padding: var(--spacing-sm);
-  background-color: var(--surface-default);
+  background-color: var(--surface-field);
   border: var(--alias-border-width-sm) solid var(--border-action-neutral);
-  border-radius: var(--radius-sm);
-  transition: all 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: var(--radius-sm);  /* 4px */
+  transition: all 0.15s ease;
 }
 
-.ui-checkbox__native:active + .ui-checkbox__box {
-  transform: scale(0.85);
-}
-
-.ui-checkbox--checked .ui-checkbox__box {
-  animation: checkbox-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes checkbox-pop {
-  0% {
-    transform: scale(0.8);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Hover state - unchecked */
-.ui-checkbox:hover:not(.ui-checkbox--disabled):not(.ui-checkbox--error) .ui-checkbox__box:not(.ui-checkbox__box--checked) {
-  background-color: var(--surface-light-action-hover);
+/* Hover unselected box — bordure action */
+.ui-checkbox:hover:not(.ui-checkbox--disabled) .ui-checkbox__box:not(.ui-checkbox__box--active) {
   border-color: var(--border-action);
 }
 
-/* Hover state - checked */
-.ui-checkbox:hover:not(.ui-checkbox--disabled) .ui-checkbox__box--checked {
-  background-color: var(--surface-action-hover);
-}
-
-/* Focus state */
-.ui-checkbox__box--focused {
-  border-color: var(--border-action);
-  box-shadow: 0 0 0 2px var(--alias-primary-100);
-}
-
-/* Checked state */
-.ui-checkbox__box--checked {
+/* Active box — fond bleu solide */
+.ui-checkbox__box--active {
   background-color: var(--surface-action);
   border-color: var(--surface-action);
 }
 
-/* Error state - unchecked */
-.ui-checkbox__box--error:not(.ui-checkbox__box--checked) {
-  border-color: var(--border-danger);
-}
-
-/* Error state - checked */
-.ui-checkbox__box--error.ui-checkbox__box--checked {
-  background-color: var(--alias-danger-default);
-  border-color: var(--alias-danger-default);
-}
-
-/* Error hover state - unchecked */
-.ui-checkbox--error:hover:not(.ui-checkbox--disabled) .ui-checkbox__box--error:not(.ui-checkbox__box--checked) {
-  background-color: var(--surface-danger);
-  border-color: var(--alias-danger-600);
-}
-
-/* Error hover state - checked */
-.ui-checkbox--error:hover:not(.ui-checkbox--disabled) .ui-checkbox__box--error.ui-checkbox__box--checked {
-  background-color: var(--alias-danger-600);
-  border-color: var(--alias-danger-600);
+/* Hover active box */
+.ui-checkbox:hover:not(.ui-checkbox--disabled) .ui-checkbox__box--active {
+  background-color: var(--surface-action-hover);
+  border-color: var(--surface-action-hover);
 }
 
 /* ==========================================
- * CHECK ICON
+ * CHECK / INDETERMINATE ICON (14px)
  * ========================================== */
 
 .ui-checkbox__icon {
-  width: var(--sizing-icon-xxs);
-  height: var(--sizing-icon-xxs);
+  width: var(--sizing-icon-xxs);   /* 14px */
+  height: var(--sizing-icon-xxs);  /* 14px */
   color: var(--icon-on-action);
-  animation: checkmark-draw 0.25s ease-out;
+  flex-shrink: 0;
 }
 
-@keyframes checkmark-draw {
-  0% {
-    opacity: 0;
-    transform: scale(0) rotate(-45deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2) rotate(0deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+/* ==========================================
+ * CONTEXT ICON (LabelIcon style — 18px)
+ * ========================================== */
+
+.ui-checkbox__context-icon {
+  flex-shrink: 0;
+  color: var(--icon-action);
+  transition: color 0.15s ease;
+}
+
+.ui-checkbox--active .ui-checkbox__context-icon {
+  color: var(--icon-action);
+}
+
+.ui-checkbox--active:hover:not(.ui-checkbox--disabled) .ui-checkbox__context-icon {
+  color: var(--icon-action-hover);
 }
 
 /* ==========================================
@@ -259,26 +302,17 @@ defineExpose({
   font-size: var(--body-font-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--body-line-height);
-  color: var(--text-body);
+  color: var(--text-body-secondary);
+  transition: color 0.15s ease;
 }
 
-/* Checked: label becomes action color */
-.ui-checkbox--checked .ui-checkbox__label {
+/* Active — label bleu */
+.ui-checkbox--active .ui-checkbox__label {
   color: var(--text-action);
 }
 
-/* Hover checked: label becomes action-hover color */
-.ui-checkbox--checked:hover:not(.ui-checkbox--disabled) .ui-checkbox__label {
+/* Hover active — label bleu hover */
+.ui-checkbox--active:hover:not(.ui-checkbox--disabled) .ui-checkbox__label {
   color: var(--text-action-hover);
-}
-
-/* Error label */
-.ui-checkbox--error .ui-checkbox__label {
-  color: var(--text-danger);
-}
-
-/* Keep error color on hover for error state */
-.ui-checkbox--error:hover:not(.ui-checkbox--disabled) .ui-checkbox__label {
-  color: var(--text-danger);
 }
 </style>
