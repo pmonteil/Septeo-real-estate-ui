@@ -49,7 +49,6 @@ export { default as UiPagination } from "./components/UiPagination.vue";
 export { default as UiStepper } from "./components/UiStepper.vue";
 export { default as UiCard } from "./components/UiCard.vue";
 export { default as UiDivider } from "./components/UiDivider.vue";
-export { default as UiAiSearchPrompt } from "./components/UiAiSearchPrompt.vue";
 
 // Layout Components
 export { default as UiPageHeader } from "./components/UiPageHeader.vue";

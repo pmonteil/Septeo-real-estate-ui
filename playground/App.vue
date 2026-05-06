@@ -1787,25 +1787,6 @@
       </UiPageHeader>
     </section>
 
-    <!-- ===================== -->
-    <!-- UIAISEARCHPROMPT      -->
-    <!-- ===================== -->
-    <section>
-      <h2>UiAiSearchPrompt</h2>
-
-      <div class="input-demo__label" style="margin-bottom: 16px;">
-        Trigger de recherche & prompt IA — s'utilise dans la TopBar ou en Dashboard
-      </div>
-
-      <div class="column">
-        <div class="input-demo__label">Topbar — Default</div>
-        <UiAiSearchPrompt type="Topbar" @click="() => {}" />
-
-        <div class="input-demo__label" style="margin-top: 8px;">Dashboard — Default</div>
-        <UiAiSearchPrompt type="Dashboard" @click="() => {}" />
-      </div>
-    </section>
-
     </div>
   </div>
 </template>
@@ -1859,7 +1840,6 @@ import UiSectionTitle from "../src/components/UiSectionTitle.vue";
 import UiSection from "../src/components/UiSection.vue";
 import UiDrawer from "../src/components/UiDrawer.vue";
 import UiPageHeader from "../src/components/UiPageHeader.vue";
-import UiAiSearchPrompt from "../src/components/UiAiSearchPrompt.vue";
 
 // Dynamic Input demos
 const dynamicEmpty = ref<string[]>([]);
