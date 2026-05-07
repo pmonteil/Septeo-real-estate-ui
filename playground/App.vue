@@ -1539,6 +1539,39 @@
     </section>
 
     <!-- ===================== -->
+    <!-- UIAISEARCHPROMPT      -->
+    <!-- ===================== -->
+    <section>
+      <h2>UiAiSearchPrompt</h2>
+      <p class="hint">
+        Trigger recherche / prompt mIA (Figma « AI Search Prompt »). Survolez pour l’état Hover
+        (bordure dégradé AI, caret). <code>simulate-hover</code> fige l’aperçu comme sur le frame.
+      </p>
+      <div class="column" style="gap: 20px; width: 100%">
+        <div class="input-demo">
+          <span class="input-demo__label">Topbar — Default</span>
+          <UiAiSearchPrompt variant="topbar" @click="() => {}" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Topbar — Hover (figé)</span>
+          <UiAiSearchPrompt variant="topbar" :simulate-hover="true" @click="() => {}" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Dashboard — Default</span>
+          <UiAiSearchPrompt variant="dashboard" @click="() => {}" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Dashboard — Hover (figé)</span>
+          <UiAiSearchPrompt variant="dashboard" :simulate-hover="true" @click="() => {}" />
+        </div>
+        <div class="input-demo">
+          <span class="input-demo__label">Raccourci Windows</span>
+          <UiAiSearchPrompt variant="topbar" shortcut-label="Ctrl+K" @click="() => {}" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
     <!-- UISEARCHBAR           -->
     <!-- ===================== -->
     <section>
@@ -1827,6 +1860,7 @@ import UiAccordion from "../src/components/UiAccordion.vue";
 import UiDropdown from "../src/components/UiDropdown.vue";
 import type { DropdownItem } from "../src/components/UiDropdown.vue";
 import UiSearchBar from "../src/components/UiSearchBar.vue";
+import UiAiSearchPrompt from "../src/components/UiAiSearchPrompt.vue";
 import UiSlider from "../src/components/UiSlider.vue";
 import UiProgressBar from "../src/components/UiProgressBar.vue";
 import UiToast from "../src/components/UiToast.vue";
@@ -1854,9 +1888,6 @@ const showPopupNegative = ref(false);
 const showPopupWarning = ref(false);
 const showPopupNeutral = ref(false);
 
-function handlePopupConfirm() {
-  console.log("Popup confirmed");
-}
 
 function handlePopupCancel() {
   console.log("Popup cancelled");
@@ -2295,6 +2326,7 @@ const showModalDanger = ref(false);
 const showDrawer = ref(false);
 
 const stepperSteps = [
+
   { label: "Informations", description: "Détails du bien" },
   { label: "Photos", description: "Ajouter des médias" },
   { label: "Tarification", description: "Prix et conditions" },

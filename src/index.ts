@@ -7,6 +7,7 @@ export { default as UiLabel } from "./components/UiLabel.vue";
 export { default as UiInput } from "./components/UiInput.vue";
 export { default as UiInputSuffix } from "./components/UiInputSuffix.vue";
 export { default as UiSearchBar } from "./components/UiSearchBar.vue";
+export { default as UiAiSearchPrompt } from "./components/UiAiSearchPrompt.vue";
 export {
   default as UiSelect,
   type SelectOption,
